@@ -16,12 +16,13 @@ const Configuration: UserConfig = {
         'refactor', // Code changes that neither fix a bug nor add a feature
         'perf', // Performance improvement
         'test', // Adding missing tests or correcting existing tests
-        'build', // Changes that affect the build system or external dependencies (example scopes: npm)
+        'build', // Changes that affect the build system or external dependencies
         'ci', // Changes to CI configuration files and scripts
         'chore', // Other changes that don't modify src or test files
         'revert', // Reverts a previous commit
         'merge', // Using for merge branch
-      ],
+        'setup' // Project setup (added to allow setup as a type)
+      ]
     ],
     'scope-enum': [
       2,
@@ -40,10 +41,10 @@ const Configuration: UserConfig = {
         'ci', // Continuous integration
         'release', // Release related changes
         'merge', // Merge related changes
-        'other', // Other changes
-      ],
-    ],
-  },
+        'other' // Other changes
+      ]
+    ]
+  }
 };
 
 export default Configuration;
