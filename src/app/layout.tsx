@@ -16,7 +16,7 @@ const META_THEME_COLORS = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
+  title: 'Lucent',
   description: 'Basic dashboard with Next.js and Shadcn'
 };
 
@@ -50,7 +50,7 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          'bg-background overflow-hidden overscroll-none font-sans antialiased',
+          'bg-background font-sans antialiased',
           activeThemeValue ? `theme-${activeThemeValue}` : '',
           isScaled ? 'theme-scaled' : '',
           fontVariables

@@ -1,0 +1,64 @@
+'use client';
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel
+} from '@headlessui/react';
+import { Minus, Plus } from 'lucide-react';
+
+import SectionTitle from '../atoms/section-title';
+import { faqs } from '../data/faq';
+
+const FAQ: React.FC = () => {
+  return (
+    <section id='faq' className='py-10 lg:py-20'>
+      <div className='flex flex-col gap-10 lg:flex-row'>
+        <div className=''>
+          <p className='text-foreground-accent hidden lg:block'>FAQ&apos;S</p>
+          <SectionTitle>
+            <h2 className='my-3 text-center !leading-snug lg:max-w-sm lg:text-left'>
+              Frequently Asked Questions
+            </h2>
+          </SectionTitle>
+          <p className='text-foreground-accent text-center lg:mt-10 lg:text-left'>
+            Ask us anything!
+          </p>
+          <a
+            href='mailto:'
+            className='text-secondary mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
+          >
+            help@lucent.com
+          </a>
+        </div>
+
+        <div className='mx-auto w-full border-b lg:max-w-2xl'>
+          {faqs.map((faq, index) => (
+            <div key={index} className='mb-7'>
+              <Disclosure>
+                {({ open }) => (
+                  <div key={index}>
+                    <DisclosureButton className='flex w-full items-center justify-between border-t px-4 pt-7 text-left text-lg'>
+                      <span className='text-2xl font-semibold'>
+                        {faq.question}
+                      </span>
+                      {open ? (
+                        <Minus className='text-secondary h-5 w-5' />
+                      ) : (
+                        <Plus className='text-secondary h-5 w-5' />
+                      )}
+                    </DisclosureButton>
+                    <DisclosurePanel className='text-foreground-accent px-4 pt-4 pb-2'>
+                      {faq.answer}
+                    </DisclosurePanel>
+                  </div>
+                )}
+              </Disclosure>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;

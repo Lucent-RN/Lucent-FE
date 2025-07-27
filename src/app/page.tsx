@@ -1,3 +1,5 @@
-export default async function Page() {
-  return <div>Hello World</div>;
+import { redirect } from 'next/navigation';
+
+export default function Page() {
+  redirect('/home');
 }
