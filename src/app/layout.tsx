@@ -17,7 +17,12 @@ const META_THEME_COLORS = {
 
 export const metadata: Metadata = {
   title: 'Lucent',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  description: 'Pomodoro Timer App',
+  icons: {
+    icon: '/assets/app-icon.svg',
+    shortcut: '/assets/app-icon.svg',
+    apple: '/assets/app-icon.svg'
+  }
 };
 
 export const viewport: Viewport = {

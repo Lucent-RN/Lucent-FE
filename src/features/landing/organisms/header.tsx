@@ -1,29 +1,49 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { Fingerprint, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
 
-import Container from '../atoms/container';
 import { siteDetails } from '../data/site-details';
 import { menuItems } from '../data/menu-items';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <header className='fixed top-0 right-0 left-0 z-50 mx-auto w-full bg-transparent md:absolute'>
-      <Container className='!px-0'>
-        <nav className='mx-auto flex items-center justify-between bg-white px-5 py-2 shadow-md md:bg-transparent md:py-10 md:shadow-none'>
+    <header className='fixed top-0 right-0 left-0 z-50 w-full bg-white'>
+      <div className='w-full'>
+        <nav
+          className={`flex items-center justify-between px-5 py-2 transition-all duration-300 md:py-4 ${
+            isScrolled ? 'shadow-md' : 'shadow-none'
+          }`}
+        >
           {/* Logo */}
           <Link href='/' className='flex items-center gap-2'>
-            <Fingerprint className='text-foreground h-7 w-7 min-w-fit' />
-            <span className='manrope text-foreground cursor-pointer text-xl font-semibold'>
+            <Image
+              src='/assets/app-icon.svg'
+              alt={siteDetails.siteName}
+              className='h-24 w-24 rounded-full md:h-16 md:w-16'
+              width={96}
+              height={96}
+            />
+            <span className='manrope text-foreground cursor-pointer text-lg font-semibold md:text-xl'>
               {siteDetails.siteName}
             </span>
           </Link>
@@ -68,7 +88,7 @@ const Header: React.FC = () => {
             </button>
           </div>
         </nav>
-      </Container>
+      </div>
 
       {/* Mobile Menu with Motion Transition */}
       <AnimatePresence>
