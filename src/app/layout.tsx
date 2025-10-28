@@ -16,8 +16,13 @@ const META_THEME_COLORS = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: 'Lucent',
+  description: 'Pomodoro Timer App',
+  icons: {
+    icon: '/assets/app-icon.svg',
+    shortcut: '/assets/app-icon.svg',
+    apple: '/assets/app-icon.svg'
+  }
 };
 
 export const viewport: Viewport = {
@@ -50,17 +55,17 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          'bg-background overflow-hidden overscroll-none font-sans antialiased',
+          'bg-background font-sans antialiased',
           activeThemeValue ? `theme-${activeThemeValue}` : '',
           isScaled ? 'theme-scaled' : '',
           fontVariables
         )}
       >
-        <NextTopLoader showSpinner={false} />
+        <NextTopLoader showSpinner={true} />
         <NuqsAdapter>
           <ThemeProvider
             attribute='class'
-            defaultTheme='system'
+            defaultTheme='light'
             enableSystem
             disableTransitionOnChange
             enableColorScheme
