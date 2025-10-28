@@ -8,7 +8,7 @@ export const footerDetails: {
   socials: ISocials;
 } = {
   subheading:
-    'Empowering businesses with cutting-edge financial technology solutions.',
+    'Lucent is a Pomodoro timer app that helps you stay focused and productive.',
   quickLinks: [
     {
       text: 'Features',
@@ -23,10 +23,10 @@ export const footerDetails: {
       url: '#testimonials'
     }
   ],
-  email: 'address@yoursite.com',
-  telephone: '+1 (123) 456-7890',
+  email: 'kanent.tech@gmail.com',
+  telephone: '',
   socials: {
-    // github: 'https://github.com',
+    github: 'https://github.com',
     // x: 'https://twitter.com/x',
     twitter: 'https://twitter.com/Twitter',
     facebook: 'https://facebook.com',

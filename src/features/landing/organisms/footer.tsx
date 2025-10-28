@@ -5,6 +5,7 @@ import React from 'react';
 import { getPlatformIconByName } from '@/lib/utils';
 import { footerDetails } from '../data/footer';
 import { siteDetails } from '../data/site-details';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
@@ -12,10 +13,13 @@ const Footer: React.FC = () => {
       <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 md:grid-cols-3'>
         <div>
           <Link href='/' className='flex items-center gap-2'>
-            <Fingerprint className='h-5 w-5 min-w-fit md:h-7 md:w-7' />
-            <h3 className='manrope cursor-pointer text-xl font-semibold'>
-              {siteDetails.siteName}
-            </h3>
+            <Image
+              src='/assets/app-icon.svg'
+              alt='logo'
+              width={96}
+              height={96}
+              className='h-24 w-24 rounded-full md:h-16 md:w-16'
+            />
           </Link>
           <p className='text-foreground-accent mt-3.5'>
             {footerDetails.subheading}
@@ -80,17 +84,8 @@ const Footer: React.FC = () => {
         </p>
         <p className='mt-2 text-sm text-gray-500'>
           Made with &hearts; by{' '}
-          <a href='https://nexilaunch.com' target='_blank'>
-            Nexi Launch
-          </a>
-        </p>
-        <p className='mt-2 text-sm text-gray-500'>
-          UI kit by{' '}
-          <a
-            href='https://ui8.net/youthmind/products/fintech-finance-mobile-app-ui-kit'
-            target='_blank'
-          >
-            Youthmind
+          <a href='https://kanent.id.vn' target='_blank'>
+            Kane Nguyen
           </a>
         </p>
       </div>
