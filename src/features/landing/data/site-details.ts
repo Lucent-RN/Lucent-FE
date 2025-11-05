@@ -2,9 +2,9 @@ export const siteDetails = {
   siteName: 'Lucent',
   siteUrl: 'https://lucent-omega.vercel.app/',
   metadata: {
-    title: 'Lucent - Next.js and Tailwind CSS Landing Page Template',
+    title: 'Lucent - Stay Focused, Be Present',
     description:
-      'Lucent empowers businesses with cutting-edge technology solutions to drive success and efficiency.'
+      'Lucent helps you build mindful focus habits through structured Pomodoro sessions — bringing balance, clarity, and lasting productivity to your day.'
   },
   language: 'en-us',
   locale: 'en-US',

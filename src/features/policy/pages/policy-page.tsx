@@ -33,7 +33,7 @@ const PolicyPage = () => {
   const [activeSection, setActiveSection] = useState<PolicySection>('privacy');
 
   return (
-    <Container className='min-h-screen pt-12 pb-20'>
+    <Container className='min-h-screen pt-24 pb-20 sm:pt-28 md:pt-36 lg:pt-44'>
       {/* Header */}
       <div className='mb-12 text-center'>
         <motion.h1

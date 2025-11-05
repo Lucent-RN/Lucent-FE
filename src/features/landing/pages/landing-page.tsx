@@ -7,7 +7,7 @@ import Hero from '../organisms/hero';
 
 const LandingPage = () => {
   return (
-    <>
+    <div className='px-10'>
       <Hero />
       <Container className='mt-60'>
         <Benefits />
@@ -34,7 +34,7 @@ const LandingPage = () => {
 
         <CTA />
       </Container>
-    </>
+    </div>
   );
 };
 

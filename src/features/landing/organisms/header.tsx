@@ -44,7 +44,7 @@ const Header: React.FC = () => {
               alt={siteDetails.siteName}
               width={120}
               height={120}
-              className='h-16 w-16 rounded-full sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24'
+              className='h-14 w-14 rounded-full sm:h-16 sm:w-16 md:h-18 md:w-18 lg:h-22 lg:w-22'
             />
             <span className='manrope text-foreground text-base font-semibold sm:text-lg md:text-xl lg:text-2xl'>
               {siteDetails.siteName}
