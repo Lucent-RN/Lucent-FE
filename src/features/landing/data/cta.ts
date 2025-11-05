@@ -1,7 +1,7 @@
 export const ctaDetails = {
-  heading: 'Join Over 1 Million Users To Transform Your Finances',
+  heading: 'Start Your Mindful Focus Journey Today',
   subheading:
-    'Your journey to financial freedom starts here. Download Finwise today and take the first step towards a brighter financial future!',
+    'Build better habits, stay balanced, and focus with clarity. Download Lucent and experience a calmer, more productive way to work and study.',
   appStoreUrl: '#',
   googlePlayUrl: '#'
 };

@@ -25,9 +25,9 @@ const FAQ: React.FC = () => {
           </p>
           <a
             href='mailto:'
-            className='text-secondary mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
+            className='mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
           >
-            help@lucent.com
+            kanent.tech@gmail.com
           </a>
         </div>
 

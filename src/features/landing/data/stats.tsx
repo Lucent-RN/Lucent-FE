@@ -1,23 +1,24 @@
-import { BarChart, Star, Globe } from 'lucide-react';
+import { Focus, Star, Heart } from 'lucide-react';
 
 import { IStats } from '../types';
 
 export const stats: IStats[] = [
   {
-    title: '20M+',
-    icon: <BarChart size={34} className='text-blue-500' />,
+    title: '1000+',
+    icon: <Focus size={34} className='text-blue-500' />,
     description:
-      'Transactions processed securely every day, providing real-time insights.'
+      'Focus sessions completed during early access — helping users stay consistent and mindful.'
   },
   {
-    title: '5.0',
+    title: '4.9',
     icon: <Star size={34} className='text-yellow-500' />,
-    description: 'Star rating, consistently maintained across app stores.'
+    description:
+      'Average rating from our first wave of users who love Lucent’s calm and intuitive design.'
   },
   {
-    title: '200+ ',
-    icon: <Globe size={34} className='text-green-600' />,
+    title: 'Global Launch',
+    icon: <Heart size={34} className='text-pink-500' />,
     description:
-      'Financial Institutions, seamlessly integrated, so you can manage all accounts.'
+      'Lucent is now available worldwide — empowering anyone to build better focus habits.'
   }
 ];

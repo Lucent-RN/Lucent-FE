@@ -1,11 +1,10 @@
-import { Fingerprint } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
 import { getPlatformIconByName } from '@/lib/utils';
+import Image from 'next/image';
 import { footerDetails } from '../data/footer';
 import { siteDetails } from '../data/site-details';
-import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
