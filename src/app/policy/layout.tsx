@@ -3,6 +3,7 @@ import { Manrope, Source_Sans_3 } from 'next/font/google';
 
 import { siteDetails } from '@/features/landing/data/site-details';
 import Footer from '@/features/landing/organisms/footer';
+import Header from '@/features/landing/organisms/header';
 
 const manrope = Manrope({ subsets: ['latin'] });
 const sourceSans = Source_Sans_3({ subsets: ['latin'] });
@@ -43,6 +44,7 @@ export default function PolicyLayout({
       <body
         className={`${manrope.className} ${sourceSans.className} antialiased`}
       >
+        <Header />
         <main>{children}</main>
         <Footer />
       </body>

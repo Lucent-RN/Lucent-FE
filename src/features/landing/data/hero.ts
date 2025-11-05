@@ -1,6 +1,6 @@
 export const heroDetails = {
-  heading: 'Smart, Secure, Simple Financial Management',
+  heading: 'Stay Focused, Be Present',
   subheading:
-    'From effortless budgeting to real-time investment insights, Finwise puts you in control of your money like never before',
-  centerImageSrc: '/images/hero-mockup.webp'
+    'Lucent helps you build mindful focus habits through structured Pomodoro sessions — bringing balance, clarity, and lasting productivity to your day.',
+  centerImageSrc: '/images/hero-mockup.png'
 };

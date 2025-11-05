@@ -35,15 +35,18 @@ const Header: React.FC = () => {
           }`}
         >
           {/* Logo */}
-          <Link href='/' className='flex items-center gap-2'>
+          <Link
+            href='/'
+            className='flex items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3 md:gap-4'
+          >
             <Image
               src='/assets/app-icon.svg'
               alt={siteDetails.siteName}
-              className='h-24 w-24 rounded-full md:h-16 md:w-16'
-              width={96}
-              height={96}
+              width={120}
+              height={120}
+              className='h-14 w-14 rounded-full sm:h-16 sm:w-16 md:h-18 md:w-18 lg:h-22 lg:w-22'
             />
-            <span className='manrope text-foreground cursor-pointer text-lg font-semibold md:text-xl'>
+            <span className='manrope text-foreground text-base font-semibold sm:text-lg md:text-xl lg:text-2xl'>
               {siteDetails.siteName}
             </span>
           </Link>
@@ -63,7 +66,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 href='#cta'
-                className='bg-primary hover:bg-primary-accent rounded-full px-8 py-3 text-black transition-colors'
+                className='hover:bg-primary-accent bg-accent-foreground rounded-full px-8 py-3 text-white transition-colors'
               >
                 Download
               </Link>
@@ -75,7 +78,7 @@ const Header: React.FC = () => {
             <button
               onClick={toggleMenu}
               type='button'
-              className='bg-primary flex h-10 w-10 items-center justify-center rounded-full text-black focus:outline-none'
+              className='bg-accent-foreground flex h-10 w-10 items-center justify-center rounded-full text-white focus:outline-none'
               aria-controls='mobile-menu'
               aria-expanded={isOpen}
             >
@@ -136,7 +139,7 @@ const Header: React.FC = () => {
               >
                 <Link
                   href='#cta'
-                  className='bg-primary hover:bg-primary-accent block w-fit rounded-full px-5 py-2 text-black'
+                  className='bg-accent-foreground block w-fit rounded-full px-5 py-2 text-white'
                   onClick={toggleMenu}
                 >
                   Get Started
