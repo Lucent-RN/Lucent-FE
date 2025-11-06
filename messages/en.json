@@ -1,0 +1,32 @@
+{
+  "home": {},
+  "landing": {
+    "hero": {
+      "heading": "Stay Focused, Be Present",
+      "subheading": "Lucent helps you build mindful focus habits through structured Pomodoro sessions — bringing balance, clarity, and lasting productivity to your day."
+    },
+    "cta": {
+      "heading": "Start Your Mindful Focus Journey Today",
+      "subheading": "Build better habits, stay balanced, and focus with clarity. Download Lucent and experience a calmer, more productive way to work and study."
+    },
+    "faq": {
+      "label": "FAQ'S",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Ask us anything!",
+      "email": "kanent.tech@gmail.com"
+    },
+    "stats": {
+      "items": [
+        {
+          "description": "Focus sessions completed during early access — helping users stay consistent and mindful."
+        },
+        {
+          "description": "Average rating from our first wave of users who love Lucent’s calm and intuitive design."
+        },
+        {
+          "description": "Lucent is now available worldwide — empowering anyone to build better focus habits."
+        }
+      ]
+    }
+  }
+}

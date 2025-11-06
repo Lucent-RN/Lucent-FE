@@ -67,11 +67,11 @@ const Header: React.FC = () => {
             className='flex items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3 md:gap-4'
           >
             <Image
-              src='/assets/app-icon.svg'
+              src='/assets/app-icon.png'
               alt={siteDetails.siteName}
-              width={120}
-              height={120}
-              className='h-14 w-14 rounded-full sm:h-16 sm:w-16 md:h-18 md:w-18 lg:h-22 lg:w-22'
+              width={60}
+              height={60}
+              className='h-12 w-12 object-contain sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16'
             />
             <span className='manrope text-foreground text-base font-semibold sm:text-lg md:text-xl lg:text-2xl'>
               {siteDetails.siteName}

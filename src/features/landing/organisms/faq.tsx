@@ -8,26 +8,28 @@ import { Minus, Plus } from 'lucide-react';
 
 import SectionTitle from '../atoms/section-title';
 import { faqs } from '../data/faq';
+import { useTranslations } from 'next-intl';
 
 const FAQ: React.FC = () => {
+  const t = useTranslations('landing.faq');
   return (
     <section id='faq' className='py-10 lg:py-20'>
       <div className='flex flex-col gap-10 lg:flex-row'>
         <div className=''>
-          <p className='text-foreground-accent hidden lg:block'>FAQ&apos;S</p>
+          <p className='text-foreground-accent hidden lg:block'>{t('label')}</p>
           <SectionTitle>
             <h2 className='my-3 text-center !leading-snug lg:max-w-sm lg:text-left'>
-              Frequently Asked Questions
+              {t('title')}
             </h2>
           </SectionTitle>
           <p className='text-foreground-accent text-center lg:mt-10 lg:text-left'>
-            Ask us anything!
+            {t('subtitle')}
           </p>
           <a
             href='mailto:'
             className='mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
           >
-            kanent.tech@gmail.com
+            {t('email')}
           </a>
         </div>
 

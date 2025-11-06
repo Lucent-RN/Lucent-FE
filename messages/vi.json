@@ -1,0 +1,32 @@
+{
+  "home": {},
+  "landing": {
+    "hero": {
+      "heading": "Tập trung bền vững, hiện diện trọn vẹn",
+      "subheading": "Lucent giúp bạn xây dựng thói quen tập trung chánh niệm qua các phiên Pomodoro có cấu trúc — mang lại cân bằng, sáng suốt và hiệu suất bền vững mỗi ngày."
+    },
+    "cta": {
+      "heading": "Bắt đầu hành trình tập trung chánh niệm ngay hôm nay",
+      "subheading": "Xây dựng thói quen tốt, giữ cân bằng và tập trung rõ ràng. Tải Lucent để trải nghiệm cách làm việc và học tập nhẹ nhàng nhưng hiệu quả hơn."
+    },
+    "faq": {
+      "label": "CÂU HỎI THƯỜNG GẶP",
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Hỏi chúng tôi bất cứ điều gì!",
+      "email": "kanent.tech@gmail.com"
+    },
+    "stats": {
+      "items": [
+        {
+          "description": "Phiên tập trung hoàn thành trong giai đoạn early access — giúp người dùng duy trì sự nhất quán và chánh niệm."
+        },
+        {
+          "description": "Điểm đánh giá trung bình từ những người dùng đầu tiên yêu thích sự nhẹ nhàng và trực quan của Lucent."
+        },
+        {
+          "description": "Lucent hiện đã có mặt trên toàn cầu — giúp bất kỳ ai xây dựng thói quen tập trung tốt hơn."
+        }
+      ]
+    }
+  }
+}
