@@ -1,5 +1,53 @@
 {
-  "home": {},
+  "common": {
+    "app_store_button": {
+      "download_on_the": "Tải xuống trên",
+      "app_store": "App Store"
+    },
+    "google_play_button": {
+      "get_it_on": "Tải về trên",
+      "google_play": "Google Play"
+    }
+  },
+  "header": {
+    "menu_items": [
+      {
+        "text": "Tính năng"
+      },
+      {
+        "text": "Giá cả"
+      },
+      {
+        "text": "Chính sách"
+      }
+    ],
+    "download": "Tải về",
+    "get_started": "Bắt đầu",
+    "light_mode": "Chế độ sáng",
+    "dark_mode": "Chế độ tối",
+    "language": {
+      "en": "Tiếng Anh",
+      "vi": "Tiếng Việt",
+      "jp": "Tiếng Nhật",
+      "de": "Tiếng Đức"
+    }
+  },
+  "footer": {
+    "subheading": "Lucent là một ứng dụng Pomodoro chánh niệm được thiết kế để giúp bạn tập trung.",
+    "quick_links_label": "Liên kết nhanh",
+    "contact_us_label": "Liên hệ chúng tôi",
+    "quick_links": [
+      {
+        "text": "Tính năng"
+      },
+      {
+        "text": "Giá cả"
+      },
+      {
+        "text": "Chính sách"
+      }
+    ]
+  },
   "landing": {
     "hero": {
       "heading": "Tập trung bền vững, hiện diện trọn vẹn",
@@ -13,7 +61,37 @@
       "label": "CÂU HỎI THƯỜNG GẶP",
       "title": "Câu hỏi thường gặp",
       "subtitle": "Hỏi chúng tôi bất cứ điều gì!",
-      "email": "kanent.tech@gmail.com"
+      "email": "kanent.tech@gmail.com",
+      "questions": [
+        {
+          "question": "Lucent là gì?",
+          "answer": "Lucent là một ứng dụng Pomodoro chánh niệm được thiết kế để giúp bạn tập trung, giữ cân bằng và xây dựng thói quen sản xuất hiệu quả thông qua các phiên làm việc và nghỉ ngơi có cấu trúc."
+        },
+        {
+          "question": "Tôi có thể sử dụng Lucent trên nhiều thiết bị không?",
+          "answer": "Có! Tài khoản Lucent của bạn được đồng bộ mượt mà trên tất cả các thiết bị của bạn — giữ cho các phiên tập trung, thống kê và tiến trình của bạn hoàn toàn đồng bộ."
+        },
+        {
+          "question": "Lucent có hoạt động offline không?",
+          "answer": "Hoàn toàn có. Bạn có thể bắt đầu và hoàn thành các phiên tập trung ngay cả khi không có kết nối internet. Khi bạn trở lại trực tuyến, tất cả dữ liệu của bạn sẽ được đồng bộ tự động."
+        },
+        {
+          "question": "Tôi có thể tùy chỉnh các phiên tập trung của mình không?",
+          "answer": "Tất nhiên rồi! Bạn có thể điều chỉnh thời gian phiên, thời gian nghỉ và thậm chí tạo ra các chế độ tùy chỉnh như Học, Làm việc hoặc Thiền để phù hợp với quy trình làm việc hàng ngày của bạn."
+        },
+        {
+          "question": "Lucent có tích hợp với Apple Health không?",
+          "answer": "Có. Khi được bật, thời gian tập trung của bạn sẽ được ghi nhận dưới dạng Phút chánh niệm trong Apple Health — giúp bạn theo dõi sức khỏe tinh thần của mình cùng với sản xuất."
+        },
+        {
+          "question": "Dữ liệu của tôi có an toàn không?",
+          "answer": "Hoàn toàn an toàn. Thông tin của bạn được lưu trữ an toàn với mã hóa hai chiều. Lucent không bao giờ chia sẻ hoặc bán dữ liệu cá nhân của bạn."
+        },
+        {
+          "question": "Tôi cần trợ giúp hoặc có ý kiến gì? ",
+          "answer": "Nhóm hỗ trợ của chúng tôi luôn ở đây để giúp đỡ thông qua phản hồi trong ứng dụng hoặc email. Bạn cũng có thể khám phá hướng dẫn nhanh để bắt đầu và mẹo cộng đồng trực tiếp trong ứng dụng."
+        }
+      ]
     },
     "stats": {
       "items": [
@@ -25,6 +103,64 @@
         },
         {
           "description": "Lucent hiện đã có mặt trên toàn cầu — giúp bất kỳ ai xây dựng thói quen tập trung tốt hơn."
+        }
+      ]
+    },
+    "benefits": {
+      "items": [
+        {
+          "title": "Phiên tập trung chánh niệm",
+          "description": "Lucent giúp bạn xây dựng thói quen tập trung chánh niệm qua các phiên Pomodoro có cấu trúc — mang lại cân bằng, sáng suốt và hiệu suất bền vững mỗi ngày.",
+          "bullets": [
+            {
+              "title": "Bộ đếm Pomodoro thông minh",
+              "description": "Giữ cho bạn tập trung và nạp lại hiệu quả với các khoảng thời gian làm việc và nghỉ ngơi có cấu trúc."
+            },
+            {
+              "title": "Adaptive Focus Modes",
+              "description": "Chuyển đổi giữa các chế độ tập trung phù hợp với tâm trạng hiện tại của bạn."
+            },
+            {
+              "title": "Các thông báo tiến tiến",
+              "description": "Các thông báo mềm mại giúp bạn duy trì sự nhất quán mà không phá vỡ luồng làm việc của bạn."
+            }
+          ]
+        },
+        {
+          "title": "Theo dõi tiến trình của bạn",
+          "description": "Tạo ra sự thật hiện thực với các thống kê chi tiết giúp mỗi phiên tập trung trở thành tiến trình đo lường được.",
+          "bullets": [
+            {
+              "title": "Thống kê thông minh",
+              "description": "Xem tổng số phiên, thời gian làm việc và hiệu suất trên các ngày hoặc tuần."
+            },
+            {
+              "title": "Tổng quan lịch",
+              "description": "Xem xu hướng sản xuất và chuỗi ngày làm việc của bạn một cách rõ ràng thông qua lịch tích hợp."
+            },
+            {
+              "title": "Theo dõi mục tiêu",
+              "description": "Đặt các mốc tập trung và tự hào về các thành tựu của bạn trên đường đi."
+            }
+          ]
+        },
+        {
+          "title": "Sức khỏe gặp sản xuất",
+          "description": "Lucent mang đến một cách tiếp cận toàn diện đối với tập trung — kết hợp công cụ sản xuất với thói quen chánh niệm cho một luồng làm việc khỏe mạnh hơn.",
+          "bullets": [
+            {
+              "title": "Chế độ tập trung",
+              "description": "Tắt các khiêu gợi và duy trì sự tập trung sâu một cách tự động."
+            },
+            {
+              "title": "Ngủ & Cân bằng năng lượng",
+              "description": "Đồng bộ các khoảng nghỉ với các bộ xương để duy trì năng lượng tinh thần lâu dài."
+            },
+            {
+              "title": "Tích hợp Apple Health",
+              "description": "Theo dõi các phút chánh niệm và thời gian tập trung như một phần của sức khỏe tổng thể của bạn."
+            }
+          ]
         }
       ]
     }

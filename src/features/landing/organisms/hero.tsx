@@ -4,9 +4,10 @@ import { useTranslations } from 'next-intl';
 
 import AppStoreButton from '../atoms/app-store-button';
 import PlayStoreButton from '../atoms/play-store-button';
+import { localizeStrings } from '../constants/localizeString';
 
 const Hero: React.FC = () => {
-  const t = useTranslations('landing.hero');
+  const t = useTranslations(localizeStrings.hero.getLocal);
   return (
     <section
       id='hero'
@@ -23,11 +24,11 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className='relative z-10 text-center'>
         <h1 className='text-foreground mx-auto max-w-xs text-3xl font-bold sm:max-w-md sm:text-4xl md:max-w-2xl md:text-6xl md:leading-tight'>
-          {t('heading')}
+          {t(localizeStrings.hero.heading)}
         </h1>
 
         <p className='text-muted-foreground mx-auto mt-4 max-w-sm text-sm sm:max-w-md sm:text-base md:max-w-xl md:text-lg'>
-          {t('subheading')}
+          {t(localizeStrings.hero.subheading)}
         </p>
 
         <div className='mx-auto mt-6 flex w-fit flex-col items-center gap-3 sm:flex-row sm:gap-4 md:mt-8'>

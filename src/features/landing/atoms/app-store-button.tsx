@@ -5,11 +5,13 @@ import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 
 import { ctaDetails } from '../data/cta';
+import { localizeStrings } from '../constants/localizeString';
+import { useTranslations } from 'next-intl';
 
 const AppStoreButton = ({ dark }: { dark?: boolean }) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
+  const t = useTranslations(localizeStrings.common.app_store_button.getLocal);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -41,8 +43,12 @@ const AppStoreButton = ({ dark }: { dark?: boolean }) => {
           </svg>
         </div>
         <div>
-          <div className='text-xs'>Download on the</div>
-          <div className='-mt-1 font-sans text-xl font-semibold'>App Store</div>
+          <div className='text-xs'>
+            {t(localizeStrings.common.app_store_button.download_on_the)}
+          </div>
+          <div className='-mt-1 font-sans text-xl font-semibold'>
+            {t(localizeStrings.common.app_store_button.app_store)}
+          </div>
         </div>
       </button>
     </a>

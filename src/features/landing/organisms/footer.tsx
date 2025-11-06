@@ -3,21 +3,52 @@ import React from 'react';
 
 import { getPlatformIconByName } from '@/lib/utils';
 import Image from 'next/image';
-import { footerDetails } from '../data/footer';
 import { siteDetails } from '../data/site-details';
+import { IMenuItem, ISocials } from '../types';
+import { localizeStrings } from '../constants/localizeString';
+import { useTranslations } from 'next-intl';
 
 const Footer: React.FC = () => {
+  const t = useTranslations(localizeStrings.footer.getLocal);
+  const footerDetails: {
+    subheading: string;
+    quickLinks: IMenuItem[];
+    email: string;
+    telephone: string;
+    socials: ISocials;
+  } = {
+    subheading: t(localizeStrings.footer.subheading),
+    quickLinks: t
+      .raw(localizeStrings.footer.quick_links)
+      .map((link: { text: string }, index: number) => ({
+        text: link.text,
+        url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
+      })),
+    email: 'kanent.tech@gmail.com',
+    telephone: '',
+    socials: {
+      github: 'https://github.com',
+      // x: 'https://twitter.com/x',
+      twitter: 'https://twitter.com/Twitter',
+      facebook: 'https://facebook.com',
+      // youtube: 'https://youtube.com',
+      linkedin: 'https://www.linkedin.com',
+      // threads: 'https://www.threads.net',
+      instagram: 'https://www.instagram.com'
+    }
+  };
+
   return (
     <footer className='bg-hero-background text-foreground py-10'>
       <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 md:grid-cols-3'>
         <div>
           <Link href='/' className='flex items-center gap-2'>
             <Image
-              src='/assets/app-icon.svg'
+              src='/assets/app-icon.png'
               alt='logo'
               width={96}
               height={96}
-              className='h-24 w-24 rounded-full md:h-16 md:w-16'
+              className='h-14 w-14 md:h-16 md:w-16'
             />
           </Link>
           <p className='text-foreground-accent mt-3.5'>
@@ -25,7 +56,9 @@ const Footer: React.FC = () => {
           </p>
         </div>
         <div>
-          <h4 className='mb-4 text-lg font-semibold'>Quick Links</h4>
+          <h4 className='mb-4 text-lg font-semibold'>
+            {t(localizeStrings.footer.quick_links_label)}
+          </h4>
           <ul className='text-foreground-accent'>
             {footerDetails.quickLinks.map((link) => (
               <li key={link.text} className='mb-2'>
@@ -37,7 +70,9 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         <div>
-          <h4 className='mb-4 text-lg font-semibold'>Contact Us</h4>
+          <h4 className='mb-4 text-lg font-semibold'>
+            {t(localizeStrings.footer.contact_us_label)}
+          </h4>
 
           {footerDetails.email && (
             <a

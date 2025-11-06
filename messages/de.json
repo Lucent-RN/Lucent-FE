@@ -1,0 +1,169 @@
+{
+  "common": {
+    "app_store_button": {
+      "download_on_the": "Lade es im",
+      "app_store": "App Store"
+    },
+    "google_play_button": {
+      "get_it_on": "Hol es dir bei",
+      "google_play": "Google Play"
+    }
+  },
+
+  "header": {
+    "menu_items": [
+      {
+        "text": "Funktionen"
+      },
+      {
+        "text": "Preise"
+      },
+      {
+        "text": "Richtlinie"
+      }
+    ],
+    "download": "Herunterladen",
+    "get_started": "Loslegen",
+    "light_mode": "Heller Modus",
+    "dark_mode": "Dunkler Modus",
+    "language": {
+      "en": "Englisch",
+      "vi": "Vietnamesisch",
+      "jp": "Japanisch",
+      "de": "Deutsch"
+    }
+  },
+  "footer": {
+    "subheading": "Lucent ist eine Pomodoro-Timer-App, die dir hilft, konzentriert und produktiv zu bleiben.",
+    "quick_links_label": "Schnellzugriff",
+    "contact_us_label": "Kontakt",
+    "quick_links": [
+      {
+        "text": "Funktionen"
+      },
+      {
+        "text": "Preise"
+      },
+      {
+        "text": "Richtlinie"
+      }
+    ]
+  },
+  "landing": {
+    "hero": {
+      "heading": "Bleib fokussiert, sei präsent",
+      "subheading": "Lucent hilft dir, achtsame Fokusroutinen durch strukturierte Pomodoro-Sitzungen aufzubauen – für mehr Ausgeglichenheit, Klarheit und dauerhafte Produktivität in deinem Alltag."
+    },
+    "cta": {
+      "heading": "Starte noch heute deine achtsame Fokusreise",
+      "subheading": "Baue bessere Gewohnheiten auf, bleibe im Gleichgewicht und arbeite mit Klarheit. Lade Lucent herunter und erlebe eine ruhigere, produktivere Art zu lernen und zu arbeiten."
+    },
+    "faq": {
+      "label": "FAQ’S",
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Frag uns alles!",
+      "email": "kanent.tech@gmail.com",
+      "questions": [
+        {
+          "question": "Was ist Lucent?",
+          "answer": "Lucent ist eine achtsamkeitsorientierte Pomodoro-App, die dir hilft, konzentriert zu bleiben, Balance zu halten und durch strukturierte Arbeits- und Pausensitzungen beständige Produktivitätsgewohnheiten aufzubauen."
+        },
+        {
+          "question": "Kann ich Lucent auf mehreren Geräten verwenden?",
+          "answer": "Ja! Dein Lucent-Konto synchronisiert sich nahtlos über all deine Geräte – sodass deine Fokussitzungen, Statistiken und Fortschritte immer perfekt abgestimmt bleiben."
+        },
+        {
+          "question": "Funktioniert Lucent auch offline?",
+          "answer": "Absolut. Du kannst deine Fokussitzungen auch ohne Internetverbindung starten und beenden. Sobald du wieder online bist, werden alle Daten automatisch synchronisiert."
+        },
+        {
+          "question": "Kann ich meine Fokussitzungen anpassen?",
+          "answer": "Natürlich! Du kannst die Sitzungsdauer, Pausenzeiten und sogar benutzerdefinierte Modi wie Lernen, Arbeiten oder Meditation erstellen – passend zu deinem Tagesrhythmus."
+        },
+        {
+          "question": "Integriert sich Lucent mit Apple Health?",
+          "answer": "Ja. Wenn aktiviert, werden deine Fokuszeiten als Achtsamkeitsminuten in Apple Health protokolliert – damit du deine mentale Gesundheit zusammen mit deiner Produktivität verfolgen kannst."
+        },
+        {
+          "question": "Sind meine Daten sicher?",
+          "answer": "Absolut. Deine Informationen werden mit Ende-zu-Ende-Verschlüsselung sicher gespeichert. Lucent teilt oder verkauft niemals deine persönlichen Daten."
+        },
+        {
+          "question": "Was, wenn ich Hilfe brauche oder Feedback habe?",
+          "answer": "Unser Support-Team ist immer für dich da – über das In-App-Feedback oder per E-Mail. Du kannst auch unseren Schnellstart-Guide und Community-Tipps direkt in der App entdecken."
+        }
+      ]
+    },
+    "stats": {
+      "items": [
+        {
+          "description": "Abgeschlossene Fokussitzungen während des Early Access – damit Benutzer konsequent und achtsam bleiben."
+        },
+        {
+          "description": "Durchschnittliche Bewertung unserer ersten Benutzer, die Lucents ruhiges und intuitives Design lieben."
+        },
+        {
+          "description": "Lucent ist jetzt weltweit verfügbar – und hilft jedem, bessere Fokusroutinen zu entwickeln."
+        }
+      ]
+    },
+    "benefits": {
+      "items": [
+        {
+          "title": "Achtsame Fokussitzungen",
+          "description": "Lucent hilft dir, durch wunderschön gestaltete Pomodoro-Sitzungen tiefe Konzentration und Balance zu kultivieren – damit du mit Klarheit statt Druck arbeitest.",
+          "bullets": [
+            {
+              "title": "Intelligenter Pomodoro-Timer",
+              "description": "Bleib konzentriert und lade deine Energie effektiv auf – mit strukturierten Arbeits- und Pausenintervallen."
+            },
+            {
+              "title": "Adaptive Fokusmodi",
+              "description": "Wechsle zwischen Lern-, Arbeits- oder Kreativmodus – passend zu deiner aktuellen Stimmung."
+            },
+            {
+              "title": "Sanfte Erinnerungen",
+              "description": "Sanfte Benachrichtigungen halten dich konsequent, ohne deinen Flow zu stören."
+            }
+          ]
+        },
+        {
+          "title": "Verfolge deinen Fortschritt",
+          "description": "Visualisiere dein Wachstum mit detaillierten Analysen, die jede Fokussitzung in messbaren Fortschritt verwandeln.",
+          "bullets": [
+            {
+              "title": "Aufschlussreiche Statistiken",
+              "description": "Sieh Gesamtanzahl der Sitzungen, aufgewendete Zeit und Leistung über Tage oder Wochen hinweg."
+            },
+            {
+              "title": "Kalenderübersicht",
+              "description": "Erkenne deine Produktivitätstrends und Serien auf einen Blick über den integrierten Kalender."
+            },
+            {
+              "title": "Zielverfolgung",
+              "description": "Setze Fokus-Meilensteine und feiere deine Erfolge auf dem Weg dorthin."
+            }
+          ]
+        },
+        {
+          "title": "Wohlbefinden trifft Produktivität",
+          "description": "Lucent verbindet Produktivität mit Achtsamkeit – für einen gesünderen und nachhaltigeren Workflow.",
+          "bullets": [
+            {
+              "title": "Fokusmodus",
+              "description": "Schalte Ablenkungen automatisch aus und bleib in tiefer Konzentration."
+            },
+            {
+              "title": "Schlaf- & Energiebalance",
+              "description": "Synchronisiere deine Pausen mit natürlichen Rhythmen für anhaltende mentale Energie."
+            },
+            {
+              "title": "Apple Health-Integration",
+              "description": "Verfolge Achtsamkeitsminuten und Fokuszeiten als Teil deines allgemeinen Wohlbefindens."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
