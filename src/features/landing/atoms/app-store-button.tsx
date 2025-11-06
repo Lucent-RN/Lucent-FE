@@ -1,18 +1,34 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 
 import { ctaDetails } from '../data/cta';
 
 const AppStoreButton = ({ dark }: { dark?: boolean }) => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use explicit dark prop if provided, otherwise use theme
+  const isDark =
+    dark !== undefined ? dark : mounted && resolvedTheme === 'dark';
+
   return (
     <a href={ctaDetails.appStoreUrl}>
       <button
         type='button'
         className={clsx(
-          'mt-3 flex h-14 w-full min-w-[205px] items-center justify-center rounded-full px-6 sm:w-fit',
+          'mt-3 flex h-14 w-full min-w-[205px] items-center justify-center rounded-full px-6 transition-colors sm:w-fit',
           {
-            'bg-foreground text-white': dark,
-            'text-foreground bg-white': !dark
+            // Dark mode: white background, dark text
+            'bg-white text-black': isDark,
+            // Light mode: black background, white text
+            'bg-foreground text-white': !isDark
           }
         )}
       >

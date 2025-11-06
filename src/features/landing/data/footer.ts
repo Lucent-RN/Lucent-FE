@@ -19,8 +19,8 @@ export const footerDetails: {
       url: '#pricing'
     },
     {
-      text: 'Testimonials',
-      url: '#testimonials'
+      text: 'Policy',
+      url: '/policy'
     }
   ],
   email: 'kanent.tech@gmail.com',

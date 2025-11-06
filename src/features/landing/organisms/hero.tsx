@@ -30,8 +30,8 @@ const Hero: React.FC = () => {
         </p>
 
         <div className='mx-auto mt-6 flex w-fit flex-col items-center gap-3 sm:flex-row sm:gap-4 md:mt-8'>
-          <AppStoreButton dark />
-          <PlayStoreButton dark />
+          <AppStoreButton />
+          <PlayStoreButton />
         </div>
 
         <div className='mt-10 flex justify-center sm:mt-12 md:mt-16'>
