@@ -1,18 +1,36 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 
 import { ctaDetails } from '../data/cta';
+import { localizeStrings } from '../constants/localizeString';
+import { useTranslations } from 'next-intl';
 
 const AppStoreButton = ({ dark }: { dark?: boolean }) => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const t = useTranslations(localizeStrings.common.app_store_button.getLocal);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use explicit dark prop if provided, otherwise use theme
+  const isDark =
+    dark !== undefined ? dark : mounted && resolvedTheme === 'dark';
+
   return (
     <a href={ctaDetails.appStoreUrl}>
       <button
         type='button'
         className={clsx(
-          'mt-3 flex h-14 w-full min-w-[205px] items-center justify-center rounded-full px-6 sm:w-fit',
+          'mt-3 flex h-14 w-full min-w-[205px] items-center justify-center rounded-full px-6 transition-colors sm:w-fit',
           {
-            'bg-foreground text-white': dark,
-            'text-foreground bg-white': !dark
+            // Dark mode: white background, dark text
+            'bg-white text-black': isDark,
+            // Light mode: black background, white text
+            'bg-foreground text-white': !isDark
           }
         )}
       >
@@ -25,8 +43,12 @@ const AppStoreButton = ({ dark }: { dark?: boolean }) => {
           </svg>
         </div>
         <div>
-          <div className='text-xs'>Download on the</div>
-          <div className='-mt-1 font-sans text-xl font-semibold'>App Store</div>
+          <div className='text-xs'>
+            {t(localizeStrings.common.app_store_button.download_on_the)}
+          </div>
+          <div className='-mt-1 font-sans text-xl font-semibold'>
+            {t(localizeStrings.common.app_store_button.app_store)}
+          </div>
         </div>
       </button>
     </a>

@@ -1,17 +1,49 @@
 'use client';
 
+import { Menu, Moon, Sun, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
 
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
+import { localizeStrings } from '../constants/localizeString';
 import { siteDetails } from '../data/site-details';
-import { menuItems } from '../data/menu-items';
+import { IMenuItem } from '../types';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  const t = useTranslations(localizeStrings.header.getLocal);
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const localizedMenuItems =
+    (t.raw(localizeStrings.header.menu_items) as Array<{
+      text: string;
+    }>) || [];
+
+  const menuItems: IMenuItem[] = localizedMenuItems.map((item, index) => ({
+    text: item.text,
+    url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
+  }));
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,8 +58,42 @@ const Header: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const switchLocale = (newLocale: 'en' | 'vi' | 'jp' | 'de') => {
+    if (!pathname) return;
+    const segments = pathname.split('/');
+    const supported = ['en', 'vi', 'jp', 'de'];
+    let target = '';
+    if (supported.includes(segments[1])) {
+      segments[1] = newLocale;
+      target = segments.join('/');
+    } else {
+      target = `/${newLocale}${pathname}`;
+    }
+    router.push(target);
+  };
+
+  const handleThemeToggle = (e?: React.MouseEvent) => {
+    const newMode = resolvedTheme === 'dark' ? 'light' : 'dark';
+    const root = document.documentElement;
+
+    if (!document.startViewTransition) {
+      setTheme(newMode);
+      return;
+    }
+
+    // Set coordinates from the click event for view transition animation
+    if (e) {
+      root.style.setProperty('--x', `${e.clientX}px`);
+      root.style.setProperty('--y', `${e.clientY}px`);
+    }
+
+    document.startViewTransition(() => {
+      setTheme(newMode);
+    });
+  };
+
   return (
-    <header className='fixed top-0 right-0 left-0 z-50 w-full bg-white'>
+    <header className='bg-background fixed top-0 right-0 left-0 z-50 w-full'>
       <div className='w-full'>
         <nav
           className={`flex items-center justify-between px-5 py-2 transition-all duration-300 md:py-4 ${
@@ -40,11 +106,11 @@ const Header: React.FC = () => {
             className='flex items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3 md:gap-4'
           >
             <Image
-              src='/assets/app-icon.svg'
+              src='/assets/app-icon.png'
               alt={siteDetails.siteName}
-              width={120}
-              height={120}
-              className='h-14 w-14 rounded-full sm:h-16 sm:w-16 md:h-18 md:w-18 lg:h-22 lg:w-22'
+              width={60}
+              height={60}
+              className='h-12 w-12 object-contain sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16'
             />
             <span className='manrope text-foreground text-base font-semibold sm:text-lg md:text-xl lg:text-2xl'>
               {siteDetails.siteName}
@@ -52,23 +118,99 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className='hidden space-x-6 md:flex'>
+          <ul className='hidden space-x-6 md:flex md:items-center'>
             {menuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className='text-foreground hover:text-foreground-accent transition-colors'
+                  className='text-foreground hover:text-accent-foreground transition-colors'
                 >
                   {item.text}
                 </Link>
               </li>
             ))}
             <li>
+              <DropdownMenu modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type='button'
+                    className='text-foreground hover:text-accent-foreground flex items-center gap-2 rounded-full px-3 py-2 transition-colors focus:outline-none'
+                    aria-label='Select language'
+                  >
+                    <Image
+                      src={`/assets/countries/${locale}.png`}
+                      alt={`${locale} flag`}
+                      width={20}
+                      height={20}
+                      className='size-5 object-cover'
+                    />
+                    <span className='uppercase'>{locale}</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                  <DropdownMenuItem onClick={() => switchLocale('en')}>
+                    <Image
+                      src='/assets/countries/en.png'
+                      alt='English flag'
+                      width={18}
+                      height={18}
+                      className='mr-2 size-4 object-cover'
+                    />
+                    {t(localizeStrings.header.language.en)}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => switchLocale('vi')}>
+                    <Image
+                      src='/assets/countries/vi.png'
+                      alt='Vietnam flag'
+                      width={18}
+                      height={18}
+                      className='mr-2 size-4 object-cover'
+                    />
+                    {t(localizeStrings.header.language.vi)}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => switchLocale('jp')}>
+                    <Image
+                      src='/assets/countries/jp.png'
+                      alt='Japanese flag'
+                      width={18}
+                      height={18}
+                      className='mr-2 size-4 object-cover'
+                    />
+                    {t(localizeStrings.header.language.jp)}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => switchLocale('de')}>
+                    <Image
+                      src='/assets/countries/de.png'
+                      alt='German flag'
+                      width={18}
+                      height={18}
+                      className='mr-2 size-4 object-cover'
+                    />
+                    {t(localizeStrings.header.language.de)}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </li>
+            <li>
+              <button
+                onClick={handleThemeToggle}
+                type='button'
+                className='text-foreground hover:text-accent-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors focus:outline-none'
+                aria-label='Toggle theme'
+              >
+                {mounted && resolvedTheme === 'dark' ? (
+                  <Sun className='h-5 w-5' />
+                ) : (
+                  <Moon className='h-5 w-5' />
+                )}
+              </button>
+            </li>
+            <li>
               <Link
                 href='#cta'
-                className='hover:bg-primary-accent bg-accent-foreground rounded-full px-8 py-3 text-white transition-colors'
+                className='bg-accent-foreground rounded-full px-8 py-3 text-white transition-colors hover:opacity-90'
               >
-                Download
+                {t(localizeStrings.header.download)}
               </Link>
             </li>
           </ul>
@@ -78,7 +220,7 @@ const Header: React.FC = () => {
             <button
               onClick={toggleMenu}
               type='button'
-              className='bg-accent-foreground flex h-10 w-10 items-center justify-center rounded-full text-white focus:outline-none'
+              className='bg-accent-foreground flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:opacity-90 focus:outline-none'
               aria-controls='mobile-menu'
               aria-expanded={isOpen}
             >
@@ -98,7 +240,7 @@ const Header: React.FC = () => {
         {isOpen && (
           <motion.div
             id='mobile-menu'
-            className='bg-white shadow-lg md:hidden'
+            className='bg-background shadow-lg md:hidden'
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -137,12 +279,131 @@ const Header: React.FC = () => {
                   duration: 0.3
                 }}
               >
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      type='button'
+                      className='text-foreground hover:text-primary flex items-center gap-2 rounded-full px-3 py-2 transition-colors focus:outline-none'
+                      aria-label='Select language'
+                    >
+                      <Image
+                        src={`/assets/countries/${locale}.png`}
+                        alt={`${locale} flag`}
+                        width={20}
+                        height={20}
+                        className='size-5 object-cover'
+                      />
+                      <span className='uppercase'>{locale}</span>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align='start'>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        switchLocale('en');
+                        toggleMenu();
+                      }}
+                    >
+                      <Image
+                        src='/assets/countries/en.png'
+                        alt='English flag'
+                        width={18}
+                        height={18}
+                        className='mr-2 size-4 object-cover'
+                      />
+                      {t(localizeStrings.header.language.en)}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        switchLocale('vi');
+                        toggleMenu();
+                      }}
+                    >
+                      <Image
+                        src='/assets/countries/vi.png'
+                        alt='Vietnam flag'
+                        width={18}
+                        height={18}
+                        className='mr-2 size-4 object-cover'
+                      />
+                      {t(localizeStrings.header.language.vi)}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        switchLocale('jp');
+                        toggleMenu();
+                      }}
+                    >
+                      <Image
+                        src='/assets/countries/jp.png'
+                        alt='Japanese flag'
+                        width={18}
+                        height={18}
+                        className='mr-2 size-4 object-cover'
+                      />
+                      {t(localizeStrings.header.language.jp)}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        switchLocale('de');
+                        toggleMenu();
+                      }}
+                    >
+                      <Image
+                        src='/assets/countries/de.png'
+                        alt='German flag'
+                        width={18}
+                        height={18}
+                        className='mr-2 size-4 object-cover'
+                      />
+                      {t(localizeStrings.header.language.de)}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.1 + (menuItems.length + 1) * 0.05,
+                  duration: 0.3
+                }}
+              >
+                <button
+                  onClick={(e) => {
+                    handleThemeToggle(e);
+                    toggleMenu();
+                  }}
+                  type='button'
+                  className='text-foreground hover:text-primary flex items-center gap-2'
+                  aria-label='Toggle theme'
+                >
+                  {mounted && resolvedTheme === 'dark' ? (
+                    <>
+                      <Sun className='h-5 w-5' />
+                      <span>{t(localizeStrings.header.light_mode)}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className='h-5 w-5' />
+                      <span>{t(localizeStrings.header.dark_mode)}</span>
+                    </>
+                  )}
+                </button>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.1 + (menuItems.length + 1) * 0.05,
+                  duration: 0.3
+                }}
+              >
                 <Link
                   href='#cta'
-                  className='bg-accent-foreground block w-fit rounded-full px-5 py-2 text-white'
+                  className='bg-accent-foreground block w-fit rounded-full px-5 py-2 text-white transition-colors hover:opacity-90'
                   onClick={toggleMenu}
                 >
-                  Get Started
+                  {t(localizeStrings.header.get_started)}
                 </Link>
               </motion.li>
             </motion.ul>

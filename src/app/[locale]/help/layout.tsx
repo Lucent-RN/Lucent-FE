@@ -9,13 +9,12 @@ const manrope = Manrope({ subsets: ['latin'] });
 const sourceSans = Source_Sans_3({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: `${siteDetails.siteName} | Legal`,
-  description:
-    "Privacy Policy, Terms of Use, and Imprint for Lucent. We are committed to our users' right to privacy.",
+  title: `${siteDetails.siteName} | Help`,
+  description: "Help for Lucent. We are committed to our users' help.",
   openGraph: {
-    title: `${siteDetails.siteName} | Legal`,
-    description: 'Privacy Policy, Terms of Use, and Imprint for Lucent',
-    url: `${siteDetails.siteUrl}policy`,
+    title: `${siteDetails.siteName} | Help`,
+    description: 'Help for Lucent',
+    url: `${siteDetails.siteUrl}help`,
     type: 'website',
     images: [
       {
@@ -28,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteDetails.siteName} | Legal`,
-    description: 'Privacy Policy, Terms of Use, and Imprint for Lucent',
+    title: `${siteDetails.siteName} | Help`,
+    description: 'Help for Lucent',
     images: ['/images/twitter-image.jpg']
   }
 };

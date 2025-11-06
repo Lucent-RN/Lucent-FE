@@ -1,9 +1,10 @@
-import { ctaDetails } from '../data/cta';
+import { useTranslations } from 'next-intl';
 
 import AppStoreButton from '../atoms/app-store-button';
 import PlayStoreButton from '../atoms/play-store-button';
 
 const CTA: React.FC = () => {
+  const t = useTranslations('landing.cta');
   return (
     <section id='cta' className='mt-10 mb-5 lg:my-20'>
       <div className='relative z-10 mx-auto h-full w-full py-12 sm:py-20'>
@@ -14,10 +15,10 @@ const CTA: React.FC = () => {
 
           <div className='flex h-full flex-col items-center justify-center px-5 text-center text-white'>
             <h2 className='mb-4 max-w-2xl text-2xl font-semibold sm:text-3xl md:text-5xl md:leading-tight'>
-              {ctaDetails.heading}
+              {t('heading')}
             </h2>
 
-            <p className='mx-auto max-w-xl md:px-5'>{ctaDetails.subheading}</p>
+            <p className='mx-auto max-w-xl md:px-5'>{t('subheading')}</p>
 
             <div className='mt-4 flex flex-col items-center sm:flex-row sm:gap-4'>
               <AppStoreButton />

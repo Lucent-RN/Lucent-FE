@@ -6,33 +6,44 @@ import {
 } from '@headlessui/react';
 import { Minus, Plus } from 'lucide-react';
 
+import { useTranslations } from 'next-intl';
 import SectionTitle from '../atoms/section-title';
-import { faqs } from '../data/faq';
+import { localizeStrings } from '../constants/localizeString';
 
 const FAQ: React.FC = () => {
+  const t = useTranslations(localizeStrings.faq.getLocal);
+
+  const localizedQuestions =
+    (t.raw(localizeStrings.faq.questions) as Array<{
+      question: string;
+      answer: string;
+    }>) || [];
+
   return (
     <section id='faq' className='py-10 lg:py-20'>
       <div className='flex flex-col gap-10 lg:flex-row'>
         <div className=''>
-          <p className='text-foreground-accent hidden lg:block'>FAQ&apos;S</p>
+          <p className='text-foreground-accent hidden lg:block'>
+            {t(localizeStrings.faq.label)}
+          </p>
           <SectionTitle>
             <h2 className='my-3 text-center !leading-snug lg:max-w-sm lg:text-left'>
-              Frequently Asked Questions
+              {t(localizeStrings.faq.title)}
             </h2>
           </SectionTitle>
           <p className='text-foreground-accent text-center lg:mt-10 lg:text-left'>
-            Ask us anything!
+            {t(localizeStrings.faq.subtitle)}
           </p>
           <a
             href='mailto:'
             className='mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
           >
-            kanent.tech@gmail.com
+            {t(localizeStrings.faq.email)}
           </a>
         </div>
 
         <div className='mx-auto w-full border-b lg:max-w-2xl'>
-          {faqs.map((faq, index) => (
+          {localizedQuestions.map((faq, index) => (
             <div key={index} className='mb-7'>
               <Disclosure>
                 {({ open }) => (

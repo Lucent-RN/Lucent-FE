@@ -1,0 +1,168 @@
+{
+  "common": {
+    "app_store_button": {
+      "download_on_the": "Download on the",
+      "app_store": "App Store"
+    },
+    "google_play_button": {
+      "get_it_on": "Get it on",
+      "google_play": "Google Play"
+    }
+  },
+  "header": {
+    "menu_items": [
+      {
+        "text": "Features"
+      },
+      {
+        "text": "Pricing"
+      },
+      {
+        "text": "Policy"
+      }
+    ],
+    "download": "Download",
+    "get_started": "Get Started",
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode",
+    "language": {
+      "en": "English",
+      "vi": "Vietnamese",
+      "jp": "Japanese",
+      "de": "German"
+    }
+  },
+  "footer": {
+    "subheading": "Lucent is a Pomodoro timer app that helps you stay focused and productive.",
+    "quick_links_label": "Quick Links",
+    "contact_us_label": "Contact Us",
+    "quick_links": [
+      {
+        "text": "Features"
+      },
+      {
+        "text": "Pricing"
+      },
+      {
+        "text": "Policy"
+      }
+    ]
+  },
+  "landing": {
+    "hero": {
+      "heading": "Stay Focused, Be Present",
+      "subheading": "Lucent helps you build mindful focus habits through structured Pomodoro sessions — bringing balance, clarity, and lasting productivity to your day."
+    },
+    "cta": {
+      "heading": "Start Your Mindful Focus Journey Today",
+      "subheading": "Build better habits, stay balanced, and focus with clarity. Download Lucent and experience a calmer, more productive way to work and study."
+    },
+    "faq": {
+      "label": "FAQ'S",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Ask us anything!",
+      "email": "kanent.tech@gmail.com",
+      "questions": [
+        {
+          "question": "What is Lucent?",
+          "answer": "Lucent is a mindful Pomodoro app designed to help you focus, stay balanced, and build consistent productivity habits through structured work and break sessions."
+        },
+        {
+          "question": "Can I use Lucent on multiple devices?",
+          "answer": "Yes! Your Lucent account syncs seamlessly across all your devices — keeping your focus sessions, statistics, and progress perfectly aligned."
+        },
+        {
+          "question": "Does Lucent work offline?",
+          "answer": "Absolutely. You can start and complete your focus sessions even without an internet connection. Once you're back online, all your data will automatically sync."
+        },
+        {
+          "question": "Can I customize my focus sessions?",
+          "answer": "Of course! You can adjust session duration, break times, and even create custom modes like Study, Work, or Meditation to fit your daily routine."
+        },
+        {
+          "question": "Does Lucent integrate with Apple Health?",
+          "answer": "Yes. When enabled, your focus time will be logged as Mindful Minutes in Apple Health — helping you track your mental wellness alongside productivity."
+        },
+        {
+          "question": "Is my data secure?",
+          "answer": "Absolutely. Your information is stored securely with end-to-end encryption. Lucent never shares or sells your personal data."
+        },
+        {
+          "question": "What if I need help or have feedback?",
+          "answer": "Our support team is always here to help via in-app feedback or email. You can also explore our quick-start guide and community tips directly within the app."
+        }
+      ]
+    },
+    "stats": {
+      "items": [
+        {
+          "description": "Focus sessions completed during early access — helping users stay consistent and mindful."
+        },
+        {
+          "description": "Average rating from our first wave of users who love Lucent’s calm and intuitive design."
+        },
+        {
+          "description": "Lucent is now available worldwide — empowering anyone to build better focus habits."
+        }
+      ]
+    },
+    "benefits": {
+      "items": [
+        {
+          "title": "Mindful Focus Sessions",
+          "description": "Lucent helps you cultivate deep focus and balance through beautifully designed Pomodoro sessions — empowering you to work with clarity, not pressure.",
+          "bullets": [
+            {
+              "title": "Smart Pomodoro Timer",
+              "description": "Stay focused and recharge effectively with structured work and break intervals."
+            },
+            {
+              "title": "Adaptive Focus Modes",
+              "description": "Switch between study, work, or creative modes that fit your current mindset."
+            },
+            {
+              "title": "Progressive Reminders",
+              "description": "Gentle notifications keep you consistent without disrupting your flow."
+            }
+          ]
+        },
+        {
+          "title": "Track Your Progress",
+          "description": "Visualize your growth with detailed analytics that turn every focus session into measurable progress.",
+          "bullets": [
+            {
+              "title": "Insightful Statistics",
+              "description": "View total sessions, time spent, and performance across days or weeks."
+            },
+            {
+              "title": "Calendar Overview",
+              "description": "See your productivity trends and streaks at a glance through an integrated calendar."
+            },
+            {
+              "title": "Goal Tracking",
+              "description": "Set focus milestones and celebrate your achievements along the way."
+            }
+          ]
+        },
+        {
+          "title": "Wellness Meets Productivity",
+          "description": "Lucent brings a holistic approach to focus — combining productivity tools with mindful habits for a healthier workflow.",
+          "bullets": [
+            {
+              "title": "Focus Mode",
+              "description": "Silence distractions and stay immersed in deep work automatically."
+            },
+            {
+              "title": "Sleep & Energy Balance",
+              "description": "Sync your breaks with natural rhythms for sustained mental energy."
+            },
+            {
+              "title": "Apple Health Integration",
+              "description": "Track mindful minutes and focus time as part of your overall well-being."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
