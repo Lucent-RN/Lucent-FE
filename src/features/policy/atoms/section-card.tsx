@@ -1,17 +1,22 @@
 import { ChevronRight } from 'lucide-react';
-import { policies, PolicySection } from '../pages/policy-page';
+import { PolicySection } from '../pages/policy-page';
+import { LucideIcon } from 'lucide-react';
 
 const SectionCard = ({
+  Icon,
+  title,
+  lastUpdated,
   section,
   isActive,
   onSectionClick
 }: {
+  Icon: LucideIcon;
+  title: string;
+  lastUpdated: string;
   section: PolicySection;
   isActive: boolean;
   onSectionClick: (section: PolicySection) => void;
 }) => {
-  const { icon: Icon, title, lastUpdated } = policies[section];
-
   return (
     <button
       type='button'

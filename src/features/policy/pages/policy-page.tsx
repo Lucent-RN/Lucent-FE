@@ -3,34 +3,37 @@
 import Container from '@/features/landing/atoms/container';
 import { FileText, Info, Shield } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import SectionCard from '../atoms/section-card';
 import ImprintContent from '../organisms/imprint-content';
 import PrivacyPolicyContent from '../organisms/privacy-policy-content';
 import TermsOfUseContent from '../organisms/terms-of-use-content';
+import { policyLocalizeStrings } from '@/i18n/localize-strings';
 
 export type PolicySection = 'privacy' | 'terms' | 'imprint';
 
-export const policies = {
-  privacy: {
-    icon: Shield,
-    title: 'Privacy Policy',
-    lastUpdated: 'Last updated: January 2025'
-  },
-  terms: {
-    icon: FileText,
-    title: 'Terms of Use',
-    lastUpdated: 'Last updated: January 2025'
-  },
-  imprint: {
-    icon: Info,
-    title: 'Imprint',
-    lastUpdated: 'Last updated: January 2025'
-  }
-};
-
 const PolicyPage = () => {
   const [activeSection, setActiveSection] = useState<PolicySection>('privacy');
+  const t = useTranslations(policyLocalizeStrings.getLocal);
+
+  const policies = {
+    privacy: {
+      icon: Shield,
+      title: t(policyLocalizeStrings.privacyPolicyContent.title),
+      lastUpdated: t(policyLocalizeStrings.privacyPolicyContent.lastUpdated)
+    },
+    terms: {
+      icon: FileText,
+      title: t(policyLocalizeStrings.termOfUseContent.title),
+      lastUpdated: t(policyLocalizeStrings.termOfUseContent.lastUpdated)
+    },
+    imprint: {
+      icon: Info,
+      title: t(policyLocalizeStrings.imprintContent.title),
+      lastUpdated: t(policyLocalizeStrings.imprintContent.lastUpdated)
+    }
+  };
 
   return (
     <Container className='min-h-screen pt-24 pb-20 sm:pt-28 md:pt-36 lg:pt-44'>
@@ -42,7 +45,7 @@ const PolicyPage = () => {
           transition={{ duration: 0.5 }}
           className='manrope text-4xl font-bold md:text-5xl'
         >
-          Legal
+          {t(policyLocalizeStrings.legal)}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -50,9 +53,7 @@ const PolicyPage = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className='text-foreground-accent mt-4 text-lg'
         >
-          We are committed to our users&apos; right to privacy. We are
-          transparent about all aspects of how the app and website work in
-          regards to privacy, terms, and personal data.
+          {t(policyLocalizeStrings.legalDescription)}
         </motion.p>
       </div>
 
@@ -62,6 +63,9 @@ const PolicyPage = () => {
           {(['privacy', 'terms', 'imprint'] as PolicySection[]).map(
             (section) => (
               <SectionCard
+                Icon={policies[section].icon}
+                title={policies[section].title}
+                lastUpdated={policies[section].lastUpdated}
                 key={section}
                 section={section}
                 isActive={activeSection === section}

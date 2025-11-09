@@ -8,13 +8,13 @@ import { Minus, Plus } from 'lucide-react';
 
 import { useTranslations } from 'next-intl';
 import SectionTitle from '../atoms/section-title';
-import { localizeStrings } from '../constants/localizeString';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 
 const FAQ: React.FC = () => {
-  const t = useTranslations(localizeStrings.faq.getLocal);
+  const t = useTranslations(landingLocalizeStrings.faq.getLocal);
 
   const localizedQuestions =
-    (t.raw(localizeStrings.faq.questions) as Array<{
+    (t.raw(landingLocalizeStrings.faq.questions) as Array<{
       question: string;
       answer: string;
     }>) || [];
@@ -24,21 +24,21 @@ const FAQ: React.FC = () => {
       <div className='flex flex-col gap-10 lg:flex-row'>
         <div className=''>
           <p className='text-foreground-accent hidden lg:block'>
-            {t(localizeStrings.faq.label)}
+            {t(landingLocalizeStrings.faq.label)}
           </p>
           <SectionTitle>
             <h2 className='my-3 text-center !leading-snug lg:max-w-sm lg:text-left'>
-              {t(localizeStrings.faq.title)}
+              {t(landingLocalizeStrings.faq.title)}
             </h2>
           </SectionTitle>
           <p className='text-foreground-accent text-center lg:mt-10 lg:text-left'>
-            {t(localizeStrings.faq.subtitle)}
+            {t(landingLocalizeStrings.faq.subtitle)}
           </p>
           <a
             href='mailto:'
             className='mt-3 block text-center text-xl font-semibold hover:underline lg:text-left lg:text-4xl'
           >
-            {t(localizeStrings.faq.email)}
+            {t(landingLocalizeStrings.faq.email)}
           </a>
         </div>
 

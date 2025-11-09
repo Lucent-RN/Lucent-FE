@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
-import { localizeStrings } from '../constants/localizeString';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem } from '../types';
 import {
@@ -26,13 +26,13 @@ const Header: React.FC = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const t = useTranslations(localizeStrings.header.getLocal);
+  const t = useTranslations(landingLocalizeStrings.header.getLocal);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
   const localizedMenuItems =
-    (t.raw(localizeStrings.header.menu_items) as Array<{
+    (t.raw(landingLocalizeStrings.header.menu_items) as Array<{
       text: string;
     }>) || [];
 
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                       height={18}
                       className='mr-2 size-4 object-cover'
                     />
-                    {t(localizeStrings.header.language.en)}
+                    {t(landingLocalizeStrings.header.language.en)}
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('vi')}>
                     <Image
@@ -166,7 +166,7 @@ const Header: React.FC = () => {
                       height={18}
                       className='mr-2 size-4 object-cover'
                     />
-                    {t(localizeStrings.header.language.vi)}
+                    {t(landingLocalizeStrings.header.language.vi)}
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('jp')}>
                     <Image
@@ -176,7 +176,7 @@ const Header: React.FC = () => {
                       height={18}
                       className='mr-2 size-4 object-cover'
                     />
-                    {t(localizeStrings.header.language.jp)}
+                    {t(landingLocalizeStrings.header.language.jp)}
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('de')}>
                     <Image
@@ -186,7 +186,7 @@ const Header: React.FC = () => {
                       height={18}
                       className='mr-2 size-4 object-cover'
                     />
-                    {t(localizeStrings.header.language.de)}
+                    {t(landingLocalizeStrings.header.language.de)}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -210,7 +210,7 @@ const Header: React.FC = () => {
                 href='#cta'
                 className='bg-accent-foreground rounded-full px-8 py-3 text-white transition-colors hover:opacity-90'
               >
-                {t(localizeStrings.header.download)}
+                {t(landingLocalizeStrings.header.download)}
               </Link>
             </li>
           </ul>
@@ -310,7 +310,7 @@ const Header: React.FC = () => {
                         height={18}
                         className='mr-2 size-4 object-cover'
                       />
-                      {t(localizeStrings.header.language.en)}
+                      {t(landingLocalizeStrings.header.language.en)}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -325,7 +325,7 @@ const Header: React.FC = () => {
                         height={18}
                         className='mr-2 size-4 object-cover'
                       />
-                      {t(localizeStrings.header.language.vi)}
+                      {t(landingLocalizeStrings.header.language.vi)}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -340,7 +340,7 @@ const Header: React.FC = () => {
                         height={18}
                         className='mr-2 size-4 object-cover'
                       />
-                      {t(localizeStrings.header.language.jp)}
+                      {t(landingLocalizeStrings.header.language.jp)}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -355,7 +355,7 @@ const Header: React.FC = () => {
                         height={18}
                         className='mr-2 size-4 object-cover'
                       />
-                      {t(localizeStrings.header.language.de)}
+                      {t(landingLocalizeStrings.header.language.de)}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -380,12 +380,12 @@ const Header: React.FC = () => {
                   {mounted && resolvedTheme === 'dark' ? (
                     <>
                       <Sun className='h-5 w-5' />
-                      <span>{t(localizeStrings.header.light_mode)}</span>
+                      <span>{t(landingLocalizeStrings.header.light_mode)}</span>
                     </>
                   ) : (
                     <>
                       <Moon className='h-5 w-5' />
-                      <span>{t(localizeStrings.header.dark_mode)}</span>
+                      <span>{t(landingLocalizeStrings.header.dark_mode)}</span>
                     </>
                   )}
                 </button>
@@ -403,7 +403,7 @@ const Header: React.FC = () => {
                   className='bg-accent-foreground block w-fit rounded-full px-5 py-2 text-white transition-colors hover:opacity-90'
                   onClick={toggleMenu}
                 >
-                  {t(localizeStrings.header.get_started)}
+                  {t(landingLocalizeStrings.header.get_started)}
                 </Link>
               </motion.li>
             </motion.ul>
