@@ -6,12 +6,14 @@ import { useTheme } from 'next-themes';
 
 import { ctaDetails } from '../data/cta';
 import { useTranslations } from 'next-intl';
-import { localizeStrings } from '../constants/localizeString';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 
 const PlayStoreButton = ({ dark }: { dark?: boolean }) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const t = useTranslations(localizeStrings.common.google_play_button.getLocal);
+  const t = useTranslations(
+    landingLocalizeStrings.common.google_play_button.getLocal
+  );
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -56,10 +58,10 @@ const PlayStoreButton = ({ dark }: { dark?: boolean }) => {
         </div>
         <div>
           <div className='text-xs'>
-            {t(localizeStrings.common.google_play_button.get_it_on)}
+            {t(landingLocalizeStrings.common.google_play_button.get_it_on)}
           </div>
           <div className='-mt-1 font-sans text-xl font-semibold'>
-            {t(localizeStrings.common.google_play_button.google_play)}
+            {t(landingLocalizeStrings.common.google_play_button.google_play)}
           </div>
         </div>
       </button>

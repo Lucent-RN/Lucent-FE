@@ -1,4 +1,4 @@
-export const localizeStrings = {
+export const landingLocalizeStrings = {
   common: {
     app_store_button: {
       getLocal: 'common.app_store_button',

@@ -5,11 +5,11 @@ import { getPlatformIconByName } from '@/lib/utils';
 import Image from 'next/image';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem, ISocials } from '../types';
-import { localizeStrings } from '../constants/localizeString';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 import { useTranslations } from 'next-intl';
 
 const Footer: React.FC = () => {
-  const t = useTranslations(localizeStrings.footer.getLocal);
+  const t = useTranslations(landingLocalizeStrings.footer.getLocal);
   const footerDetails: {
     subheading: string;
     quickLinks: IMenuItem[];
@@ -17,9 +17,9 @@ const Footer: React.FC = () => {
     telephone: string;
     socials: ISocials;
   } = {
-    subheading: t(localizeStrings.footer.subheading),
+    subheading: t(landingLocalizeStrings.footer.subheading),
     quickLinks: t
-      .raw(localizeStrings.footer.quick_links)
+      .raw(landingLocalizeStrings.footer.quick_links)
       .map((link: { text: string }, index: number) => ({
         text: link.text,
         url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
         </div>
         <div>
           <h4 className='mb-4 text-lg font-semibold'>
-            {t(localizeStrings.footer.quick_links_label)}
+            {t(landingLocalizeStrings.footer.quick_links_label)}
           </h4>
           <ul className='text-foreground-accent'>
             {footerDetails.quickLinks.map((link) => (
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
         </div>
         <div>
           <h4 className='mb-4 text-lg font-semibold'>
-            {t(localizeStrings.footer.contact_us_label)}
+            {t(landingLocalizeStrings.footer.contact_us_label)}
           </h4>
 
           {footerDetails.email && (

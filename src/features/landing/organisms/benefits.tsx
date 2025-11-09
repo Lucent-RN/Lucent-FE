@@ -13,14 +13,14 @@ import BenefitSection from '../atoms/benefit-section';
 
 import { IBenefit } from '../types';
 import { useTranslations } from 'next-intl';
-import { localizeStrings } from '../constants/localizeString';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 
 const Benefits: React.FC = () => {
-  const t = useTranslations(localizeStrings.benefits.getLocal);
+  const t = useTranslations(landingLocalizeStrings.benefits.getLocal);
 
   // Read the localized items array defined under landing.benefits.items in messages
   const localizedItems =
-    (t.raw(localizeStrings.benefits.items) as Array<{
+    (t.raw(landingLocalizeStrings.benefits.items) as Array<{
       title: string;
       description: string;
       bullets: Array<{ title: string; description: string }>;

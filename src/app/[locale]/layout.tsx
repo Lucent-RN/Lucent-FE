@@ -1,19 +1,20 @@
 import Providers from '@/components/layout/providers';
-import { Toaster } from '@/components/ui/sonner';
-import { fontVariables } from '@/lib/font';
 import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
+import AppDownloadBanner from '@/features/landing/atoms/app-download-banner';
+import { routing } from '@/i18n/routing';
+import { fontVariables } from '@/lib/font';
 import { cn } from '@/lib/utils';
 import type { Metadata, Viewport } from 'next';
-import { cookies } from 'next/headers';
-import NextTopLoader from 'nextjs-toploader';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import './globals.css';
-import './theme.css';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
+import NextTopLoader from 'nextjs-toploader';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { notoSans, notoSansJP } from './fonts';
+import './globals.css';
+import './theme.css';
 // Intl provider is handled in app/[locale]/layout
 
 const META_THEME_COLORS = {
@@ -71,6 +72,7 @@ export default async function RootLayout({
             `
           }}
         />
+        <meta name='apple-itunes-app' content='app-id=6754592413' />
       </head>
       <body
         className={cn(
@@ -92,6 +94,7 @@ export default async function RootLayout({
             >
               <Providers activeThemeValue={activeThemeValue as string}>
                 <Toaster />
+                <AppDownloadBanner />
                 {children}
               </Providers>
             </ThemeProvider>
