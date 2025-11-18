@@ -1,303 +1,170 @@
-# Lucent - Pomodoro Focus Timer
+# Lucent - App Page
 
 <div align="center">
   <img src="https://github.com/PromptKits/.github/blob/main/profile/resources/logo.png" alt="Lucent Logo" width="300"/>
-  
-  <p>A beautiful and intuitive Pomodoro timer web application designed to boost your productivity and focus with progress tracking and insightful statistics.</p>
-
+  <p>A marketing experience for Lucent’s focus companion — highlighting benefits, testimonials, pricing, and direct download links for iOS & Android.</p>
   <div>
     <img src="https://img.shields.io/badge/-Next.js-000000?style=flat&logo=next.js" alt="Next.js"/>
-    <img src="https://img.shields.io/badge/-React-000000?style=flat&logo=react" alt="React"/>
     <img src="https://img.shields.io/badge/-TypeScript-000000?style=flat&logo=typescript" alt="TypeScript"/>
     <img src="https://img.shields.io/badge/-Tailwind_CSS-000000?style=flat&logo=tailwind-css" alt="Tailwind CSS"/>
     <img src="https://img.shields.io/badge/-Shadcn_UI-000000?style=flat&logo=shadcn" alt="Shadcn UI"/>
+    <img src="https://img.shields.io/badge/-next--intl-000000?style=flat&logo=google-translate" alt="Internationalization"/>
   </div>
 </div>
 
 ## 📋 Table of Contents
 
-- [Lucent - Pomodoro Focus Timer](#lucent---pomodoro-focus-timer)
-  - [📋 Table of Contents](#-table-of-contents)
-  - [🚀 Overview](#-overview)
-  - [✨ Key Features](#-key-features)
-    - [⏱️ Pomodoro Timer](#️-pomodoro-timer)
-    - [📊 Focus Statistics](#-focus-statistics)
-    - [🎯 Progress Tracking](#-progress-tracking)
-    - [🔔 Smart Notifications](#-smart-notifications)
-    - [🌙 Dark Mode](#-dark-mode)
-  - [🛠️ Technical Stack](#️-technical-stack)
-    - [Frontend](#frontend)
-    - [Development Tools](#development-tools)
-  - [💎 Subscription Tiers](#-subscription-tiers)
-    - [Free Tier](#free-tier)
-    - [Pro Tier](#pro-tier)
-  - [🚀 Getting Started](#-getting-started)
-  - [⚙️ Environment Variables](#️-environment-variables)
-  - [📁 Project Structure](#-project-structure)
-  - [🔧 Development](#-development)
-  - [📞 Support](#-support)
-  - [📄 License](#-license)
+- [Lucent Landing Page (Next.js)](#lucent-landing-page-nextjs)
+  - [Table of Contents](#-table-of-contents)
+  - [Overview](#-overview)
+  - [Landing Highlights](#-landing-highlights)
+  - [Architecture](#️-architecture)
+  - [Tech Stack](#️-tech-stack)
+  - [Getting Started](#-getting-started)
+    - [Useful scripts](#useful-scripts)
+  - [Environment Variables](#️-environment-variables)
+  - [Project Structure](#-project-structure)
+  - [Content \& Localization](#-content--localization)
+  - [Deployment](#-deployment)
+  - [QA \& Tooling](#-qa--tooling)
+  - [Support \& License](#-support--license)
 
-## 🚀 Overview
+## Overview
 
-Lucent is a modern Pomodoro timer web application that helps you stay focused and productive. Built with the Pomodoro Technique in mind, it combines beautiful design with powerful features to track your focus sessions and provide meaningful insights into your productivity patterns.
+This repository hosts the **Lucent marketing site** — a polished landing page built with Next.js App Router. The page showcases the mobile app, communicates the value proposition, and funnels visitors to the App Store, Google Play, or the authenticated product experience.
 
-## ✨ Key Features
+- **Audience-first storytelling** with a hero, stats, benefits, testimonials, FAQ, and pricing.
+- **Multi-lingual experience** powered by `next-intl` and JSON message catalogs.
+- **Conversion-focused CTAs** with deep links to the live mobile apps.
+- **Performance-ready** build designed for Vercel, Netlify, or static export.
 
-### ⏱️ Pomodoro Timer
+## Landing Highlights
 
-- **Classic Pomodoro Technique**: 25-minute work sessions with 5-minute breaks
-- **Customizable Intervals**: Adjust work and break durations to fit your workflow
-- **Long Break Support**: 15-minute breaks after 4 completed sessions
-- **Auto-start**: Seamlessly transition between work and break periods
-- **Pause & Resume**: Full control over your timer sessions
+- **Hero + CTA:** Responsive mockups, dual store buttons, and social proof metrics sourced from `src/features/landing/data/stats.tsx`.
+- **Benefits Sections:** Three narrative rows (Focus Routines, Insights, Balance) rendered from localized content (`messages/*.json`).
+- **Interactive Pricing:** Tier cards defined in `src/features/landing/data/pricing.ts` plus CTA anchors and gradient accents.
+- **Testimonials & FAQ:** Data-driven components to showcase community trust and answer onboarding questions.
+- **Footer Experience:** Locale switch, policy links, and download buttons for instant hand-offs to the native apps.
 
-### 📊 Focus Statistics
+## Architecture
 
-- **Daily Progress**: Track completed Pomodoros and total focus time
-- **Weekly Overview**: Visual charts showing your productivity trends
-- **Monthly Reports**: Comprehensive analysis of your focus patterns
-- **Goal Setting**: Set daily/weekly Pomodoro targets
-- **Achievement Badges**: Unlock rewards for consistent focus
+- **Modular features:** `src/features/landing` contains `atoms`, `moleculus`, and `organisms` so sections stay composable.
+- **Data-driven UI:** Content objects live under `src/features/landing/data` (CTA copy, pricing, testimonials) for quick updates.
+- **Global layouts:** `src/app/[locale]/home` renders the landing page, sharing layout primitives with the rest of Lucent FE.
+- **Translations:** Each copy deck lives in `messages/{locale}.json`, consumed through `next-intl`.
 
-### 🎯 Progress Tracking
+## Tech Stack
 
-- **Session History**: Complete log of all your focus sessions
-- **Task Association**: Link Pomodoros to specific tasks or projects
-- **Productivity Score**: AI-powered insights on your focus quality
-- **Streak Counter**: Track consecutive days of focused work
-- **Export Data**: Download your statistics for external analysis
+| Layer     | Tools                                                             |
+| --------- | ----------------------------------------------------------------- |
+| Framework | Next.js 15 (App Router, server components)                        |
+| Language  | TypeScript strict mode                                            |
+| Styling   | Tailwind CSS v4 + CSS variables                                   |
+| UI Kit    | shadcn/ui primitives + custom atoms                               |
+| State     | Zustand + React server/use client components where needed         |
+| Intl      | `next-intl` routing + locale middleware                           |
+| Tooling   | Bun (preferred), ESLint, Prettier, Husky, lint-staged, Commitlint |
 
-### 🔔 Smart Notifications
+## Getting Started
 
-- **Session Alerts**: Gentle reminders when work/break periods end
-- **Daily Goals**: Motivational notifications to maintain consistency
-- **Achievement Celebrations**: Celebrate milestones and streaks
-- **Focus Reminders**: Gentle nudges to start your next session
-
-### 🌙 Dark Mode
-
-- **Beautiful UI**: Clean, modern interface with smooth animations
-- **Dark/Light Themes**: Choose your preferred visual experience
-- **Accessibility**: High contrast modes and screen reader support
-- **Responsive Design**: Optimized for all device sizes
-
-## 🛠️ Technical Stack
-
-### Frontend
-
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **UI Components**: Shadcn/ui
-- **State Management**: Zustand
-- **Forms**: React Hook Form + Zod
-- **Charts**: Recharts
-- **Icons**: Lucide React
-
-### Development Tools
-
-- **Package Manager**: Bun
-- **Linting**: ESLint with TypeScript support
-- **Formatting**: Prettier
-- **Git Hooks**: Husky + lint-staged
-- **Commit Standards**: Commitlint with conventional commits
-- **Type Checking**: TypeScript
-
-## 💎 Subscription Tiers
-
-### Free Tier
-
-- Basic Pomodoro timer functionality
-- Daily statistics tracking
-- Standard notification features
-- Basic progress insights
-
-### Pro Tier
-
-- Advanced analytics and reporting
-- Custom timer intervals
-- Task categorization and project tracking
-- Data export capabilities
-- Priority support
-- Ad-free experience
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ or Bun
-- Git
-
-### Installation
-
-1. **Clone the repository**
-
+1. **Clone & install**
    ```bash
    git clone <repository-url>
    cd lucent-fe
+   bun install   # or npm install / pnpm install
    ```
-
-2. **Install dependencies**
-
-   ```bash
-   # Using Bun (recommended)
-   bun install
-
-   # Or using npm
-   npm install
-   ```
-
-3. **Set up environment variables**
-
+2. **Environment setup**
    ```bash
    cp .env.example .env.local
    ```
-
-4. **Start the development server**
-
+3. **Run the dev server**
    ```bash
-   # Using Bun
-   bun run dev
-
-   # Or using npm
-   npm run dev
+   bun run dev    # http://localhost:3000
    ```
+4. **Open the landing page**
+   - Default route: `/en/home`
+   - Root `/` redirects based on the active locale configuration in `src/i18n/routing.ts`.
 
-5. **Open your browser**
-
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-### Available Scripts
+### Useful scripts
 
 ```bash
-# Development
-bun run dev          # Start development server
-bun run build        # Build for production
-bun run start        # Start production server
-
-# Code Quality
-bun run lint         # Run ESLint
-bun run format       # Check Prettier formatting
-bun run format:fix   # Fix Prettier formatting
-
-# Git Hooks
-bun run prepare      # Setup Husky hooks
+bun run dev            # Start Next.js locally
+bun run build          # Create a production build
+bun run start          # Serve the production build
+bun run lint           # ESLint (TypeScript aware)
+bun run format         # Check Prettier
+bun run format:fix     # Fix formatting issues
+bun run prepare        # Install Husky git hooks
 ```
 
-## ⚙️ Environment Variables
+## Environment Variables
 
-Create a `.env.local` file in the root directory and add the following variables:
+Copy `.env.example` → `.env.local` and adjust as needed:
 
 ```env
-# App Configuration
 NEXT_PUBLIC_APP_NAME=Lucent
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=https://lucent.app
+NEXT_PUBLIC_API_URL=https://api.lucent.app
 
-# API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:8000
-
-# Authentication (if using)
 NEXT_PUBLIC_AUTH_PROVIDER=clerk
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
-CLERK_SECRET_KEY=your_clerk_secret
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_xxxxx
+CLERK_SECRET_KEY=sk_xxxxx
 
-# Analytics (optional)
-NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
+NEXT_PUBLIC_ANALYTICS_ID=G-XXXXXXX
+BASE_PATH=           # Optional; use when hosting in a sub-path/CDN
 ```
 
-## 📁 Project Structure
+- `BASE_PATH` feeds assets such as `siteDetails.siteLogo`.
+- Store URLs used in CTA buttons come from `src/features/landing/constants/storeData.ts`.
+
+## Project Structure
 
 ```
 lucent-fe/
 ├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── globals.css         # Global styles
-│   │   ├── layout.tsx          # Root layout
-│   │   └── page.tsx            # Home page
-│   ├── components/             # Shared components
-│   │   └── index.ts
-│   ├── config/                 # App configuration
-│   │   └── index.ts
-│   ├── constants/              # App constants
-│   │   └── index.ts
-│   ├── context/                # React contexts
-│   │   └── index.ts
-│   ├── features/               # Feature-based modules
-│   │   └── index.ts
-│   ├── hooks/                  # Custom React hooks
-│   │   └── index.ts
-│   ├── layouts/                # Layout components
-│   │   └── index.ts
-│   ├── lib/                    # Core utilities
-│   │   └── utils.ts
-│   ├── middleware/             # Next.js middleware
-│   │   └── index.ts
-│   ├── services/               # API services
-│   │   └── index.ts
-│   ├── store/                  # State management
-│   │   └── index.ts
-│   ├── styles/                 # Additional styles
-│   │   └── index.ts
-│   └── utils/                  # Utility functions
-│       └── index.ts
-├── public/                     # Static assets
-├── .husky/                     # Git hooks
-├── commitlint.config.ts        # Commit linting rules
-├── eslint.config.mjs           # ESLint configuration
-├── lint-staged.config.js       # Lint-staged configuration
-├── next.config.ts              # Next.js configuration
-├── postcss.config.mjs          # PostCSS configuration
-├── tailwind.config.js          # Tailwind CSS configuration
-└── tsconfig.json               # TypeScript configuration
+│   ├── app/[locale]/home/page.tsx      # Landing entrypoint
+│   ├── features/landing/               # Marketing-specific modules
+│   │   ├── atoms/                      # Buttons, cards, layout shells
+│   │   ├── moleculus/                  # CTA, pricing column, testimonials list
+│   │   ├── organisms/                  # Hero, Benefits, FAQ, Footer, etc.
+│   │   ├── data/                       # CTA copy, pricing tiers, testimonials
+│   │   └── constants/storeData.ts      # App/Play store links
+│   ├── i18n/                           # next-intl routing + helpers
+│   ├── components/                     # Shared UI primitives (shadcn)
+│   └── messages/                       # Locale JSON strings
+├── public/images                       # Landing mockups & illustrations
+├── tailwind.config.js                  # Tailwind theme tokens
+├── postcss.config.js
+├── next.config.ts
+├── bun.lock / package-lock.json
+└── README.md
 ```
 
-## 🔧 Development
+## Content & Localization
 
-### Code Quality
+- **Copy updates:** Edit `messages/{locale}.json` (e.g., `messages/en.json` under `landing` namespace). Components read via `landingLocalizeStrings`.
+- **Static data:** For stats/testimonials/pricing, update objects in `src/features/landing/data`.
+- **Store links:** Configure `APP_STORE_URL` and `PLAY_STORE_URL` in `src/features/landing/constants/storeData.ts`.
+- **Assets:** Hero and section mockups live in `public/images`. Keep both `.png` and `.webp` variants for best browser support.
 
-This project uses several tools to maintain code quality:
+## Deployment
 
-- **ESLint**: Code linting with TypeScript support
-- **Prettier**: Code formatting
-- **Husky**: Git hooks for pre-commit checks
-- **lint-staged**: Run linters on staged files
-- **commitlint**: Enforce conventional commit messages
+- Optimized for **Vercel** (zero-config) but also works on Netlify or Docker (see `Dockerfile`).
+- Remember to set production env vars (Clerk, analytics, API base) in your hosting dashboard.
+- If serving from a custom domain path, set `BASE_PATH` and redeploy so asset URLs resolve correctly.
 
-### Git Workflow
+## QA & Tooling
 
-1. **Branch Naming**: Use conventional branch names
+- **Linting:** `bun run lint`
+- **Formatting:** `bun run format:fix`
+- **E2E smoke tests:** Cypress specs live in `cypress/e2e`. Run with `bunx cypress open`.
+- **Git hooks:** Husky runs lint-staged + commitlint to keep commits consistent.
 
-   - `feature/your-feature-name`
-   - `bugfix/your-bug-fix`
-   - `hotfix/urgent-fix`
+## Support & License
 
-2. **Commit Messages**: Follow conventional commits
-
-   - `feat: add new feature`
-   - `fix: resolve bug`
-   - `docs: update documentation`
-   - `style: format code`
-   - `refactor: improve code structure`
-
-3. **Pre-commit Checks**: Automatic linting and formatting
-
-### Adding New Features
-
-1. Create a feature branch
-2. Implement your feature
-3. Add tests if applicable
-4. Run linting and formatting
-5. Commit with conventional message
-6. Create a pull request
-
-## 📞 Support
-
-For support, email [support@lucent.app](mailto:support@lucent.app)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Contact: [support@lucent.app](mailto:support@lucent.app)
+- License: [MIT](LICENSE)
+- Issues/Ideas: open a GitHub issue or reach the Lucent team directly.
 
 ---
 
