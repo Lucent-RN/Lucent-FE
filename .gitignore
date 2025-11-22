@@ -49,3 +49,7 @@ next-env.d.ts
 
 *.lock
 package-lock.json
+
+# Cloudflare
+.open-next/
+cloudflare-env.d.ts
