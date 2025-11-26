@@ -5,16 +5,16 @@ const PrivacyPolicyContent = () => {
   const t = useTranslations(policyLocalizeStrings.getLocal);
   return (
     <div className='prose prose-slate max-w-none'>
-      <h2 className='manrope text-3xl font-semibold'>
+      {/* <h2 className='manrope text-3xl font-semibold'>
         {t(policyLocalizeStrings.privacyPolicyContent.title)}
       </h2>
       <p className='text-foreground-accent mt-2'>
         {t(policyLocalizeStrings.privacyPolicyContent.lastUpdated)}
-      </p>
+      </p> */}
 
-      <div className='mt-8 space-y-6 text-gray-700'>
+      <div className='space-y-6'>
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             1. {t(policyLocalizeStrings.privacyPolicyContent.introduction)}
           </h3>
           <p>
@@ -25,7 +25,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             2.{' '}
             {t(policyLocalizeStrings.privacyPolicyContent.informationWeCollect)}
           </h3>
@@ -64,7 +64,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             3.{' '}
             {t(
               policyLocalizeStrings.privacyPolicyContent.howWeUseYourInformation
@@ -105,7 +105,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             4.{' '}
             {t(policyLocalizeStrings.privacyPolicyContent.informationSharing)}
           </h3>
@@ -144,7 +144,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             5. {t(policyLocalizeStrings.privacyPolicyContent.dataSecurity)}
           </h3>
           <p>
@@ -155,7 +155,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             6. {t(policyLocalizeStrings.privacyPolicyContent.yourRights)}
           </h3>
           <p>
@@ -183,7 +183,7 @@ const PrivacyPolicyContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             7. {t(policyLocalizeStrings.privacyPolicyContent.contactUs)}
           </h3>
           <p>

@@ -83,7 +83,7 @@ export default async function RootLayout({
         )}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <NextTopLoader showSpinner={true} />
+          <NextTopLoader showSpinner={false} />
           <NuqsAdapter>
             <ThemeProvider
               attribute='class'

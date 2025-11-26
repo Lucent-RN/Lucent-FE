@@ -5,16 +5,16 @@ const TermsOfUseContent = () => {
   const t = useTranslations(policyLocalizeStrings.getLocal);
   return (
     <div className='prose prose-slate max-w-none'>
-      <h2 className='manrope text-3xl font-semibold'>
+      {/* <h2 className='manrope text-3xl font-semibold'>
         {t(policyLocalizeStrings.termOfUseContent.title)}
       </h2>
       <p className='text-foreground-accent mt-2'>
         {t(policyLocalizeStrings.termOfUseContent.lastUpdated)}
-      </p>
+      </p> */}
 
-      <div className='mt-8 space-y-6 text-gray-700'>
+      <div className='space-y-6'>
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             1. {t(policyLocalizeStrings.termOfUseContent.acceptanceOfTerms)}
           </h3>
           <p>
@@ -26,7 +26,7 @@ const TermsOfUseContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             2. {t(policyLocalizeStrings.termOfUseContent.descriptionOfService)}
           </h3>
           <p>
@@ -38,7 +38,7 @@ const TermsOfUseContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             3. {t(policyLocalizeStrings.termOfUseContent.userAccounts)}
           </h3>
           <p>
@@ -69,7 +69,7 @@ const TermsOfUseContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             4. {t(policyLocalizeStrings.termOfUseContent.acceptableUse)}
           </h3>
           <p>
@@ -105,7 +105,7 @@ const TermsOfUseContent = () => {
         </section>
 
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             5.{' '}
             {t(
               policyLocalizeStrings.termOfUseContent.intellectualPropertyRights
@@ -119,7 +119,7 @@ const TermsOfUseContent = () => {
           </p>
         </section>
         <section>
-          <h3 className='manrope text-xl font-semibold'>
+          <h3 className='font-sans text-xl font-semibold'>
             6. {t(policyLocalizeStrings.termOfUseContent.changesToTerms)}
           </h3>
           <p>
