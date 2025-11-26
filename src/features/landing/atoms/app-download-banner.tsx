@@ -39,6 +39,8 @@ export default function AppDownloadBanner() {
         <a
           href={PLAY_STORE_URL}
           className='rounded-lg bg-green-600 px-3 py-1.5 text-sm font-medium text-white'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           Download
         </a>

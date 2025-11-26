@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
+import { Manrope, Source_Sans_3 } from 'next/font/google';
 
 import { siteDetails } from '@/features/landing/data/site-details';
 import Footer from '@/features/landing/organisms/footer';
 import Header from '@/features/landing/organisms/header';
 
+const manrope = Manrope({ subsets: ['latin'] });
+const sourceSans = Source_Sans_3({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
-  title: `${siteDetails.siteName} | Help`,
-  description: "Help for Lucent. We are committed to our users' help.",
+  title: `${siteDetails.siteName} | Download`,
+  description: 'Download Lucent for free.',
   openGraph: {
-    title: `${siteDetails.siteName} | Help`,
-    description: "Help for Lucent. We are committed to our users' help.",
-    url: `${siteDetails.siteUrl}help`,
+    title: `${siteDetails.siteName} | Download`,
+    description: 'Download Lucent for free.',
+    url: `${siteDetails.siteUrl}download`,
     type: 'website',
     images: [
       {
@@ -23,13 +27,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteDetails.siteName} | Help`,
-    description: "Help for Lucent. We are committed to our users' help.",
+    title: `${siteDetails.siteName} | Download`,
+    description: 'Download Lucent for free.',
     images: ['/images/twitter-image.jpg']
   }
 };
 
-export default function HelpLayout({
+export default function DownloadLayout({
   children
 }: Readonly<{
   children: React.ReactNode;

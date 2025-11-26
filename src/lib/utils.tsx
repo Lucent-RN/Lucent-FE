@@ -1,3 +1,4 @@
+import { IconBrandThreads } from '@tabler/icons-react';
 import { type ClassValue, clsx } from 'clsx';
 import {
   Facebook,
@@ -59,6 +60,9 @@ export const getPlatformIconByName = (
     }
     case 'x': {
       return <X size={24} className='min-w-fit' />;
+    }
+    case 'threads': {
+      return <IconBrandThreads size={24} className='min-w-fit' />;
     }
     default:
       console.log(

@@ -8,7 +8,39 @@ import { ctaDetails } from '../data/cta';
 import { useTranslations } from 'next-intl';
 import { landingLocalizeStrings } from '@/i18n/localize-strings';
 
-const PlayStoreButton = ({ dark }: { dark?: boolean }) => {
+type StoreButtonSize = 'sm' | 'md' | 'lg';
+
+const sizeVariants: Record<
+  StoreButtonSize,
+  { button: string; label: string; tagline: string; icon: string }
+> = {
+  sm: {
+    button: 'h-12 min-w-[180px] px-5 text-sm',
+    label: 'text-lg',
+    tagline: 'text-[10px]',
+    icon: 'h-5 w-5'
+  },
+  md: {
+    button: 'h-14 min-w-[205px] px-6 text-base',
+    label: 'text-xl',
+    tagline: 'text-xs',
+    icon: 'h-6 w-6'
+  },
+  lg: {
+    button: 'h-16 min-w-[230px] px-7 text-lg',
+    label: 'text-2xl',
+    tagline: 'text-sm',
+    icon: 'h-7 w-7'
+  }
+};
+
+const PlayStoreButton = ({
+  dark,
+  size = 'md'
+}: {
+  dark?: boolean;
+  size?: StoreButtonSize;
+}) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations(
@@ -23,21 +55,28 @@ const PlayStoreButton = ({ dark }: { dark?: boolean }) => {
     dark !== undefined ? dark : mounted && resolvedTheme === 'dark';
 
   return (
-    <a href={ctaDetails.googlePlayUrl}>
+    <a
+      href={ctaDetails.googlePlayUrl}
+      target='_blank'
+      rel='noopener noreferrer'
+    >
       <button
         type='button'
         className={clsx(
-          'mt-3 flex h-14 w-full min-w-[205px] items-center justify-center rounded-full px-6 transition-colors sm:w-fit',
+          'mt-3 flex w-full items-center justify-center rounded-full transition-colors sm:w-fit',
+          sizeVariants[size].button,
           {
-            // Dark mode: white background, dark text
             'bg-white text-black': isDark,
-            // Light mode: black background, white text
             'bg-foreground text-white': !isDark
           }
         )}
       >
         <div className='mr-3'>
-          <svg viewBox='30 336.7 120.9 129.2' width='30'>
+          <svg
+            viewBox='30 336.7 120.9 129.2'
+            className={clsx(sizeVariants[size].icon)}
+            aria-hidden='true'
+          >
             <path
               fill='#FFD400'
               d='M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z'
@@ -57,10 +96,15 @@ const PlayStoreButton = ({ dark }: { dark?: boolean }) => {
           </svg>
         </div>
         <div>
-          <div className='text-xs'>
+          <div className={clsx(sizeVariants[size].tagline)}>
             {t(landingLocalizeStrings.common.google_play_button.get_it_on)}
           </div>
-          <div className='-mt-1 font-sans text-xl font-semibold'>
+          <div
+            className={clsx(
+              '-mt-1 font-sans font-semibold',
+              sizeVariants[size].label
+            )}
+          >
             {t(landingLocalizeStrings.common.google_play_button.google_play)}
           </div>
         </div>

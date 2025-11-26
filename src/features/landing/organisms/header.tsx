@@ -7,18 +7,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
-import { landingLocalizeStrings } from '@/i18n/localize-strings';
-import { siteDetails } from '../data/site-details';
-import { IMenuItem } from '../types';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
+import { siteDetails } from '../data/site-details';
+import { IMenuItem } from '../types';
+import { cn } from '@/lib/utils';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,37 +93,41 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className='bg-background fixed top-0 right-0 left-0 z-50 w-full'>
-      <div className='w-full'>
+    <header className='fixed inset-x-0 top-0 z-50 w-full'>
+      <div className='relative w-full pt-4 sm:px-6 lg:px-8'>
         <nav
-          className={`flex items-center justify-between px-5 py-2 transition-all duration-300 md:py-4 ${
-            isScrolled ? 'shadow-md' : 'shadow-none'
-          }`}
+          className={cn(
+            'mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border px-4 py-1 transition-all duration-300 md:px-6',
+            isScrolled
+              ? 'border-white/30 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.25)] backdrop-blur-2xl dark:border-white/10 dark:bg-white/5'
+              : 'border-white/20 bg-white/60 shadow-[0_15px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/5 dark:bg-white/10'
+          )}
         >
           {/* Logo */}
           <Link
             href='/'
-            className='flex items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3 md:gap-4'
+            className='flex items-center gap-3 rounded-full px-3 py-2 transition-all'
           >
             <Image
               src='/assets/app-icon.png'
               alt={siteDetails.siteName}
               width={60}
               height={60}
-              className='h-12 w-12 object-contain sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16'
+              className='h-11 w-11 rounded-2xl object-contain sm:h-12 sm:w-12 md:h-14 md:w-14'
             />
-            <span className='manrope text-foreground text-base font-semibold sm:text-lg md:text-xl lg:text-2xl'>
+
+            <span className='text-foreground hidden font-sans text-lg font-semibold sm:inline-block md:text-xl lg:text-2xl'>
               {siteDetails.siteName}
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <ul className='hidden space-x-6 md:flex md:items-center'>
+          <ul className='hidden items-center gap-2 md:flex'>
             {menuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className='text-foreground hover:text-accent-foreground transition-colors'
+                  className='text-foreground/80 hover:text-foreground relative inline-flex items-center gap-1 rounded-full px-3 py-2 text-base font-medium transition-all duration-300'
                 >
                   {item.text}
                 </Link>
@@ -134,7 +138,7 @@ const Header: React.FC = () => {
                 <DropdownMenuTrigger asChild>
                   <button
                     type='button'
-                    className='text-foreground hover:text-accent-foreground flex items-center gap-2 rounded-full px-3 py-2 transition-colors focus:outline-none'
+                    className='text-foreground flex items-center gap-2 rounded-full border border-white/30 bg-white/40 px-3 py-2 text-xs font-semibold tracking-[0.3em] uppercase transition-all hover:border-white/60 hover:bg-white/70 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
                     aria-label='Select language'
                   >
                     <Image
@@ -195,7 +199,7 @@ const Header: React.FC = () => {
               <button
                 onClick={handleThemeToggle}
                 type='button'
-                className='text-foreground hover:text-accent-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors focus:outline-none'
+                className='text-foreground flex h-9 w-10 items-center justify-center rounded-2xl border border-white/30 bg-white/30 shadow-[0_10px_25px_rgba(15,23,42,0.18)] transition-all hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
                 aria-label='Toggle theme'
               >
                 {mounted && resolvedTheme === 'dark' ? (
@@ -208,7 +212,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 href='#cta'
-                className='bg-accent-foreground rounded-full px-8 py-3 text-white transition-colors hover:opacity-90'
+                className='bg-accent-foreground rounded-full border-white/30 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(15,23,42,0.18)] transition-all hover:-translate-y-0.5 hover:border-white/60'
               >
                 {t(landingLocalizeStrings.header.download)}
               </Link>
@@ -220,7 +224,7 @@ const Header: React.FC = () => {
             <button
               onClick={toggleMenu}
               type='button'
-              className='bg-accent-foreground flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:opacity-90 focus:outline-none'
+              className='inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/30 transition-all hover:-translate-y-0.5 focus:outline-none'
               aria-controls='mobile-menu'
               aria-expanded={isOpen}
             >
@@ -240,7 +244,7 @@ const Header: React.FC = () => {
         {isOpen && (
           <motion.div
             id='mobile-menu'
-            className='bg-background shadow-lg md:hidden'
+            className='dark:bg-background mt-1 rounded-3xl border-white/10 bg-white/95 pt-4 shadow-[0_35px_80px_rgba(15,23,42,0.25)] backdrop-blur-2xl md:hidden'
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -250,7 +254,7 @@ const Header: React.FC = () => {
             }}
           >
             <motion.ul
-              className='flex flex-col space-y-4 px-6 pt-1 pb-6'
+              className='flex flex-col gap-4 px-6 pt-2 pb-6'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.2 }}
@@ -264,7 +268,7 @@ const Header: React.FC = () => {
                 >
                   <Link
                     href={item.url}
-                    className='text-foreground hover:text-primary block'
+                    className='text-foreground block rounded-2xl bg-white/40 px-4 py-3 text-base font-medium shadow-sm backdrop-blur hover:bg-white/70 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
                     onClick={toggleMenu}
                   >
                     {item.text}
@@ -283,7 +287,7 @@ const Header: React.FC = () => {
                   <DropdownMenuTrigger asChild>
                     <button
                       type='button'
-                      className='text-foreground hover:text-primary flex items-center gap-2 rounded-full px-3 py-2 transition-colors focus:outline-none'
+                      className='text-foreground flex items-center gap-2 rounded-2xl border border-white/20 bg-white/30 px-4 py-3 text-sm font-semibold tracking-[0.3em] uppercase transition-all hover:border-white/40 hover:bg-white/60 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
                       aria-label='Select language'
                     >
                       <Image
@@ -374,7 +378,7 @@ const Header: React.FC = () => {
                     toggleMenu();
                   }}
                   type='button'
-                  className='text-foreground hover:text-primary flex items-center gap-2'
+                  className='text-foreground flex items-center gap-3 rounded-2xl border border-white/20 bg-white/50 px-4 py-3 text-base font-medium backdrop-blur transition-all hover:border-white/40 hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
                   aria-label='Toggle theme'
                 >
                   {mounted && resolvedTheme === 'dark' ? (
@@ -400,7 +404,7 @@ const Header: React.FC = () => {
               >
                 <Link
                   href='#cta'
-                  className='bg-accent-foreground block w-fit rounded-full px-5 py-2 text-white transition-colors hover:opacity-90'
+                  className='bg-accent-foreground block w-full rounded-2xl px-5 py-3 text-center text-base font-semibold text-white transition-all hover:-translate-y-0.5'
                   onClick={toggleMenu}
                 >
                   {t(landingLocalizeStrings.header.get_started)}

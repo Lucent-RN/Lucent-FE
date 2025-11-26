@@ -1,6 +1,8 @@
 'use client';
 
 import Container from '@/features/landing/atoms/container';
+import CTA from '@/features/landing/moleculus/cta';
+import { policyLocalizeStrings } from '@/i18n/localize-strings';
 import { FileText, Info, Shield } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -9,7 +11,6 @@ import SectionCard from '../atoms/section-card';
 import ImprintContent from '../organisms/imprint-content';
 import PrivacyPolicyContent from '../organisms/privacy-policy-content';
 import TermsOfUseContent from '../organisms/terms-of-use-content';
-import { policyLocalizeStrings } from '@/i18n/localize-strings';
 
 export type PolicySection = 'privacy' | 'terms' | 'imprint';
 
@@ -135,6 +136,7 @@ const PolicyPage = () => {
           </motion.section>
         </div>
       </div>
+      <CTA isShowingButtons={false} />
     </Container>
   );
 };

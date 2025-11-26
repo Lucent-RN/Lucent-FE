@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { landingLocalizeStrings } from '@/i18n/localize-strings';
 import { getPlatformIconByName } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import AppStoreButton from '../atoms/app-store-button';
+import PlayStoreButton from '../atoms/play-store-button';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem, ISocials } from '../types';
-import { landingLocalizeStrings } from '@/i18n/localize-strings';
-import { useTranslations } from 'next-intl';
 
 const Footer: React.FC = () => {
   const t = useTranslations(landingLocalizeStrings.footer.getLocal);
@@ -25,16 +27,12 @@ const Footer: React.FC = () => {
         url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
       })),
     email: 'kanent.tech@gmail.com',
-    telephone: '',
+    telephone: '+84 974 102 437',
     socials: {
-      github: 'https://github.com',
-      // x: 'https://twitter.com/x',
-      twitter: 'https://twitter.com/Twitter',
-      facebook: 'https://facebook.com',
-      // youtube: 'https://youtube.com',
-      linkedin: 'https://www.linkedin.com',
-      // threads: 'https://www.threads.net',
-      instagram: 'https://www.instagram.com'
+      github: 'https://github.com/Lucent-RN',
+      facebook: 'https://www.facebook.com/lucentapp',
+      threads: 'https://www.threads.net/@lucent.rn.app',
+      instagram: 'https://instagram.com/lucent.rn.app'
     }
   };
 
@@ -42,18 +40,27 @@ const Footer: React.FC = () => {
     <footer className='bg-hero-background text-foreground py-10'>
       <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 md:grid-cols-3'>
         <div>
-          <Link href='/' className='flex items-center gap-2'>
-            <Image
-              src='/assets/app-icon.png'
-              alt='logo'
-              width={96}
-              height={96}
-              className='h-14 w-14 md:h-16 md:w-16'
-            />
-          </Link>
-          <p className='text-foreground-accent mt-3.5'>
+          <div className='flex items-center gap-2'>
+            <Link href='/' className='flex items-center gap-2'>
+              <Image
+                src='/assets/app-icon.png'
+                alt='logo'
+                width={60}
+                height={60}
+                className='h-10 w-10 object-contain md:h-14 md:w-14'
+              />
+            </Link>
+            <span className='text-foreground font-sans text-lg font-semibold'>
+              {siteDetails.siteName}
+            </span>
+          </div>
+          <p className='text-foreground-accent text-base'>
             {footerDetails.subheading}
           </p>
+          <div className='mt-4 flex flex-row gap-2'>
+            <AppStoreButton size='sm' />
+            <PlayStoreButton size='sm' />
+          </div>
         </div>
         <div>
           <h4 className='mb-4 text-lg font-semibold'>

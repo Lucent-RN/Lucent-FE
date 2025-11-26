@@ -3,7 +3,11 @@ import { useTranslations } from 'next-intl';
 import AppStoreButton from '../atoms/app-store-button';
 import PlayStoreButton from '../atoms/play-store-button';
 
-const CTA: React.FC = () => {
+type CTAProps = {
+  isShowingButtons?: boolean;
+};
+
+const CTA: React.FC<CTAProps> = ({ isShowingButtons = true }) => {
   const t = useTranslations('landing.cta');
   return (
     <section id='cta' className='mt-10 mb-5 lg:my-20'>
@@ -21,8 +25,12 @@ const CTA: React.FC = () => {
             <p className='mx-auto max-w-xl md:px-5'>{t('subheading')}</p>
 
             <div className='mt-4 flex flex-col items-center sm:flex-row sm:gap-4'>
-              <AppStoreButton />
-              <PlayStoreButton />
+              {isShowingButtons && (
+                <>
+                  <AppStoreButton />
+                  <PlayStoreButton />
+                </>
+              )}
             </div>
           </div>
         </div>
