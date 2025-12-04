@@ -13,12 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { landingLocalizeStrings } from '@/i18n/localize-strings';
+import { cn } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem } from '../types';
-import { cn } from '@/lib/utils';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,15 +93,18 @@ const Header: React.FC = () => {
     });
   };
 
+  const isMobile = useIsMobile();
+
   return (
     <header className='fixed inset-x-0 top-0 z-50 w-full'>
-      <div className='relative w-full pt-4 sm:px-6 lg:px-8'>
+      <div className='relative w-full pt-0 sm:px-6 md:pt-4 lg:px-8'>
         <nav
           className={cn(
-            'mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border px-4 py-1 transition-all duration-300 md:px-6',
+            'mx-auto flex max-w-6xl items-center justify-between gap-3 border px-4 py-1 transition-all duration-300 md:px-6',
             isScrolled
-              ? 'border-white/30 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.25)] backdrop-blur-2xl dark:border-white/10 dark:bg-white/5'
-              : 'border-white/20 bg-white/60 shadow-[0_15px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/5 dark:bg-white/10'
+              ? 'border-white/30 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.25)] backdrop-blur-2xl dark:border-white/10 dark:bg-black/5'
+              : 'border-white/20 bg-white/60 shadow-[0_15px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/5 dark:bg-black/40',
+            isMobile ? '' : 'rounded-4xl'
           )}
         >
           {/* Logo */}
@@ -244,7 +248,12 @@ const Header: React.FC = () => {
         {isOpen && (
           <motion.div
             id='mobile-menu'
-            className='dark:bg-background mt-1 rounded-3xl border-white/10 bg-white/95 pt-4 shadow-[0_35px_80px_rgba(15,23,42,0.25)] backdrop-blur-2xl md:hidden'
+            className={cn(
+              'dark:bg-background border-white/10 bg-white/95 pt-4 shadow-[0_35px_80px_rgba(15,23,42,0.25)] backdrop-blur-2xl md:hidden',
+              isScrolled
+                ? 'border-white/30 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.25)] backdrop-blur-2xl dark:border-white/10 dark:bg-black/5'
+                : 'border-white/20 bg-white/60 shadow-[0_15px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/5 dark:bg-black/40'
+            )}
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
