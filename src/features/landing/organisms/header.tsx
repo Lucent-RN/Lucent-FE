@@ -39,7 +39,8 @@ const Header: React.FC = () => {
 
   const menuItems: IMenuItem[] = localizedMenuItems.map((item, index) => ({
     text: item.text,
-    url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
+    url:
+      index === 0 ? '/home#features' : index === 1 ? '/home#pricing' : '/policy'
   }));
 
   useEffect(() => {
@@ -94,6 +95,9 @@ const Header: React.FC = () => {
   };
 
   const isMobile = useIsMobile();
+  const handlePressDownload = () => {
+    router.push('/download');
+  };
 
   return (
     <header className='fixed inset-x-0 top-0 z-50 w-full'>
@@ -214,12 +218,12 @@ const Header: React.FC = () => {
               </button>
             </li>
             <li>
-              <Link
-                href='#cta'
+              <button
+                onClick={handlePressDownload}
                 className='bg-accent-foreground rounded-full border-white/30 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(15,23,42,0.18)] transition-all hover:-translate-y-0.5 hover:border-white/60'
               >
                 {t(landingLocalizeStrings.header.download)}
-              </Link>
+              </button>
             </li>
           </ul>
 
@@ -411,13 +415,12 @@ const Header: React.FC = () => {
                   duration: 0.3
                 }}
               >
-                <Link
-                  href='#cta'
+                <button
                   className='bg-accent-foreground block w-full rounded-2xl px-5 py-3 text-center text-base font-semibold text-white transition-all hover:-translate-y-0.5'
-                  onClick={toggleMenu}
+                  onClick={handlePressDownload}
                 >
                   {t(landingLocalizeStrings.header.get_started)}
-                </Link>
+                </button>
               </motion.li>
             </motion.ul>
           </motion.div>
