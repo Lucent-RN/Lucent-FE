@@ -58,8 +58,8 @@ const Footer: React.FC = () => {
             {footerDetails.subheading}
           </p>
           <div className='mt-4 flex flex-row gap-2'>
-            <AppStoreButton size='sm' />
-            <PlayStoreButton size='sm' />
+            <AppStoreButton size='md' />
+            <PlayStoreButton size='md' />
           </div>
         </div>
         <div>

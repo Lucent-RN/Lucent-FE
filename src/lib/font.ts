@@ -1,5 +1,4 @@
 import {
-  Geist,
   Geist_Mono,
   Instrument_Sans,
   Inter,
@@ -8,11 +7,6 @@ import {
 } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
-
-const fontSans = Geist({
-  subsets: ['latin'],
-  variable: '--font-sans'
-});
 
 const fontMono = Geist_Mono({
   subsets: ['latin'],
@@ -40,7 +34,6 @@ const fontInter = Inter({
 });
 
 export const fontVariables = cn(
-  fontSans.variable,
   fontMono.variable,
   fontInstrument.variable,
   fontNotoMono.variable,
