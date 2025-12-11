@@ -1,19 +1,30 @@
-import { Noto_Sans, Noto_Sans_JP } from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const notoSans = Noto_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '600', '700'],
+export const poppins = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/Poppins-Regular.ttf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../../public/fonts/Poppins-Medium.ttf',
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: '../../../public/fonts/Poppins-SemiBold.ttf',
+      weight: '600',
+      style: 'normal'
+    },
+    {
+      path: '../../../public/fonts/Poppins-Bold.ttf',
+      weight: '700',
+      style: 'normal'
+    }
+  ],
   variable: '--font-sans',
   display: 'swap',
-  adjustFontFallback: true,
-  preload: true
-});
-
-export const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-sans-ja',
-  display: 'swap',
-  adjustFontFallback: true,
-  preload: true
+  preload: true,
+  fallback: ['system-ui', 'sans-serif']
 });

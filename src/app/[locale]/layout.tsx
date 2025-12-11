@@ -3,7 +3,6 @@ import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import AppDownloadBanner from '@/features/landing/atoms/app-download-banner';
 import { routing } from '@/i18n/routing';
-import { fontVariables } from '@/lib/font';
 import { cn } from '@/lib/utils';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -12,7 +11,7 @@ import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import NextTopLoader from 'nextjs-toploader';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import { notoSans, notoSansJP } from './fonts';
+import { poppins } from './fonts';
 import './globals.css';
 import './theme.css';
 // Intl provider is handled in app/[locale]/layout
@@ -55,11 +54,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      suppressHydrationWarning
-      className={`${notoSans.variable} ${notoSansJP.variable}`}
-    >
+    <html lang={locale} suppressHydrationWarning className={poppins.variable}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -79,7 +74,7 @@ export default async function RootLayout({
           'bg-background font-sans antialiased',
           activeThemeValue ? `theme-${activeThemeValue}` : '',
           isScaled ? 'theme-scaled' : '',
-          fontVariables
+          poppins.variable
         )}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
