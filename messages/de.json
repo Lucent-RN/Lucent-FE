@@ -19,7 +19,7 @@
         "text": "Preise"
       },
       {
-        "text": "Richtlinie"
+        "text": "Datenschutzrichtlinie"
       }
     ],
     "download": "Herunterladen",
@@ -45,7 +45,7 @@
         "text": "Preise"
       },
       {
-        "text": "Richtlinie"
+        "text": "Datenschutzrichtlinie"
       }
     ]
   },
@@ -205,13 +205,13 @@
       "company-information": "Unternehmensinformationen",
       "company-information-description": "Unternehmensname: Lucent Inc.",
       "company-information-address": "Adresse: Ho Chi Minh City, Vietnam",
-      "company-information-email": "E-Mail: kanent.tech@gmail.com",
+      "company-information-email": "E-Mail: trungkiennguyen0310@gmail.com",
       "company-information-phone": "Telefon: +84 (84) 974 102 437",
       "represented-by": "Vertreten durch",
       "represented-by-description": "Das Unternehmen wird von seinem Chef Executive Officer vertreten.",
       "contact-for-privacy": "Kontakt für Privatsphäre",
       "contact-for-privacy-description": "Für Fragen zur Privatsphäre, kontaktieren Sie uns bitte unter:",
-      "contact-for-privacy-item-1": "E-Mail: kanent.tech@gmail.com",
+      "contact-for-privacy-item-1": "E-Mail: trungkiennguyen0310@gmail.com",
       "contact-for-privacy-item-2": "Telefon: +84 (84) 974 102 437",
       "contact-for-privacy-item-3": "Adresse: Ho Chi Minh City, Vietnam",
       "regulatory-authority": "Regulierungsbehörde",
@@ -251,7 +251,7 @@
       "your-rights-item-5": "Datenportabilität",
       "contact-us": "Kontaktiere uns",
       "contact-us-description": "Für Fragen zur Datenschutzrichtlinie, kontaktieren Sie uns bitte unter:",
-      "contact-us-item-1": "E-Mail: kanent.tech@gmail.com",
+      "contact-us-item-1": "E-Mail: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Telefon: +84 (84) 974 102 437",
       "contact-us-item-3": "Adresse: Ho Chi Minh City, Vietnam"
     }

@@ -6,7 +6,7 @@ import { policyLocalizeStrings } from '@/i18n/localize-strings';
 import { FileText, Info, Shield } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SectionCard from '../atoms/section-card';
 import ImprintContent from '../organisms/imprint-content';
 import PrivacyPolicyContent from '../organisms/privacy-policy-content';
@@ -38,7 +38,36 @@ const PolicyPage = () => {
     }
   };
 
-  const activePolicy = policies[activeSection];
+  const handleScrollToSection = (section: PolicySection) => {
+    setActiveSection(section);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const offsets = policySections.map((sec) => {
+        const el = document.getElementById(sec);
+        return {
+          section: sec,
+          top: el ? el.offsetTop - 150 : 0
+        };
+      });
+
+      for (let i = offsets.length - 1; i >= 0; i--) {
+        if (scrollY >= offsets[i].top) {
+          setActiveSection(offsets[i].section);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <Container className='relative min-h-screen overflow-hidden px-4 pt-24 pb-24 sm:px-6 sm:pt-28 md:px-10 md:pt-36 lg:px-12'>
@@ -56,7 +85,7 @@ const PolicyPage = () => {
           transition={{ duration: 0.5 }}
           className='from-background via-background/70 to-background/40 relative overflow-hidden rounded-[32px] border border-white/10 bg-linear-to-br p-8 text-center shadow-[0_25px_70px_rgba(15,23,42,0.18)] sm:p-10'
         >
-          <div className=',transparent_55%)] pointer-events-none absolute inset-0 opacity-70' />
+          <div className='pointer-events-none absolute inset-0 opacity-70' />
           <div className='relative space-y-6'>
             <motion.h1
               initial={{ opacity: 0, y: 14 }}
@@ -78,12 +107,13 @@ const PolicyPage = () => {
 
             <div className='text-foreground-accent flex flex-wrap justify-center gap-3 text-xs tracking-[0.35em] uppercase'>
               {policySections.map((section) => (
-                <span
+                <button
                   key={section}
-                  className='rounded-full border border-white/20 px-4 py-2 text-[11px]'
+                  onClick={() => handleScrollToSection(section)}
+                  className='rounded-full border border-white/20 px-4 py-2 text-[11px] hover:border-white/40 transition-colors'
                 >
                   {policies[section].title}
-                </span>
+                </button>
               ))}
             </div>
           </div>
@@ -100,40 +130,82 @@ const PolicyPage = () => {
                 key={section}
                 section={section}
                 isActive={activeSection === section}
-                onSectionClick={setActiveSection}
+                onSectionClick={handleScrollToSection}
               />
             ))}
           </aside>
 
-          {/* Content Area */}
-          <motion.section
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className='relative overflow-hidden rounded-[28px] border border-white/10 bg-white/80 shadow-[0_25px_70px_rgba(15,23,42,0.15)] backdrop-blur dark:bg-white/5'
-          >
-            <div className='to-secondary/10 pointer-events-none absolute inset-0 bg-linear-to-b from-white/40 via-transparent opacity-80' />
-
-            <div className='relative'>
-              <div className='border-b border-white/10 px-6 sm:px-6 sm:py-6'>
-                <div className='mt-2 flex flex-wrap items-center justify-between gap-4'>
-                  <h2 className='text-foreground font-sans text-2xl font-semibold'>
-                    {activePolicy.title}
-                  </h2>
-                  <span className='text-foreground-accent rounded-full border border-white/20 px-4 py-2 text-xs font-medium'>
-                    {activePolicy.lastUpdated}
-                  </span>
+          {/* Content Area - All sections rendered continuously without hiding */}
+          <div className='flex flex-col gap-10'>
+            {/* Privacy Policy */}
+            <section
+              id='privacy'
+              className='scroll-mt-28 relative overflow-hidden rounded-[28px] border border-white/10 bg-white/80 shadow-[0_25px_70px_rgba(15,23,42,0.15)] backdrop-blur dark:bg-white/5'
+            >
+              <div className='to-secondary/10 pointer-events-none absolute inset-0 bg-linear-to-b from-white/40 via-transparent opacity-80' />
+              <div className='relative'>
+                <div className='border-b border-white/10 px-6 sm:px-6 sm:py-6'>
+                  <div className='mt-2 flex flex-wrap items-center justify-between gap-4'>
+                    <h2 className='text-foreground font-sans text-2xl font-semibold'>
+                      {policies.privacy.title}
+                    </h2>
+                    <span className='text-foreground-accent rounded-full border border-white/20 px-4 py-2 text-xs font-medium'>
+                      {policies.privacy.lastUpdated}
+                    </span>
+                  </div>
+                </div>
+                <div className='policy-content px-6 sm:px-6 sm:pb-10'>
+                  <PrivacyPolicyContent />
                 </div>
               </div>
+            </section>
 
-              <div className='policy-content px-6 sm:px-6 sm:pb-10'>
-                {activeSection === 'privacy' && <PrivacyPolicyContent />}
-                {activeSection === 'terms' && <TermsOfUseContent />}
-                {activeSection === 'imprint' && <ImprintContent />}
+            {/* Terms of Use */}
+            <section
+              id='terms'
+              className='scroll-mt-28 relative overflow-hidden rounded-[28px] border border-white/10 bg-white/80 shadow-[0_25px_70px_rgba(15,23,42,0.15)] backdrop-blur dark:bg-white/5'
+            >
+              <div className='to-secondary/10 pointer-events-none absolute inset-0 bg-linear-to-b from-white/40 via-transparent opacity-80' />
+              <div className='relative'>
+                <div className='border-b border-white/10 px-6 sm:px-6 sm:py-6'>
+                  <div className='mt-2 flex flex-wrap items-center justify-between gap-4'>
+                    <h2 className='text-foreground font-sans text-2xl font-semibold'>
+                      {policies.terms.title}
+                    </h2>
+                    <span className='text-foreground-accent rounded-full border border-white/20 px-4 py-2 text-xs font-medium'>
+                      {policies.terms.lastUpdated}
+                    </span>
+                  </div>
+                </div>
+                <div className='policy-content px-6 sm:px-6 sm:pb-10'>
+                  <TermsOfUseContent />
+                </div>
               </div>
-            </div>
-          </motion.section>
+            </section>
+
+            {/* Imprint */}
+            <section
+              id='imprint'
+              className='scroll-mt-28 relative overflow-hidden rounded-[28px] border border-white/10 bg-white/80 shadow-[0_25px_70px_rgba(15,23,42,0.15)] backdrop-blur dark:bg-white/5'
+            >
+              <div className='to-secondary/10 pointer-events-none absolute inset-0 bg-linear-to-b from-white/40 via-transparent opacity-80' />
+              <div className='relative'>
+                <div className='border-b border-white/10 px-6 sm:px-6 sm:py-6'>
+                  <div className='mt-2 flex flex-wrap items-center justify-between gap-4'>
+                    <h2 className='text-foreground font-sans text-2xl font-semibold'>
+                      {policies.imprint.title}
+                    </h2>
+                    <span className='text-foreground-accent rounded-full border border-white/20 px-4 py-2 text-xs font-medium'>
+                      {policies.imprint.lastUpdated}
+                    </span>
+                  </div>
+                </div>
+                <div className='policy-content px-6 sm:px-6 sm:pb-10'>
+                  <ImprintContent />
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
       <CTA isShowingButtons={false} />

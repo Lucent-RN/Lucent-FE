@@ -27,7 +27,7 @@ const ImprintContent = () => {
             {t(policyLocalizeStrings.imprintContent.companyInformationAddress)}
           </p>
           <p>
-            <a href='mailto:contact@lucent.app' className='text-primary'>
+            <a href='mailto:trungkiennguyen0310@gmail.com' className='text-primary'>
               {t(policyLocalizeStrings.imprintContent.companyInformationEmail)}
             </a>
           </p>
@@ -54,7 +54,7 @@ const ImprintContent = () => {
               policyLocalizeStrings.imprintContent.contactForPrivacyDescription
             )}
             :{' '}
-            <a href='mailto:privacy@lucent.app' className='text-primary'>
+            <a href='mailto:trungkiennguyen0310@gmail.com' className='text-primary'>
               {t(policyLocalizeStrings.imprintContent.contactForPrivacyItem1)}
             </a>
           </p>

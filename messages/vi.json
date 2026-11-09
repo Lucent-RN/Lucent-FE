@@ -18,7 +18,7 @@
         "text": "Giá cả"
       },
       {
-        "text": "Chính sách"
+        "text": "Chính sách bảo mật"
       }
     ],
     "download": "Tải về",
@@ -44,7 +44,7 @@
         "text": "Giá cả"
       },
       {
-        "text": "Chính sách"
+        "text": "Chính sách bảo mật"
       }
     ]
   },
@@ -204,13 +204,13 @@
       "company-information": "Thông tin công ty",
       "company-information-description": "Tên công ty: Lucent Inc.",
       "company-information-address": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam",
-      "company-information-email": "Email: kanent.tech@gmail.com",
+      "company-information-email": "Email: trungkiennguyen0310@gmail.com",
       "company-information-phone": "Điện thoại: +84 (84) 974 102 437",
       "represented-by": "Represented By",
       "represented-by-description": "Công ty được đại diện bởi Giám đốc Thực hiện.",
       "contact-for-privacy": "Liên hệ cho Quyền riêng tư",
       "contact-for-privacy-description": "Đối với các câu hỏi liên quan đến quyền riêng tư, vui lòng liên hệ:",
-      "contact-for-privacy-item-1": "Email: kanent.tech@gmail.com",
+      "contact-for-privacy-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-for-privacy-item-2": "Điện thoại: +84 (84) 974 102 437",
       "contact-for-privacy-item-3": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam",
       "regulatory-authority": "Cơ quan điều chỉnh",
@@ -250,7 +250,7 @@
       "your-rights-item-5": "Dữ liệu di động",
       "contact-us": "Liên hệ chúng tôi",
       "contact-us-description": "Đối với các câu hỏi liên quan đến quyền riêng tư, vui lòng liên hệ:",
-      "contact-us-item-1": "Email: kanent.tech@gmail.com",
+      "contact-us-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Điện thoại: +84 (84) 974 102 437",
       "contact-us-item-3": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam"
     }

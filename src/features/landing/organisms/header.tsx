@@ -40,7 +40,11 @@ const Header: React.FC = () => {
   const menuItems: IMenuItem[] = localizedMenuItems.map((item, index) => ({
     text: item.text,
     url:
-      index === 0 ? '/home#features' : index === 1 ? '/home#pricing' : '/policy'
+      index === 0
+        ? '#features'
+        : index === 1
+          ? '#pricing'
+          : 'https://lucent-app.info/en/policy'
   }));
 
   useEffect(() => {

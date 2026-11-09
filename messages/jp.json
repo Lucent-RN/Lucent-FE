@@ -19,7 +19,7 @@
         "text": "価格"
       },
       {
-        "text": "ポリシー"
+        "text": "プライバシーポリシー"
       }
     ],
     "download": "ダウンロード",
@@ -45,7 +45,7 @@
         "text": "価格"
       },
       {
-        "text": "ポリシー"
+        "text": "プライバシーポリシー"
       }
     ]
   },
@@ -205,13 +205,13 @@
       "company-information": "会社情報",
       "company-information-description": "会社名: Lucent",
       "company-information-address": "住所: Ho Chi Minh City, Vietnam",
-      "company-information-email": "メール: kanent.tech@gmail.com",
+      "company-information-email": "メール: trungkiennguyen0310@gmail.com",
       "company-information-phone": "電話: +84 (84) 974 102 437",
       "represented-by": "代表者",
       "represented-by-description": "会社はその最高経営責任者によって代表されています。",
       "contact-for-privacy": "プライバシーに関するお問い合わせ",
       "contact-for-privacy-description": "プライバシーに関するお問い合わせは、以下にお問い合わせください:",
-      "contact-for-privacy-item-1": "メール: kanent.tech@gmail.com",
+      "contact-for-privacy-item-1": "メール: trungkiennguyen0310@gmail.com",
       "contact-for-privacy-item-2": "電話: +84 (84) 974 102 437",
       "contact-for-privacy-item-3": "住所: Ho Chi Minh City, Vietnam",
       "regulatory-authority": "規制機関",
@@ -251,7 +251,7 @@
       "your-rights-item-5": "データの携帯性",
       "contact-us": "お問い合わせ",
       "contact-us-description": "プライバシー関連のお問い合わせは、以下にお問い合わせください:",
-      "contact-us-item-1": "メール: kanent.tech@gmail.com",
+      "contact-us-item-1": "メール: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "電話: +84 (84) 974 102 437",
       "contact-us-item-3": "住所: Ho Chi Minh City, Vietnam"
     }

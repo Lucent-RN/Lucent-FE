@@ -24,9 +24,14 @@ const Footer: React.FC = () => {
       .raw(landingLocalizeStrings.footer.quick_links)
       .map((link: { text: string }, index: number) => ({
         text: link.text,
-        url: index === 0 ? '#features' : index === 1 ? '#pricing' : '/policy'
+        url:
+          index === 0
+            ? '#features'
+            : index === 1
+              ? '#pricing'
+              : 'https://lucent-app.info/en/policy'
       })),
-    email: 'kanent.tech@gmail.com',
+    email: 'trungkiennguyen0310@gmail.com',
     telephone: '+84 974 102 437',
     socials: {
       github: 'https://github.com/Lucent-RN',
@@ -69,9 +74,9 @@ const Footer: React.FC = () => {
           <ul className='text-foreground-accent'>
             {footerDetails.quickLinks.map((link) => (
               <li key={link.text} className='mb-2'>
-                <Link href={link.url} className='hover:text-foreground'>
+                <a href={link.url} className='hover:text-foreground'>
                   {link.text}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
