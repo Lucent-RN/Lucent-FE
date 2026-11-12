@@ -1,71 +1,100 @@
+import {
+  IconCalendarEvent,
+  IconSparkles,
+  IconUsers
+} from '@tabler/icons-react';
+import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
+import { OrbitLogo } from '@/components/brand/orbit-logo';
 import { buttonVariants } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
+import { isSupabaseConfigured } from '@/lib/supabase/env';
 import { cn } from '@/lib/utils';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import GoogleSignInButton from '../atoms/google-sign-in-button';
 
-export const metadata: Metadata = {
-  title: 'Authentication',
-  description: 'Authentication forms built using the components.'
-};
+export default async function SignInViewPage({ error }: { error?: string }) {
+  const t = await getTranslations('signin');
 
-export default function SignInViewPage() {
   return (
-    <div className='relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
-      <Link
-        href='/examples/authentication'
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute top-4 right-4 hidden md:top-8 md:right-8'
-        )}
-      >
-        Login
-      </Link>
-      <div className='bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r'>
-        <div className='absolute inset-0 bg-zinc-900' />
-        <div className='relative z-20 flex items-center text-lg font-medium'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            className='mr-2 h-6 w-6'
-          >
-            <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
-          </svg>
-          Logo
+    <div className='relative grid min-h-screen lg:grid-cols-2'>
+      {/* brand panel: always the dark "space" look, in both themes */}
+      <div className='dark relative hidden flex-col justify-between overflow-hidden bg-[#041e29] p-10 text-[#e4f7fb] lg:flex'>
+        <div className='cosmic-sky absolute inset-0' />
+        <div className='cosmic-stars absolute inset-0 opacity-80' />
+        <div className='cosmic-stars cosmic-stars-twinkle absolute inset-0' />
+        <div className='relative flex items-center gap-3 text-lg font-semibold'>
+          <OrbitLogo size={36} /> Lucent
         </div>
-        <div className='relative z-20 mt-auto'>
-          <blockquote className='space-y-2'>
-            <p className='text-lg'>
-              &ldquo;This starter template has saved me countless hours of work
-              and helped me deliver projects to my clients faster than ever
-              before.&rdquo;
-            </p>
-            <footer className='text-sm'>Random Dude</footer>
-          </blockquote>
+        <div className='relative space-y-6'>
+          <OrbitLogo
+            size={168}
+            className='drop-shadow-[0_0_40px_rgba(34,211,238,0.35)]'
+          />
+          <p className='text-sm font-semibold tracking-[0.3em] text-[#a5e3f4] uppercase'>
+            {t('tagline')}
+          </p>
+          <h2 className='max-w-md text-3xl leading-tight font-semibold'>
+            {t('hero')}
+          </h2>
+          <ul className='space-y-2 text-sm text-[#a5e3f4]'>
+            <li className='flex items-center gap-2'>
+              <IconCalendarEvent className='size-4' /> Google + Apple calendars,
+              merged
+            </li>
+            <li className='flex items-center gap-2'>
+              <IconUsers className='size-4' /> Connect as many accounts as you
+              like
+            </li>
+            <li className='flex items-center gap-2'>
+              <IconSparkles className='size-4' /> An assistant that finds the
+              free time for you
+            </li>
+          </ul>
         </div>
+        <p className='relative text-xs text-[#a5e3f4]/70'>© Lucent</p>
       </div>
-      <div className='flex h-full items-center justify-center p-4 lg:p-8'>
-        <div className='flex w-full max-w-md flex-col items-center justify-center space-y-6'>
-          <p className='text-muted-foreground px-8 text-center text-sm'>
-            By clicking continue, you agree to our{' '}
-            <Link
-              href='/terms'
-              className='hover:text-primary underline underline-offset-4'
+
+      <div className='flex items-center justify-center p-6 lg:p-10'>
+        <div className='w-full max-w-sm space-y-6'>
+          <div className='flex flex-col items-center gap-3 text-center lg:items-start lg:text-left'>
+            <OrbitLogo size={56} className='lg:hidden' />
+            <h1 className='text-2xl font-semibold tracking-tight'>
+              {t('title')}
+            </h1>
+            <p className='text-muted-foreground text-sm'>{t('subtitle')}</p>
+          </div>
+
+          {error && (
+            <p
+              role='alert'
+              className='border-destructive/40 bg-destructive/5 text-destructive rounded-lg border px-3 py-2 text-sm'
             >
-              Terms of Service
-            </Link>{' '}
-            and{' '}
+              {t('error')}
+            </p>
+          )}
+          {!isSupabaseConfigured && (
+            <p className='bg-muted text-muted-foreground rounded-lg px-3 py-2 text-sm'>
+              {t('notConfigured')}
+            </p>
+          )}
+
+          <div className='space-y-3'>
+            <Suspense fallback={null}>
+              <GoogleSignInButton />
+            </Suspense>
             <Link
-              href='/privacy'
-              className='hover:text-primary underline underline-offset-4'
+              href='/dashboard/meet?demo=1'
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'h-11 w-full'
+              )}
             >
-              Privacy Policy
+              {t('demo')}
             </Link>
-            .
+          </div>
+
+          <p className='text-muted-foreground text-center text-xs lg:text-left'>
+            {t('terms')}
           </p>
         </div>
       </div>

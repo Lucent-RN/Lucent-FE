@@ -46,3 +46,6 @@ node_modules
 build
 dist
 ico
+
+# generated from LucentMeet (yarn meet:sync)
+src/features/meet/core

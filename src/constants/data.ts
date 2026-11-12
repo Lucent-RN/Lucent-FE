@@ -14,20 +14,41 @@ export type Product = {
 //Info: The following data is used for the sidebar navigation and Cmd K bar.
 export const navItems: NavItem[] = [
   {
-    title: 'Dashboard',
+    title: 'LucentMeet',
+    url: '/dashboard/meet',
+    icon: 'dashboard',
+    isActive: false,
+    shortcut: ['m', 'm'],
+    items: []
+  },
+  {
+    title: 'AI Assistant',
+    url: '/dashboard/meet/assistant',
+    icon: 'post',
+    shortcut: ['a', 'a'],
+    items: []
+  },
+  {
+    title: 'Accounts',
+    url: '/dashboard/meet/accounts',
+    icon: 'user',
+    shortcut: ['c', 'c'],
+    items: []
+  },
+  {
+    title: 'Overview',
     url: '/dashboard/overview',
     icon: 'dashboard',
     isActive: false,
     shortcut: ['d', 'd'],
-    items: [] // Empty array as there are no child items for Dashboard
+    items: []
   },
   {
     title: 'Kanban',
     url: '/dashboard/kanban',
     icon: 'kanban',
     shortcut: ['k', 'k'],
-    isActive: false,
-    items: [] // No child items
+    items: []
   }
 ];
 

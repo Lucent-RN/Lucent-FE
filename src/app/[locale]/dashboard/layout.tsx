@@ -1,3 +1,4 @@
+import { CosmicSky } from '@/components/brand/cosmic-sky';
 import KBar from '@/components/kbar';
 import AppSidebar from '@/components/layout/app-sidebar';
 import Header from '@/components/layout/header';
@@ -6,8 +7,8 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn Dashboard Starter',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: 'Lucent',
+  description: 'Your focus and calendars, in one place'
 };
 
 export default async function DashboardLayout({
@@ -17,12 +18,14 @@ export default async function DashboardLayout({
 }) {
   // Persisting the sidebar state in the cookie.
   const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true';
+  // open on the first visit; afterwards respect the user's choice
+  const defaultOpen = cookieStore.get('sidebar_state')?.value !== 'false';
   return (
     <KBar>
       <SidebarProvider defaultOpen={defaultOpen}>
+        <CosmicSky />
         <AppSidebar />
-        <SidebarInset>
+        <SidebarInset className='bg-transparent'>
           <Header />
           {/* page main content */}
           {children}

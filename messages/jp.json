@@ -9,7 +9,6 @@
       "google_play": "Google Play"
     }
   },
-
   "header": {
     "menu_items": [
       {
@@ -166,7 +165,6 @@
       ]
     }
   },
-
   "privacy-policy-page": {
     "title": "プライバシーポリシー",
     "last-updated": "最終更新日: 2025年1月",
@@ -254,6 +252,132 @@
       "contact-us-item-1": "メール: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "電話: +84 (84) 974 102 437",
       "contact-us-item-3": "住所: Ho Chi Minh City, Vietnam"
+    }
+  },
+  "site": {
+    "nav": {
+      "features": "機能",
+      "screens": "画面",
+      "meet": "LucentMeet",
+      "lucent": "Lucent",
+      "how": "使い方",
+      "privacy": "プライバシーポリシー",
+      "openWeb": "Webで開く",
+      "download": "ダウンロード"
+    },
+    "lucent": {
+      "eyebrow": "ポモドーロタイマー",
+      "title": "集中を、軌道に乗せて。",
+      "subtitle": "タスクを選んで再生を押すだけ。小さな惑星があなたの時間を刻みます。穏やかで美しく、邪魔のない時間を。",
+      "featuresTitle": "集中の流れを守るために",
+      "features": [
+        {
+          "title": "軌道タイマー",
+          "text": "軌道をドラッグしてセッションを設定。光る球体が時間とともに進みます。"
+        },
+        {
+          "title": "フォーカス空間",
+          "text": "再生を押すと画面が深い宇宙に。余計なことは何も考えなくて大丈夫。"
+        },
+        {
+          "title": "いつも目の前に",
+          "text": "Live Activity、Dynamic Island、ウィジェットでロック画面にセッションを表示。"
+        },
+        {
+          "title": "あなたの進捗",
+          "text": "統計、連続記録、ToDoでこれまでの歩みを確認。"
+        }
+      ],
+      "screensTitle": "もっと穏やかな働き方",
+      "screensSubtitle": "3つの画面、ひとつの考え方：見える時間。",
+      "screens": [
+        {
+          "title": "軌道を設定",
+          "text": "ひとつの惑星、ひとつのタスク、明確なセッション。"
+        },
+        {
+          "title": "集中モードへ",
+          "text": "注意力を守る宇宙空間。"
+        },
+        {
+          "title": "見失わない",
+          "text": "セッションはロック画面にも。"
+        }
+      ],
+      "ctaTitle": "最初の軌道を始めよう",
+      "ctaText": "iPhoneとAndroidで無料ダウンロード。"
+    },
+    "meet": {
+      "eyebrow": "スマートカレンダー",
+      "title": "すべてのカレンダーを、ひとつの穏やかなタイムラインに。",
+      "subtitle": "GoogleとAppleのカレンダーを統合し、予定の重複を事前に検知。AIアシスタントが空き時間を探します。",
+      "demo": "デモを試す",
+      "soon": "iPhone・Androidアプリは近日公開です。",
+      "featuresTitle": "すべてをひとつの場所に",
+      "features": [
+        {
+          "title": "ひとつのタイムライン",
+          "text": "使っているすべてのカレンダーを、アジェンダ・週・月で一括表示。"
+        },
+        {
+          "title": "重複レーダー",
+          "text": "重複、間隔の近すぎる会議、勤務時間外を保存前に警告。"
+        },
+        {
+          "title": "AIアシスタント",
+          "text": "空き時間や新しい予定を相談。提案を確認して確定します。"
+        },
+        {
+          "title": "アカウントは何個でも",
+          "text": "Googleアカウントをいつでも追加。ログインアカウントには影響しません。"
+        }
+      ],
+      "howTitle": "使い方",
+      "steps": [
+        {
+          "title": "接続",
+          "text": "ログインしてカレンダーを追加。"
+        },
+        {
+          "title": "すべてを確認",
+          "text": "すべての予定と重複をひとつのタイムラインで。"
+        },
+        {
+          "title": "AIで計画",
+          "text": "普通の言葉で頼んで、確認するだけ。"
+        }
+      ],
+      "screensTitle": "安心して計画する",
+      "screens": [
+        {
+          "title": "今日をひと目で",
+          "text": "アカウントごとに色分け。"
+        },
+        {
+          "title": "保存前に重複を確認",
+          "text": "スマホでもWebでも同じルール。"
+        },
+        {
+          "title": "聞いて、確認して",
+          "text": "あなたが承認するまで何も変わりません。"
+        }
+      ],
+      "ctaTitle": "1週間の予定を、ひとつの場所で",
+      "ctaText": "ブラウザでLucentMeetを開くだけ。インストール不要。"
+    },
+    "store": {
+      "appStore": "近日公開",
+      "play": "近日公開"
+    },
+    "download": {
+      "title": "Lucentを入手",
+      "text": "iPhoneとAndroid向けの穏やかなポモドーロタイマー。",
+      "scan": "スキャンしてiPhone・iPadでダウンロード",
+      "available": "対応デバイス"
+    },
+    "footer": {
+      "lucent": "LucentはiPhoneとAndroid向けの穏やかなポモドーロタイマーです。",
+      "meet": "LucentMeetはすべてのカレンダーをひとつの穏やかなタイムラインに統合します。"
     }
   }
 }

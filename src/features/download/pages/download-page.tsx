@@ -5,6 +5,7 @@ import Container from '@/features/landing/atoms/container';
 import PlayStoreButton from '@/features/landing/atoms/play-store-button';
 import CTA from '@/features/landing/moleculus/cta';
 import { Monitor, Smartphone, TabletSmartphone, Watch } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React from 'react';
 
@@ -16,16 +17,15 @@ const DEVICE_ICONS = [
 ];
 
 const DownloadPage = () => {
+  const t = useTranslations('site.download');
   return (
     <Container className='flex min-h-screen flex-col items-center justify-center px-6 pt-30 sm:px-8'>
       <div className='mx-auto w-full max-w-4xl rounded-[32px] p-8 text-center shadow-[0_35px_80px_rgba(15,23,42,0.1)]'>
         <h1 className='text-foreground mt-6 font-sans text-4xl font-semibold sm:text-5xl'>
-          Stay focused, reduce stress, and get more done effortlessly.
+          {t('title')}
         </h1>
         <p className='text-foreground-accent mx-auto mt-4 max-w-2xl text-base sm:text-lg'>
-          Stay focused, reduce stress, and get more done effortlessly. Flow
-          keeps you on track with clarity—no subscriptions, just better
-          productivity whenever you need it.
+          {t('text')}
         </p>
 
         <div className='mt-10 flex flex-col md:flex-row md:items-stretch md:justify-center md:text-left'>
@@ -33,7 +33,7 @@ const DownloadPage = () => {
             <AppStoreButton size='lg' />
             <PlayStoreButton size='lg' />
             <div className='text-foreground-accent mt-4 space-y-3 text-sm'>
-              <p className='text-foreground font-semibold'>Available on</p>
+              <p className='text-foreground font-semibold'>{t('available')}</p>
               <div className='flex flex-wrap items-center justify-center gap-5 md:justify-start'>
                 {DEVICE_ICONS.map(({ Icon, label }) => (
                   <div
@@ -57,9 +57,7 @@ const DownloadPage = () => {
               className='mx-auto rounded-2xl border border-gray-200 bg-white p-2 shadow-inner'
               priority
             />
-            <p className='text-foreground-accent text-sm'>
-              Scan to download on your iPhone or iPad
-            </p>
+            <p className='text-foreground-accent text-sm'>{t('scan')}</p>
             <p className='text-foreground/70 text-xs'>
               v2.9.0 · iOS 17+ / macOS Sonoma
             </p>

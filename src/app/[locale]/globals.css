@@ -251,3 +251,99 @@
 ::view-transition-new(root) {
   animation: reveal 0.4s ease-in-out forwards;
 }
+
+/* =====================================================================================
+   Lucent "cosmic" concept — same palette as the mobile apps (cosmic_25 … cosmic_950).
+   Overrides the neutral starter tokens above; cyan brand colours are unchanged.
+===================================================================================== */
+:root {
+  --background: #f2fbfd;
+  --foreground: #062c3b;
+  --card: #ffffff;
+  --card-foreground: #062c3b;
+  --popover: #ffffff;
+  --popover-foreground: #062c3b;
+  --primary-foreground: #ffffff;
+  --secondary: #e4f7fb;
+  --secondary-foreground: #09384b;
+  --muted: #e4f7fb;
+  --muted-foreground: #3d7a8e;
+  --accent: #cbeff8;
+  --accent-foreground: #0d4a61;
+  --border: #cbeff8;
+  --input: #cbeff8;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #062c3b;
+  --sidebar-accent: #e4f7fb;
+  --sidebar-accent-foreground: #0d4a61;
+  --sidebar-border: #cbeff8;
+}
+
+.dark {
+  --background: #041e29;
+  --foreground: #e4f7fb;
+  --card: #062c3b;
+  --card-foreground: #e4f7fb;
+  --popover: #09384b;
+  --popover-foreground: #e4f7fb;
+  --primary-foreground: #041e29;
+  --secondary: #09384b;
+  --secondary-foreground: #e4f7fb;
+  --muted: #09384b;
+  --muted-foreground: #8fc3d3;
+  --accent: #0d4a61;
+  --accent-foreground: #e4f7fb;
+  --border: rgb(165 227 244 / 14%);
+  --input: rgb(165 227 244 / 20%);
+  --sidebar: #031821;
+  --sidebar-foreground: #e4f7fb;
+  --sidebar-accent: #09384b;
+  --sidebar-accent-foreground: #e4f7fb;
+  --sidebar-border: rgb(165 227 244 / 12%);
+}
+
+/* Deep-space backdrop of the dashboard (see components/brand/cosmic-sky.tsx). Pure CSS. */
+.cosmic-sky {
+  background-image:
+    radial-gradient(60rem 38rem at 10% -12%, rgb(34 211 238 / 0.14), transparent 62%),
+    radial-gradient(44rem 30rem at 100% 8%, rgb(8 145 178 / 0.1), transparent 62%);
+}
+
+.dark .cosmic-sky {
+  background-image:
+    radial-gradient(60rem 40rem at 12% -10%, rgb(139 92 246 / 0.24), transparent 60%),
+    radial-gradient(50rem 36rem at 100% 34%, rgb(34 211 238 / 0.15), transparent 60%),
+    radial-gradient(46rem 30rem at 18% 112%, rgb(217 70 239 / 0.13), transparent 60%);
+}
+
+.cosmic-stars {
+  background-image:
+    radial-gradient(1px 1px at 18px 26px, rgb(255 255 255 / 0.75), transparent),
+    radial-gradient(1.2px 1.2px at 92px 140px, rgb(207 247 255 / 0.7), transparent),
+    radial-gradient(1px 1px at 160px 60px, rgb(233 213 255 / 0.65), transparent),
+    radial-gradient(1.4px 1.4px at 210px 190px, rgb(255 255 255 / 0.6), transparent),
+    radial-gradient(1px 1px at 60px 210px, rgb(165 243 252 / 0.6), transparent);
+  background-size: 260px 260px;
+}
+
+@keyframes cosmic-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.cosmic-stars-twinkle {
+  animation: cosmic-twinkle 4.5s ease-in-out infinite;
+  background-position: 130px 90px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-stars-twinkle {
+    animation: none;
+    opacity: 0.7;
+  }
+}

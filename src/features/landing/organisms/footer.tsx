@@ -3,15 +3,21 @@ import React from 'react';
 
 import { landingLocalizeStrings } from '@/i18n/localize-strings';
 import { getPlatformIconByName } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { OrbitLogo } from '@/components/brand/orbit-logo';
 import Image from 'next/image';
 import AppStoreButton from '../atoms/app-store-button';
 import PlayStoreButton from '../atoms/play-store-button';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem, ISocials } from '../types';
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ product?: 'lucent' | 'meet' }> = ({
+  product = 'lucent'
+}) => {
   const t = useTranslations(landingLocalizeStrings.footer.getLocal);
+  const nav = useTranslations('site.nav');
+  const foot = useTranslations('site.footer');
+  const locale = useLocale();
   const footerDetails: {
     subheading: string;
     quickLinks: IMenuItem[];
@@ -19,18 +25,21 @@ const Footer: React.FC = () => {
     telephone: string;
     socials: ISocials;
   } = {
-    subheading: t(landingLocalizeStrings.footer.subheading),
-    quickLinks: t
-      .raw(landingLocalizeStrings.footer.quick_links)
-      .map((link: { text: string }, index: number) => ({
-        text: link.text,
-        url:
-          index === 0
-            ? '#features'
-            : index === 1
-              ? '#pricing'
-              : 'https://lucent-app.info/en/policy'
-      })),
+    subheading: foot(product),
+    quickLinks:
+      product === 'meet'
+        ? [
+            { text: nav('features'), url: '#features' },
+            { text: nav('how'), url: '#how' },
+            { text: nav('lucent'), url: `/${locale}` },
+            { text: nav('privacy'), url: 'https://lucent-app.info/en/policy' }
+          ]
+        : [
+            { text: nav('features'), url: '#features' },
+            { text: nav('screens'), url: '#screens' },
+            { text: nav('meet'), url: `/${locale}/meet` },
+            { text: nav('privacy'), url: 'https://lucent-app.info/en/policy' }
+          ],
     email: 'trungkiennguyen0310@gmail.com',
     telephone: '+84 974 102 437',
     socials: {
@@ -47,24 +56,18 @@ const Footer: React.FC = () => {
         <div>
           <div className='flex items-center gap-2'>
             <Link href='/' className='flex items-center gap-2'>
-              <Image
-                src='/assets/app-icon.png'
-                alt='logo'
-                width={60}
-                height={60}
-                className='h-10 w-10 object-contain md:h-14 md:w-14'
-              />
+              <OrbitLogo size={44} />
             </Link>
             <span className='text-foreground font-sans text-lg font-semibold'>
-              {siteDetails.siteName}
+              {product === 'meet' ? 'LucentMeet' : siteDetails.siteName}
             </span>
           </div>
           <p className='text-foreground-accent text-base'>
             {footerDetails.subheading}
           </p>
           <div className='mt-4 flex flex-row gap-2'>
-            <AppStoreButton size='md' />
-            <PlayStoreButton size='md' />
+            <AppStoreButton size='md' soon={product === 'meet'} />
+            <PlayStoreButton size='md' soon={product === 'meet'} />
           </div>
         </div>
         <div>
@@ -125,8 +128,9 @@ const Footer: React.FC = () => {
       </div>
       <div className='text-foreground-accent mt-8 px-6 md:text-center'>
         <p>
-          Copyright &copy; {new Date().getFullYear()} {siteDetails.siteName}.
-          All rights reserved.
+          Copyright &copy; {new Date().getFullYear()}{' '}
+          {product === 'meet' ? 'LucentMeet' : siteDetails.siteName}. All rights
+          reserved.
         </p>
         <p className='mt-2 text-sm text-gray-500'>
           Made with &hearts; by{' '}

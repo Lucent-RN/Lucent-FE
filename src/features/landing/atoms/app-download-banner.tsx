@@ -21,24 +21,24 @@ export default function AppDownloadBanner() {
   if (!visible) return null;
 
   return (
-    <div className='fixed bottom-0 left-0 z-50 flex w-full items-center justify-between bg-white p-3 shadow-lg'>
+    <div className='fixed bottom-0 left-0 z-50 flex w-full items-center justify-between border-t border-white/10 bg-[#062c3b] p-3 text-[#e4f7fb] shadow-lg'>
       <div className='flex items-center gap-3'>
         <Image
           src='/assets/app-icon.png'
           alt='Lucent'
           width={48}
           height={48}
-          className='rounded-xl border border-gray-200 p-1'
+          className='rounded-xl'
         />
         <div>
-          <p className='text-sm font-semibold'>Lucent – Pomodoro Focus Timer</p>
-          <p className='text-xs text-gray-500'>Stay focused, be present</p>
+          <p className='text-sm font-semibold'>Lucent</p>
+          <p className='text-xs text-[#a5e3f4]'>Focus, in orbit.</p>
         </div>
       </div>
       <div className='flex items-center gap-2'>
         <a
           href={PLAY_STORE_URL}
-          className='rounded-lg bg-green-600 px-3 py-1.5 text-sm font-medium text-white'
+          className='rounded-full bg-[#22d3ee] px-4 py-1.5 text-sm font-semibold text-[#041e29]'
           target='_blank'
           rel='noopener noreferrer'
         >
@@ -50,7 +50,7 @@ export default function AppDownloadBanner() {
             localStorage.setItem('hideLucentBanner', 'true');
           }}
         >
-          <X size={16} />
+          <X size={16} aria-label='Close' />
         </button>
       </div>
     </div>

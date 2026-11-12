@@ -9,7 +9,6 @@
       "google_play": "Google Play"
     }
   },
-
   "header": {
     "menu_items": [
       {
@@ -166,7 +165,6 @@
       ]
     }
   },
-
   "privacy-policy-page": {
     "title": "Datenschutzrichtlinie",
     "last-updated": "Letzte Aktualisierung: Januar 2025",
@@ -254,6 +252,132 @@
       "contact-us-item-1": "E-Mail: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Telefon: +84 (84) 974 102 437",
       "contact-us-item-3": "Adresse: Ho Chi Minh City, Vietnam"
+    }
+  },
+  "site": {
+    "nav": {
+      "features": "Funktionen",
+      "screens": "Screens",
+      "meet": "LucentMeet",
+      "lucent": "Lucent",
+      "how": "So funktioniert's",
+      "privacy": "Datenschutz",
+      "openWeb": "Im Web öffnen",
+      "download": "Herunterladen"
+    },
+    "lucent": {
+      "eyebrow": "Pomodoro-Timer",
+      "title": "Fokus, im Orbit.",
+      "subtitle": "Aufgabe wählen, Play drücken, und ein kleiner Planet hält deine Zeit. Ruhig, schön, ohne Ablenkung.",
+      "featuresTitle": "Gemacht, damit du im Flow bleibst",
+      "features": [
+        {
+          "title": "Orbit-Timer",
+          "text": "Ziehe den Orbit, um eine Session einzustellen, und sieh die leuchtende Kugel mit jeder Minute wandern."
+        },
+        {
+          "title": "Fokus-Raum",
+          "text": "Drücke Play und der Bildschirm wird zum tiefen Weltraum. Nichts sonst im Kopf."
+        },
+        {
+          "title": "Immer im Blick",
+          "text": "Live Activity, Dynamic Island und Widgets halten deine Session auf dem Sperrbildschirm."
+        },
+        {
+          "title": "Dein Fortschritt",
+          "text": "Statistiken, Serien und To-dos zeigen, wie weit du gekommen bist."
+        }
+      ],
+      "screensTitle": "Eine ruhigere Art zu arbeiten",
+      "screensSubtitle": "Drei Screens, eine Idee: Zeit, die du sehen kannst.",
+      "screens": [
+        {
+          "title": "Orbit einstellen",
+          "text": "Ein Planet, eine Aufgabe, eine klare Session."
+        },
+        {
+          "title": "In den Fokus",
+          "text": "Ein kosmischer Raum, der deine Aufmerksamkeit schützt."
+        },
+        {
+          "title": "Nie den Faden verlieren",
+          "text": "Deine Session lebt auf dem Sperrbildschirm."
+        }
+      ],
+      "ctaTitle": "Starte deinen ersten Orbit",
+      "ctaText": "Kostenlos für iPhone und Android."
+    },
+    "meet": {
+      "eyebrow": "Smarter Kalender",
+      "title": "Alle Kalender. Eine ruhige Timeline.",
+      "subtitle": "Führe Google- und Apple-Kalender zusammen, erkenne Konflikte rechtzeitig und lass einen KI-Assistenten Zeit finden.",
+      "demo": "Demo ausprobieren",
+      "soon": "Apps für iPhone und Android folgen bald.",
+      "featuresTitle": "Alles an einem Ort",
+      "features": [
+        {
+          "title": "Eine Timeline",
+          "text": "Alle deine Kalender in einer Agenda-, Wochen- oder Monatsansicht."
+        },
+        {
+          "title": "Konflikt-Radar",
+          "text": "Überschneidungen, zu enge Termine und Zeiten außerhalb der Arbeitszeit werden vor dem Speichern markiert."
+        },
+        {
+          "title": "KI-Assistent",
+          "text": "Frag nach freier Zeit oder einem neuen Termin. Er schlägt vor, du bestätigst."
+        },
+        {
+          "title": "So viele Konten, wie du willst",
+          "text": "Verbinde jederzeit weitere Google-Konten. Dein Login-Konto bleibt unberührt."
+        }
+      ],
+      "howTitle": "So funktioniert's",
+      "steps": [
+        {
+          "title": "Verbinden",
+          "text": "Anmelden und Kalender hinzufügen."
+        },
+        {
+          "title": "Alles sehen",
+          "text": "Eine Timeline mit allen Terminen und Konflikten."
+        },
+        {
+          "title": "Mit KI planen",
+          "text": "In normalen Worten fragen und bestätigen."
+        }
+      ],
+      "screensTitle": "Sicher planen",
+      "screens": [
+        {
+          "title": "Heute auf einen Blick",
+          "text": "Jedes Konto farblich getrennt."
+        },
+        {
+          "title": "Konflikte vor dem Speichern",
+          "text": "Dieselben Regeln auf Handy und Web."
+        },
+        {
+          "title": "Fragen, dann bestätigen",
+          "text": "Nichts ändert sich ohne dein Okay."
+        }
+      ],
+      "ctaTitle": "Plane deine Woche an einem Ort",
+      "ctaText": "Öffne LucentMeet im Browser. Keine Installation nötig."
+    },
+    "store": {
+      "appStore": "Bald verfügbar",
+      "play": "Bald verfügbar"
+    },
+    "download": {
+      "title": "Lucent laden",
+      "text": "Ein ruhiger Pomodoro-Timer für iPhone und Android.",
+      "scan": "Scannen und auf iPhone oder iPad laden",
+      "available": "Verfügbar auf"
+    },
+    "footer": {
+      "lucent": "Lucent ist ein ruhiger Pomodoro-Timer für iPhone und Android.",
+      "meet": "LucentMeet führt alle deine Kalender in einer ruhigen Timeline zusammen."
     }
   }
 }

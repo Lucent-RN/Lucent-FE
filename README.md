@@ -171,6 +171,45 @@ lucent-fe/
 - **Store links:** Configure `APP_STORE_URL` and `PLAY_STORE_URL` in `src/features/landing/constants/storeData.ts`.
 - **Assets:** Hero and section mockups live in `public/images`. Keep both `.png` and `.webp` variants for best browser support.
 
+
+## Landing pages & store screenshots
+
+- `/[locale]` — **Lucent** landing (hero, 4 ideas, 3 screens, download). `/[locale]/meet` — **LucentMeet** landing.
+  Copy lives in `messages/*.json` under `site` (en, vi, jp, de). The phone screens are drawn in HTML/SVG
+  (`src/features/showcase/`) from the same palette and orbit timer as the apps, so they never go stale like screenshots.
+- `/[locale]/store/lucent` and `/[locale]/store/meet` — store-listing screenshots rendered from those components.
+  Export them at 1290×2796 (App Store 6.9") with `yarn store:shots` (site must be running; pass
+  `node scripts/export-store-shots.mjs <baseUrl> <outDir> <locale>`). Use `next start` so the dev badge is not captured.
+- LucentMeet store badges show "Coming soon" until its app is published: set the URLs in
+  `src/features/landing/constants/storeData.ts` and drop the `soon` prop.
+
+## LucentMeet on the web (`/dashboard/meet`)
+
+The web app shows the same data as the LucentMeet phone app, from the same Supabase project:
+calendar (week / month / agenda), conflicts, event create/edit/delete with a live conflict preview,
+connected accounts, scheduling preferences and the AI assistant.
+
+| | |
+|---|---|
+| Sign-in | Google through Supabase (`/auth/sign-in`). Only profile scopes: signing in never depends on which calendars you connect. |
+| Connect calendars | `Meet → Accounts → Connect a Google account`: a separate Google OAuth code flow (`/api/meet/google/*`) handled by the `link-google-account` Edge Function. Add as many Google accounts as you like; the account you signed in with is never touched. |
+| Apple calendars | Read-only here: EventKit lives on the iPhone, so Apple accounts are connected in the app and show up on the web once synced. |
+| Demo | `/dashboard/meet?demo=1` (also used automatically when Supabase is not configured): sample data, nothing is saved. |
+
+**Setup**
+
+1. Copy `.env.example` to `.env.local` (values are the same as `LucentMeet/.env`, `EXPO_PUBLIC_*` → `NEXT_PUBLIC_*`).
+2. Supabase → Authentication → Providers → Google: set the Web client **secret**; Authentication → URL configuration: allow `http://localhost:3000/**` and your production URL.
+3. Google Cloud → the Web OAuth client → Authorized redirect URIs: add `https://<project-ref>.supabase.co/auth/v1/callback` (sign-in) and `<site>/api/meet/google/callback` (connect calendar).
+4. The Edge Functions need their secrets (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `TOKEN_ENCRYPTION_KEY`, `GEMINI_API_KEY`) — see `supabase/README.md`.
+
+**Shared code.** The conflict rules, models, row mappers, time-grid layout and assistant tools in
+`src/features/meet/core/` are *generated* from `LucentMeet/src` (single source of truth) so phone and web
+behave identically. Do not edit them: change LucentMeet, then run `yarn meet:sync` at the repo root
+(`yarn meet:check` fails when they are stale).
+
+Tests: `yarn workspace next-shadcn-dashboard-starter test`.
+
 ## 🚢 Deployment
 
 - Optimized for **Vercel** (zero-config) but also works on Netlify or Docker (see `Dockerfile`).

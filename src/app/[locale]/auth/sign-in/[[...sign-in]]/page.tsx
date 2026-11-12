@@ -2,10 +2,15 @@ import { Metadata } from 'next';
 import SignInViewPage from '@/features/auth/pages/sign-in-page';
 
 export const metadata: Metadata = {
-  title: 'Authentication | Sign In',
-  description: 'Sign In page for authentication.'
+  title: 'Sign in · Lucent',
+  description: 'Sign in to Lucent'
 };
 
-export default async function Page() {
-  return <SignInViewPage />;
+export default async function Page({
+  searchParams
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+  return <SignInViewPage error={error} />;
 }

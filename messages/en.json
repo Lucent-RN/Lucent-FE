@@ -165,7 +165,6 @@
       ]
     }
   },
-
   "privacy-policy-page": {
     "title": "Privacy Policy",
     "last-updated": "Last updated: January 2025",
@@ -253,6 +252,324 @@
       "contact-us-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Phone: +84 (84) 974 102 437",
       "contact-us-item-3": "Address: Ho Chi Minh City, Vietnam"
+    }
+  },
+  "meet": {
+    "nav": {
+      "calendar": "Calendar",
+      "assistant": "Assistant",
+      "accounts": "Accounts",
+      "settings": "Settings"
+    },
+    "title": "LucentMeet",
+    "subtitle": "All your calendars in one place",
+    "demo": {
+      "banner": "Demo mode: sample data, nothing is saved.",
+      "signIn": "Sign in"
+    },
+    "loading": "Loading your schedule…",
+    "error": {
+      "title": "Could not load your schedule",
+      "retry": "Try again"
+    },
+    "toolbar": {
+      "today": "Today",
+      "prev": "Previous",
+      "next": "Next",
+      "newEvent": "New event",
+      "sync": "Sync now",
+      "syncing": "Syncing…",
+      "agenda": "Agenda",
+      "week": "Week",
+      "month": "Month"
+    },
+    "panel": {
+      "calendars": "Calendars",
+      "conflicts": "Conflicts",
+      "noConflicts": "No conflicts. Nice and clear.",
+      "resolve": "Resolve",
+      "more": "and {count} more"
+    },
+    "conflict": {
+      "DIRECT_OVERLAP": "Overlaps another event",
+      "BUFFER_VIOLATION": "Too close to another meeting",
+      "OUTSIDE_WORKING_HOURS": "Outside your working hours",
+      "count": "{count, plural, one {# conflict} other {# conflicts}}"
+    },
+    "event": {
+      "allDay": "All day",
+      "untitled": "(No title)",
+      "location": "Location",
+      "calendar": "Calendar",
+      "showAs": "Show as",
+      "BUSY": "Busy",
+      "FREE": "Free",
+      "TENTATIVE": "Tentative",
+      "readOnly": "Read-only here. Apple and shared calendars are edited on the phone.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteTitle": "Delete this event?",
+      "deleteBody": "It will be removed from the calendar it belongs to.",
+      "cancel": "Cancel",
+      "save": "Save",
+      "saving": "Saving…",
+      "title": "Title",
+      "starts": "Starts",
+      "ends": "Ends",
+      "invalidInterval": "End must be after start",
+      "noWritable": "Connect a Google calendar to create events.",
+      "editTitle": "Edit event",
+      "newTitle": "New event",
+      "saved": "Event saved",
+      "deleted": "Event deleted",
+      "noEvents": "Nothing scheduled",
+      "more": "+{count} more",
+      "moreEvents": "{count} more"
+    },
+    "accounts": {
+      "title": "Connected accounts",
+      "subtitle": "Connect as many calendars as you like. Your sign-in account is never affected.",
+      "connectGoogle": "Connect a Google account",
+      "connected": "Connected {email}",
+      "none": "No accounts connected yet.",
+      "lastSync": "Last sync",
+      "neverSynced": "Not synced yet",
+      "disconnect": "Disconnect",
+      "disconnectTitle": "Disconnect this account?",
+      "disconnectBody": "Its events are removed from LucentMeet and access is revoked at the provider.",
+      "appleNote": "Apple Calendar accounts are connected from the iPhone app (device calendars). They appear here automatically once synced.",
+      "GOOGLE": "Google",
+      "APPLE": "Apple",
+      "needsReauth": "Re-connect needed",
+      "status": {
+        "OK": "Synced",
+        "IDLE": "Idle",
+        "SYNCING": "Syncing",
+        "ERROR": "Sync error",
+        "REVOKED": "Access revoked"
+      },
+      "errors": {
+        "cancelled": "Connection was cancelled.",
+        "state": "The request expired. Please try again.",
+        "missing_google_client": "Google web client is not configured (NEXT_PUBLIC_GOOGLE_WEB_CLIENT_ID).",
+        "link_failed": "Could not connect that account.",
+        "calendar_scope_missing": "Calendar access was not granted. Allow calendar access and try again.",
+        "reauth_required": "Google asked to re-connect this account.",
+        "provider_error": "Google could not be reached. Try again later.",
+        "server_misconfigured": "The server is missing a secret (see the Edge Function logs)."
+      },
+      "calendarCount": "{count, plural, one {# calendar} other {# calendars}}"
+    },
+    "settings": {
+      "title": "Scheduling preferences",
+      "subtitle": "The same rules the app uses to flag conflicts.",
+      "workDays": "Working days",
+      "workHours": "Working hours",
+      "from": "From",
+      "to": "To",
+      "buffer": "Buffer after meetings",
+      "bufferHint": "Meetings closer than this are flagged.",
+      "reminder": "Default reminder",
+      "minutes": "minutes",
+      "off": "Off",
+      "timezone": "Timezone",
+      "saved": "Saved",
+      "demoNote": "Demo mode: changes are not saved."
+    },
+    "assistant": {
+      "title": "AI Assistant",
+      "subtitle": "Your calendar, by conversation",
+      "placeholder": "Ask about your schedule…",
+      "send": "Send",
+      "newChat": "New chat",
+      "welcome": "How can I help with your schedule?",
+      "welcomeHint": "Ask about your day, find free time, or add events.",
+      "suggest": {
+        "today": "What's on my schedule today?",
+        "free": "Find a free 30-minute slot this week",
+        "conflicts": "Do I have any conflicts coming up?",
+        "create": "Schedule a meeting tomorrow at 2 PM"
+      },
+      "thinking": "Thinking…",
+      "activity": {
+        "checking": "Checking your calendar…",
+        "finding": "Finding free time…",
+        "conflicts": "Looking for conflicts…",
+        "drafting": "Preparing a suggestion…"
+      },
+      "proposal": {
+        "create": "New event",
+        "update": "Change event",
+        "delete": "Delete event",
+        "confirm": "Confirm",
+        "confirmDelete": "Delete",
+        "retry": "Try again",
+        "dismiss": "Dismiss",
+        "done": "Done",
+        "deleted": "Deleted",
+        "dismissed": "Dismissed",
+        "warn": "Heads up"
+      },
+      "error": {
+        "rate": "The assistant is busy right now. Try again in a moment.",
+        "setup": "The assistant is not set up yet.",
+        "network": "Can't reach the assistant. Check your connection.",
+        "generic": "Sorry, I couldn't complete that.",
+        "demo": "The assistant needs a signed-in account. Sign in to try it."
+      },
+      "retryBtn": "Try again"
+    }
+  },
+  "sidebar": {
+    "meet": "LucentMeet",
+    "lucent": "Lucent",
+    "product": "Calendar & scheduling",
+    "calendar": "Calendar",
+    "assistant": "AI Assistant",
+    "accounts": "Accounts",
+    "settings": "Settings",
+    "overview": "Overview",
+    "kanban": "Kanban",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "account": "Account",
+    "preview": "Preview"
+  },
+  "signin": {
+    "title": "Welcome to Lucent",
+    "subtitle": "Sign in to see all your calendars in one place.",
+    "google": "Continue with Google",
+    "demo": "Explore the demo",
+    "error": "Sign-in did not complete. Please try again.",
+    "notConfigured": "Supabase is not configured for this site yet (NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_KEY). You can still explore the demo.",
+    "tagline": "Focus. Plan. Meet.",
+    "hero": "One calm place for every calendar you use.",
+    "terms": "By continuing you agree to our Terms of Service and Privacy Policy."
+  },
+  "site": {
+    "nav": {
+      "features": "Features",
+      "screens": "Screens",
+      "meet": "LucentMeet",
+      "lucent": "Lucent",
+      "how": "How it works",
+      "privacy": "Privacy Policy",
+      "openWeb": "Open on the web",
+      "download": "Download"
+    },
+    "lucent": {
+      "eyebrow": "Pomodoro timer",
+      "title": "Focus, in orbit.",
+      "subtitle": "Pick a task, press play, and let a little planet keep your time. Calm, beautiful, distraction-free.",
+      "featuresTitle": "Made to keep you in flow",
+      "features": [
+        {
+          "title": "Orbit timer",
+          "text": "Drag the orbit to set a session, then watch the glowing sphere travel as minutes pass."
+        },
+        {
+          "title": "Focus space",
+          "text": "Press play and the screen turns into deep space. Nothing else on your mind."
+        },
+        {
+          "title": "Always in sight",
+          "text": "Live Activity, Dynamic Island and widgets keep your session on the lock screen."
+        },
+        {
+          "title": "Your progress",
+          "text": "Statistics, streaks and to-dos show how far you have come."
+        }
+      ],
+      "screensTitle": "A calmer way to work",
+      "screensSubtitle": "Three screens, one idea: time you can see.",
+      "screens": [
+        {
+          "title": "Set the orbit",
+          "text": "One planet, one task, one clear session."
+        },
+        {
+          "title": "Enter focus",
+          "text": "A cosmic space that protects your attention."
+        },
+        {
+          "title": "Never lose track",
+          "text": "Your session lives on the lock screen."
+        }
+      ],
+      "ctaTitle": "Start your first orbit",
+      "ctaText": "Free to download on iPhone and Android."
+    },
+    "meet": {
+      "eyebrow": "Smart calendar",
+      "title": "All your calendars. One calm timeline.",
+      "subtitle": "Merge Google and Apple calendars, catch conflicts before they happen, and let an AI assistant find the time.",
+      "demo": "Try the demo",
+      "soon": "iPhone and Android apps are coming soon.",
+      "featuresTitle": "Everything in one place",
+      "features": [
+        {
+          "title": "One timeline",
+          "text": "Every calendar you use, merged into a single agenda, week or month."
+        },
+        {
+          "title": "Conflict radar",
+          "text": "Overlaps, too-tight meetings and out-of-hours events are flagged before you save."
+        },
+        {
+          "title": "AI assistant",
+          "text": "Ask for free time or a new event. It proposes, you confirm."
+        },
+        {
+          "title": "As many accounts as you like",
+          "text": "Connect more Google accounts any time. Your sign-in account is never affected."
+        }
+      ],
+      "howTitle": "How it works",
+      "steps": [
+        {
+          "title": "Connect",
+          "text": "Sign in, then add your calendars."
+        },
+        {
+          "title": "See everything",
+          "text": "One timeline with every event and clash."
+        },
+        {
+          "title": "Plan with AI",
+          "text": "Ask in plain words and confirm."
+        }
+      ],
+      "screensTitle": "Plan with confidence",
+      "screens": [
+        {
+          "title": "Today at a glance",
+          "text": "Every account, colour-coded."
+        },
+        {
+          "title": "Conflicts, before you save",
+          "text": "The same rules on phone and web."
+        },
+        {
+          "title": "Ask, then confirm",
+          "text": "Nothing changes until you say so."
+        }
+      ],
+      "ctaTitle": "Plan your week in one place",
+      "ctaText": "Open LucentMeet in your browser. No install needed."
+    },
+    "store": {
+      "appStore": "Coming soon",
+      "play": "Coming soon"
+    },
+    "download": {
+      "title": "Get Lucent",
+      "text": "A calm Pomodoro timer for iPhone and Android.",
+      "scan": "Scan to download on your iPhone or iPad",
+      "available": "Available on"
+    },
+    "footer": {
+      "lucent": "Lucent is a calm Pomodoro timer for iPhone and Android.",
+      "meet": "LucentMeet merges all your calendars into one calm timeline."
     }
   }
 }

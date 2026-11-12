@@ -2,9 +2,9 @@ export const siteDetails = {
   siteName: 'Lucent',
   siteUrl: 'https://lucent-omega.vercel.app/',
   metadata: {
-    title: 'Lucent | A simple and effective Pomodoro timer',
+    title: 'Lucent | Focus, in orbit.',
     description:
-      'Lucent helps you build mindful focus habits through structured Pomodoro sessions — bringing balance, clarity, and lasting productivity to your day.'
+      'A calm Pomodoro timer with a universe around it. Pick a task, press play, and let a little planet keep your time.'
   },
   language: 'en-us',
   locale: 'en-US',

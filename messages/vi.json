@@ -165,7 +165,6 @@
       ]
     }
   },
-
   "privacy-policy-page": {
     "title": "Chính sách bảo mật",
     "last-updated": "Cập nhật lần cuối: Tháng 1 năm 2025",
@@ -253,6 +252,324 @@
       "contact-us-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Điện thoại: +84 (84) 974 102 437",
       "contact-us-item-3": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam"
+    }
+  },
+  "meet": {
+    "nav": {
+      "calendar": "Lịch",
+      "assistant": "Trợ lý",
+      "accounts": "Tài khoản",
+      "settings": "Cài đặt"
+    },
+    "title": "LucentMeet",
+    "subtitle": "Mọi lịch của bạn trong một nơi",
+    "demo": {
+      "banner": "Chế độ demo: dữ liệu mẫu, không có gì được lưu.",
+      "signIn": "Đăng nhập"
+    },
+    "loading": "Đang tải lịch của bạn…",
+    "error": {
+      "title": "Không tải được lịch của bạn",
+      "retry": "Thử lại"
+    },
+    "toolbar": {
+      "today": "Hôm nay",
+      "prev": "Trước",
+      "next": "Sau",
+      "newEvent": "Sự kiện mới",
+      "sync": "Đồng bộ ngay",
+      "syncing": "Đang đồng bộ…",
+      "agenda": "Danh sách",
+      "week": "Tuần",
+      "month": "Tháng"
+    },
+    "panel": {
+      "calendars": "Lịch",
+      "conflicts": "Xung đột",
+      "noConflicts": "Không có xung đột. Rất gọn gàng.",
+      "resolve": "Đã xử lý",
+      "more": "và {count} mục nữa"
+    },
+    "conflict": {
+      "DIRECT_OVERLAP": "Trùng với sự kiện khác",
+      "BUFFER_VIOLATION": "Quá sát cuộc họp khác",
+      "OUTSIDE_WORKING_HOURS": "Ngoài giờ làm việc",
+      "count": "{count} xung đột"
+    },
+    "event": {
+      "allDay": "Cả ngày",
+      "untitled": "(Không tiêu đề)",
+      "location": "Địa điểm",
+      "calendar": "Lịch",
+      "showAs": "Hiển thị là",
+      "BUSY": "Bận",
+      "FREE": "Rảnh",
+      "TENTATIVE": "Dự kiến",
+      "readOnly": "Chỉ xem ở đây. Lịch Apple và lịch được chia sẻ chỉnh sửa trên điện thoại.",
+      "edit": "Sửa",
+      "delete": "Xoá",
+      "deleteTitle": "Xoá sự kiện này?",
+      "deleteBody": "Sự kiện sẽ bị xoá khỏi lịch chứa nó.",
+      "cancel": "Huỷ",
+      "save": "Lưu",
+      "saving": "Đang lưu…",
+      "title": "Tiêu đề",
+      "starts": "Bắt đầu",
+      "ends": "Kết thúc",
+      "invalidInterval": "Giờ kết thúc phải sau giờ bắt đầu",
+      "noWritable": "Hãy kết nối một lịch Google để tạo sự kiện.",
+      "editTitle": "Sửa sự kiện",
+      "newTitle": "Sự kiện mới",
+      "saved": "Đã lưu sự kiện",
+      "deleted": "Đã xoá sự kiện",
+      "noEvents": "Chưa có lịch",
+      "more": "+{count} nữa",
+      "moreEvents": "{count} mục nữa"
+    },
+    "accounts": {
+      "title": "Tài khoản đã kết nối",
+      "subtitle": "Kết nối bao nhiêu lịch tuỳ thích. Tài khoản đăng nhập của bạn không bị ảnh hưởng.",
+      "connectGoogle": "Kết nối tài khoản Google",
+      "connected": "Đã kết nối {email}",
+      "none": "Chưa kết nối tài khoản nào.",
+      "lastSync": "Đồng bộ lần cuối",
+      "neverSynced": "Chưa đồng bộ",
+      "disconnect": "Ngắt kết nối",
+      "disconnectTitle": "Ngắt kết nối tài khoản này?",
+      "disconnectBody": "Các sự kiện của nó sẽ bị xoá khỏi LucentMeet và quyền truy cập bị thu hồi.",
+      "appleNote": "Tài khoản Apple Calendar được kết nối từ app trên iPhone (lịch trên thiết bị). Chúng sẽ tự xuất hiện ở đây sau khi đồng bộ.",
+      "GOOGLE": "Google",
+      "APPLE": "Apple",
+      "needsReauth": "Cần kết nối lại",
+      "status": {
+        "OK": "Đã đồng bộ",
+        "IDLE": "Chờ",
+        "SYNCING": "Đang đồng bộ",
+        "ERROR": "Lỗi đồng bộ",
+        "REVOKED": "Đã thu hồi quyền"
+      },
+      "errors": {
+        "cancelled": "Bạn đã huỷ kết nối.",
+        "state": "Yêu cầu đã hết hạn. Hãy thử lại.",
+        "missing_google_client": "Chưa cấu hình Google web client (NEXT_PUBLIC_GOOGLE_WEB_CLIENT_ID).",
+        "link_failed": "Không kết nối được tài khoản đó.",
+        "calendar_scope_missing": "Chưa được cấp quyền truy cập lịch. Hãy cho phép và thử lại.",
+        "reauth_required": "Google yêu cầu kết nối lại tài khoản này.",
+        "provider_error": "Không kết nối được tới Google. Thử lại sau.",
+        "server_misconfigured": "Máy chủ đang thiếu một secret (xem log của Edge Function)."
+      },
+      "calendarCount": "{count} lịch"
+    },
+    "settings": {
+      "title": "Tuỳ chọn lịch trình",
+      "subtitle": "Cùng quy tắc mà app dùng để báo xung đột.",
+      "workDays": "Ngày làm việc",
+      "workHours": "Giờ làm việc",
+      "from": "Từ",
+      "to": "Đến",
+      "buffer": "Khoảng nghỉ sau cuộc họp",
+      "bufferHint": "Cuộc họp sát hơn mức này sẽ bị báo.",
+      "reminder": "Nhắc mặc định",
+      "minutes": "phút",
+      "off": "Tắt",
+      "timezone": "Múi giờ",
+      "saved": "Đã lưu",
+      "demoNote": "Chế độ demo: thay đổi không được lưu."
+    },
+    "assistant": {
+      "title": "Trợ lý AI",
+      "subtitle": "Lịch của bạn, qua hội thoại",
+      "placeholder": "Hỏi về lịch của bạn…",
+      "send": "Gửi",
+      "newChat": "Cuộc trò chuyện mới",
+      "welcome": "Tôi có thể giúp gì cho lịch của bạn?",
+      "welcomeHint": "Hỏi về ngày của bạn, tìm giờ trống hoặc thêm sự kiện.",
+      "suggest": {
+        "today": "Hôm nay tôi có lịch gì?",
+        "free": "Tìm khung 30 phút trống trong tuần này",
+        "conflicts": "Sắp tới tôi có lịch nào bị trùng không?",
+        "create": "Đặt cuộc họp vào 2 giờ chiều mai"
+      },
+      "thinking": "Đang suy nghĩ…",
+      "activity": {
+        "checking": "Đang xem lịch của bạn…",
+        "finding": "Đang tìm thời gian trống…",
+        "conflicts": "Đang kiểm tra xung đột…",
+        "drafting": "Đang chuẩn bị đề xuất…"
+      },
+      "proposal": {
+        "create": "Sự kiện mới",
+        "update": "Sửa sự kiện",
+        "delete": "Xoá sự kiện",
+        "confirm": "Xác nhận",
+        "confirmDelete": "Xoá",
+        "retry": "Thử lại",
+        "dismiss": "Bỏ qua",
+        "done": "Xong",
+        "deleted": "Đã xoá",
+        "dismissed": "Đã bỏ qua",
+        "warn": "Lưu ý"
+      },
+      "error": {
+        "rate": "Trợ lý đang bận. Hãy thử lại sau giây lát.",
+        "setup": "Trợ lý chưa được thiết lập.",
+        "network": "Không kết nối được với trợ lý. Kiểm tra mạng của bạn.",
+        "generic": "Xin lỗi, tôi chưa hoàn thành được yêu cầu này.",
+        "demo": "Trợ lý cần tài khoản đã đăng nhập. Hãy đăng nhập để thử."
+      },
+      "retryBtn": "Thử lại"
+    }
+  },
+  "sidebar": {
+    "meet": "LucentMeet",
+    "lucent": "Lucent",
+    "product": "Lịch & lên lịch",
+    "calendar": "Lịch",
+    "assistant": "Trợ lý AI",
+    "accounts": "Tài khoản",
+    "settings": "Cài đặt",
+    "overview": "Tổng quan",
+    "kanban": "Kanban",
+    "signOut": "Đăng xuất",
+    "signIn": "Đăng nhập",
+    "account": "Tài khoản",
+    "preview": "Xem trước"
+  },
+  "signin": {
+    "title": "Chào mừng đến Lucent",
+    "subtitle": "Đăng nhập để xem mọi lịch của bạn trong một nơi.",
+    "google": "Tiếp tục với Google",
+    "demo": "Xem thử bản demo",
+    "error": "Đăng nhập chưa hoàn tất. Vui lòng thử lại.",
+    "notConfigured": "Trang này chưa cấu hình Supabase (NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_KEY). Bạn vẫn có thể xem thử bản demo.",
+    "tagline": "Tập trung. Lên kế hoạch. Gặp gỡ.",
+    "hero": "Một nơi yên tĩnh cho mọi lịch bạn dùng.",
+    "terms": "Khi tiếp tục, bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư."
+  },
+  "site": {
+    "nav": {
+      "features": "Tính năng",
+      "screens": "Giao diện",
+      "meet": "LucentMeet",
+      "lucent": "Lucent",
+      "how": "Cách hoạt động",
+      "privacy": "Chính sách quyền riêng tư",
+      "openWeb": "Mở trên web",
+      "download": "Tải về"
+    },
+    "lucent": {
+      "eyebrow": "Đồng hồ Pomodoro",
+      "title": "Tập trung, trên quỹ đạo.",
+      "subtitle": "Chọn một việc, bấm bắt đầu, và để một hành tinh nhỏ giữ nhịp thời gian. Yên tĩnh, đẹp mắt, không xao nhãng.",
+      "featuresTitle": "Sinh ra để giữ bạn trong dòng chảy",
+      "features": [
+        {
+          "title": "Quỹ đạo thời gian",
+          "text": "Kéo quỹ đạo để đặt phiên làm việc, rồi xem quả cầu phát sáng di chuyển theo từng phút."
+        },
+        {
+          "title": "Không gian tập trung",
+          "text": "Bấm bắt đầu và màn hình hoá thành vũ trụ sâu thẳm. Không còn gì làm bạn phân tâm."
+        },
+        {
+          "title": "Luôn trong tầm mắt",
+          "text": "Live Activity, Dynamic Island và widget giữ phiên của bạn ngay trên màn hình khoá."
+        },
+        {
+          "title": "Tiến độ của bạn",
+          "text": "Thống kê, chuỗi ngày và danh sách việc cho thấy bạn đã đi xa đến đâu."
+        }
+      ],
+      "screensTitle": "Một cách làm việc yên tĩnh hơn",
+      "screensSubtitle": "Ba màn hình, một ý tưởng: thời gian bạn nhìn thấy được.",
+      "screens": [
+        {
+          "title": "Đặt quỹ đạo",
+          "text": "Một hành tinh, một việc, một phiên rõ ràng."
+        },
+        {
+          "title": "Vào chế độ tập trung",
+          "text": "Không gian vũ trụ bảo vệ sự chú ý của bạn."
+        },
+        {
+          "title": "Không bao giờ lạc nhịp",
+          "text": "Phiên của bạn nằm ngay trên màn hình khoá."
+        }
+      ],
+      "ctaTitle": "Bắt đầu quỹ đạo đầu tiên",
+      "ctaText": "Tải miễn phí trên iPhone và Android."
+    },
+    "meet": {
+      "eyebrow": "Lịch thông minh",
+      "title": "Mọi lịch của bạn. Một dòng thời gian yên tĩnh.",
+      "subtitle": "Gộp lịch Google và Apple, bắt xung đột trước khi xảy ra, và để trợ lý AI tìm giờ trống cho bạn.",
+      "demo": "Xem thử bản demo",
+      "soon": "Ứng dụng iPhone và Android sắp ra mắt.",
+      "featuresTitle": "Mọi thứ trong một nơi",
+      "features": [
+        {
+          "title": "Một dòng thời gian",
+          "text": "Mọi lịch bạn dùng được gộp thành một danh sách, tuần hoặc tháng."
+        },
+        {
+          "title": "Radar xung đột",
+          "text": "Trùng giờ, họp quá sát hay ngoài giờ làm việc đều được báo trước khi lưu."
+        },
+        {
+          "title": "Trợ lý AI",
+          "text": "Hỏi giờ trống hoặc thêm sự kiện. Trợ lý đề xuất, bạn xác nhận."
+        },
+        {
+          "title": "Bao nhiêu tài khoản cũng được",
+          "text": "Kết nối thêm tài khoản Google bất cứ lúc nào. Tài khoản đăng nhập không bị ảnh hưởng."
+        }
+      ],
+      "howTitle": "Cách hoạt động",
+      "steps": [
+        {
+          "title": "Kết nối",
+          "text": "Đăng nhập rồi thêm các lịch của bạn."
+        },
+        {
+          "title": "Thấy tất cả",
+          "text": "Một dòng thời gian với mọi sự kiện và xung đột."
+        },
+        {
+          "title": "Lên lịch cùng AI",
+          "text": "Hỏi bằng lời thường rồi xác nhận."
+        }
+      ],
+      "screensTitle": "Lên lịch tự tin",
+      "screens": [
+        {
+          "title": "Hôm nay trong một cái nhìn",
+          "text": "Mọi tài khoản, phân biệt theo màu."
+        },
+        {
+          "title": "Xung đột, trước khi lưu",
+          "text": "Cùng quy tắc trên điện thoại và web."
+        },
+        {
+          "title": "Hỏi rồi xác nhận",
+          "text": "Không có gì thay đổi cho đến khi bạn đồng ý."
+        }
+      ],
+      "ctaTitle": "Lên lịch tuần của bạn ở một nơi",
+      "ctaText": "Mở LucentMeet ngay trên trình duyệt. Không cần cài đặt."
+    },
+    "store": {
+      "appStore": "Sắp ra mắt",
+      "play": "Sắp ra mắt"
+    },
+    "download": {
+      "title": "Tải Lucent",
+      "text": "Đồng hồ Pomodoro yên tĩnh cho iPhone và Android.",
+      "scan": "Quét để tải trên iPhone hoặc iPad",
+      "available": "Có trên"
+    },
+    "footer": {
+      "lucent": "Lucent là đồng hồ Pomodoro yên tĩnh cho iPhone và Android.",
+      "meet": "LucentMeet gộp mọi lịch của bạn thành một dòng thời gian yên tĩnh."
     }
   }
 }

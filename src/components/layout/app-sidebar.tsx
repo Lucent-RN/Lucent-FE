@@ -1,13 +1,21 @@
 'use client';
+
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from '@/components/ui/collapsible';
+  IconCalendar,
+  IconChevronsDown,
+  IconLayoutDashboard,
+  IconLayoutKanban,
+  IconLogin,
+  IconLogout,
+  IconSettings,
+  IconSparkles,
+  IconUsers
+} from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+import { OrbitLogo } from '@/components/brand/orbit-logo';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -23,168 +31,141 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail
 } from '@/components/ui/sidebar';
-import { navItems } from '@/constants/data';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import {
-  IconBell,
-  IconChevronRight,
-  IconChevronsDown,
-  IconCreditCard,
-  IconLogout,
-  IconPhotoUp,
-  IconUserCircle
-} from '@tabler/icons-react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import * as React from 'react';
-import { Icons } from '../icons';
-import { OrgSwitcher } from '../org-switcher';
-export const company = {
-  name: 'Acme Inc',
-  logo: IconPhotoUp,
-  plan: 'Enterprise'
-};
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { getSupabaseBrowser } from '@/lib/supabase/client';
+import { useSupabaseUser } from '@/lib/supabase/use-user';
 
-const tenants = [
-  { id: '1', name: 'Acme Inc' },
-  { id: '2', name: 'Beta Corp' },
-  { id: '3', name: 'Gamma Ltd' }
-];
+const MEET = [
+  { key: 'calendar', url: '/dashboard/meet', icon: IconCalendar },
+  { key: 'assistant', url: '/dashboard/meet/assistant', icon: IconSparkles },
+  { key: 'accounts', url: '/dashboard/meet/accounts', icon: IconUsers },
+  { key: 'settings', url: '/dashboard/meet/settings', icon: IconSettings }
+] as const;
+
+const LUCENT = [
+  { key: 'overview', url: '/dashboard/overview', icon: IconLayoutDashboard },
+  { key: 'kanban', url: '/dashboard/kanban', icon: IconLayoutKanban }
+] as const;
 
 export default function AppSidebar() {
+  const t = useTranslations('sidebar');
   const pathname = usePathname();
-  const { isOpen } = useMediaQuery();
   const router = useRouter();
-  const handleSwitchTenant = (_tenantId: string) => {
-    // Tenant switching functionality would be implemented here
+  const { user } = useSupabaseUser();
+
+  const signOut = async () => {
+    await getSupabaseBrowser().auth.signOut();
+    router.push('/auth/sign-in');
   };
 
-  const activeTenant = tenants[0];
-
-  React.useEffect(() => {
-    // Side effects based on sidebar state changes
-  }, [isOpen]);
+  const group = (
+    label: string,
+    items: ReadonlyArray<{
+      key: string;
+      url: string;
+      icon: typeof IconCalendar;
+    }>
+  ) => (
+    <SidebarGroup>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
+      <SidebarMenu>
+        {items.map(({ key, url, icon: Icon }) => (
+          <SidebarMenuItem key={key}>
+            <SidebarMenuButton
+              asChild
+              tooltip={t(key)}
+              isActive={pathname === url}
+            >
+              <Link href={url}>
+                <Icon />
+                <span>{t(key)}</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        ))}
+      </SidebarMenu>
+    </SidebarGroup>
+  );
 
   return (
     <Sidebar collapsible='icon'>
       <SidebarHeader>
-        <OrgSwitcher
-          tenants={tenants}
-          defaultTenant={activeTenant}
-          onTenantSwitch={handleSwitchTenant}
-        />
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size='lg' asChild>
+              <Link href='/dashboard/meet'>
+                <OrbitLogo size={32} className='-ml-0.5' />
+                <div className='grid flex-1 text-left leading-tight group-data-[collapsible=icon]:hidden'>
+                  <span className='truncate text-sm font-semibold'>Lucent</span>
+                  <span className='text-muted-foreground truncate text-xs'>
+                    {t('product')}
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent className='overflow-x-hidden'>
-        <SidebarGroup>
-          <SidebarGroupLabel>Overview</SidebarGroupLabel>
-          <SidebarMenu>
-            {navItems.map((item) => {
-              const Icon = item.icon ? Icons[item.icon] : Icons.logo;
-              return item?.items && item?.items?.length > 0 ? (
-                <Collapsible
-                  key={item.title}
-                  asChild
-                  defaultOpen={item.isActive}
-                  className='group/collapsible'
-                >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton
-                        tooltip={item.title}
-                        isActive={pathname === item.url}
-                      >
-                        {item.icon && <Icon />}
-                        <span>{item.title}</span>
-                        <IconChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
-                      </SidebarMenuButton>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items?.map((subItem) => (
-                          <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              asChild
-                              isActive={pathname === subItem.url}
-                            >
-                              <Link href={subItem.url}>
-                                <span>{subItem.title}</span>
-                              </Link>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
-                </Collapsible>
-              ) : (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    tooltip={item.title}
-                    isActive={pathname === item.url}
-                  >
-                    <Link href={item.url}>
-                      <Icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              );
-            })}
-          </SidebarMenu>
-        </SidebarGroup>
+        {group(t('meet'), MEET)}
+        {group(`${t('lucent')} · ${t('preview')}`, LUCENT)}
       </SidebarContent>
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton
-                  size='lg'
-                  className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
-                >
-                  <IconChevronsDown className='ml-auto size-4' />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className='w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg'
-                side='bottom'
-                align='end'
-                sideOffset={4}
-              >
-                <DropdownMenuLabel className='p-0 font-normal'>
-                  <div className='px-1 py-1.5'></div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-
-                <DropdownMenuGroup>
-                  <DropdownMenuItem
-                    onClick={() => router.push('/dashboard/profile')}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton
+                    size='lg'
+                    className='data-[state=open]:bg-sidebar-accent'
                   >
-                    <IconUserCircle className='mr-2 h-4 w-4' />
-                    Profile
+                    <span className='bg-primary text-primary-foreground flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold uppercase'>
+                      {(
+                        user.user_metadata?.full_name ??
+                        user.email ??
+                        '?'
+                      ).slice(0, 1)}
+                    </span>
+                    <div className='grid flex-1 text-left leading-tight'>
+                      <span className='truncate text-sm font-medium'>
+                        {user.user_metadata?.full_name ?? t('account')}
+                      </span>
+                      <span className='text-muted-foreground truncate text-xs'>
+                        {user.email}
+                      </span>
+                    </div>
+                    <IconChevronsDown className='ml-auto size-4' />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className='min-w-56 rounded-lg'
+                  side='top'
+                  align='end'
+                  sideOffset={4}
+                >
+                  <DropdownMenuLabel className='text-muted-foreground truncate text-xs font-normal'>
+                    {user.email}
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => void signOut()}>
+                    <IconLogout className='mr-2 size-4' />
+                    {t('signOut')}
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconCreditCard className='mr-2 h-4 w-4' />
-                    Billing
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconBell className='mr-2 h-4 w-4' />
-                    Notifications
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <IconLogout className='mr-2 h-4 w-4' />
-                  Sign Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <SidebarMenuButton asChild tooltip={t('signIn')}>
+                <Link href='/auth/sign-in'>
+                  <IconLogin />
+                  <span>{t('signIn')}</span>
+                </Link>
+              </SidebarMenuButton>
+            )}
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

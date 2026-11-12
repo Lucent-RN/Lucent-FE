@@ -1,53 +1,62 @@
 'use client';
+
+import { useTranslations } from 'next-intl';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { useRouter } from 'next/navigation';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Link, useRouter } from '@/i18n/navigation';
+import { getSupabaseBrowser } from '@/lib/supabase/client';
+import { useSupabaseUser } from '@/lib/supabase/use-user';
+
 export function UserNav() {
+  const t = useTranslations('sidebar');
   const router = useRouter();
+  const { user } = useSupabaseUser();
+
+  if (!user) {
+    return (
+      <Button asChild size='sm' variant='outline'>
+        <Link href='/auth/sign-in'>{t('signIn')}</Link>
+      </Button>
+    );
+  }
+
+  const name =
+    (user.user_metadata?.full_name as string | undefined) ?? user.email ?? '?';
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
+        <Button
+          variant='ghost'
+          className='relative size-8 rounded-full'
+          aria-label={name}
+        >
           <Avatar>
-            <AvatarImage src='https://github.com/shadcn.png' />
-            <AvatarFallback>JD</AvatarFallback>
+            <AvatarFallback>{name.slice(0, 1).toUpperCase()}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className='w-56'
-        align='end'
-        sideOffset={10}
-        forceMount
-      >
+      <DropdownMenuContent className='w-56' align='end' sideOffset={10}>
         <DropdownMenuLabel className='font-normal'>
-          <div className='flex flex-col space-y-1'>
-            <p className='text-sm leading-none font-medium'>John Doe</p>
-            <p className='text-muted-foreground text-xs leading-none'>
-              john.doe@example.com
-            </p>
-          </div>
+          <p className='truncate text-sm font-medium'>{name}</p>
+          <p className='text-muted-foreground truncate text-xs'>{user.email}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
-            Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem></DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={async () => {
+            await getSupabaseBrowser().auth.signOut();
+            router.push('/auth/sign-in');
+          }}
+        >
+          {t('signOut')}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

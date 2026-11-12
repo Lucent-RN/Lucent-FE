@@ -4,6 +4,7 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { OrbitLogo } from '@/components/brand/orbit-logo';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -21,7 +22,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { siteDetails } from '../data/site-details';
 import { IMenuItem } from '../types';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
+  product = 'lucent'
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
@@ -32,20 +35,23 @@ const Header: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const localizedMenuItems =
-    (t.raw(landingLocalizeStrings.header.menu_items) as Array<{
-      text: string;
-    }>) || [];
-
-  const menuItems: IMenuItem[] = localizedMenuItems.map((item, index) => ({
-    text: item.text,
-    url:
-      index === 0
-        ? '#features'
-        : index === 1
-          ? '#pricing'
-          : 'https://lucent-app.info/en/policy'
-  }));
+  const nav = useTranslations('site.nav');
+  const brand = product === 'meet' ? 'LucentMeet' : siteDetails.siteName;
+  const POLICY = 'https://lucent-app.info/en/policy';
+  const menuItems: IMenuItem[] =
+    product === 'meet'
+      ? [
+          { text: nav('features'), url: '#features' },
+          { text: nav('how'), url: '#how' },
+          { text: nav('lucent'), url: `/${locale}` },
+          { text: nav('privacy'), url: POLICY }
+        ]
+      : [
+          { text: nav('features'), url: '#features' },
+          { text: nav('screens'), url: '#screens' },
+          { text: nav('meet'), url: `/${locale}/meet` },
+          { text: nav('privacy'), url: POLICY }
+        ];
 
   useEffect(() => {
     setMounted(true);
@@ -100,8 +106,11 @@ const Header: React.FC = () => {
 
   const isMobile = useIsMobile();
   const handlePressDownload = () => {
-    router.push('/download');
+    router.push(
+      product === 'meet' ? `/${locale}/dashboard/meet` : `/${locale}/download`
+    );
   };
+  const ctaLabel = product === 'meet' ? nav('openWeb') : nav('download');
 
   return (
     <header className='fixed inset-x-0 top-0 z-50 w-full'>
@@ -117,19 +126,13 @@ const Header: React.FC = () => {
         >
           {/* Logo */}
           <Link
-            href='/'
+            href={product === 'meet' ? `/${locale}/meet` : `/${locale}`}
             className='flex items-center gap-3 rounded-full px-3 py-2 transition-all'
           >
-            <Image
-              src='/assets/app-icon.png'
-              alt={siteDetails.siteName}
-              width={60}
-              height={60}
-              className='h-11 w-11 rounded-2xl object-contain sm:h-12 sm:w-12 md:h-14 md:w-14'
-            />
+            <OrbitLogo size={44} />
 
             <span className='text-foreground hidden font-sans text-lg font-semibold sm:inline-block md:text-xl lg:text-2xl'>
-              {siteDetails.siteName}
+              {brand}
             </span>
           </Link>
 
@@ -226,7 +229,7 @@ const Header: React.FC = () => {
                 onClick={handlePressDownload}
                 className='bg-accent-foreground rounded-full border-white/30 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(15,23,42,0.18)] transition-all hover:-translate-y-0.5 hover:border-white/60'
               >
-                {t(landingLocalizeStrings.header.download)}
+                {ctaLabel}
               </button>
             </li>
           </ul>
@@ -423,7 +426,7 @@ const Header: React.FC = () => {
                   className='bg-accent-foreground block w-full rounded-2xl px-5 py-3 text-center text-base font-semibold text-white transition-all hover:-translate-y-0.5'
                   onClick={handlePressDownload}
                 >
-                  {t(landingLocalizeStrings.header.get_started)}
+                  {ctaLabel}
                 </button>
               </motion.li>
             </motion.ul>

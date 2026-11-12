@@ -34,14 +34,39 @@ const sizeVariants: Record<
   }
 };
 
+/** A store badge link, or an inert "coming soon" badge when the app is not published yet. */
+const StoreLink = ({
+  href,
+  soon,
+  children
+}: {
+  href: string;
+  soon?: boolean;
+  children: React.ReactNode;
+}) =>
+  soon ? (
+    <div aria-disabled className='pointer-events-none opacity-60'>
+      {children}
+    </div>
+  ) : (
+    <a href={href} target='_blank' rel='noopener noreferrer'>
+      {children}
+    </a>
+  );
+
 const PlayStoreButton = ({
   dark,
-  size = 'md'
+  size = 'md',
+  href,
+  soon
 }: {
   dark?: boolean;
   size?: StoreButtonSize;
+  href?: string;
+  soon?: boolean;
 }) => {
   const { resolvedTheme } = useTheme();
+  const site = useTranslations('site.store');
   const [mounted, setMounted] = useState(false);
   const t = useTranslations(
     landingLocalizeStrings.common.google_play_button.getLocal
@@ -55,11 +80,7 @@ const PlayStoreButton = ({
     dark !== undefined ? dark : mounted && resolvedTheme === 'dark';
 
   return (
-    <a
-      href={ctaDetails.googlePlayUrl}
-      target='_blank'
-      rel='noopener noreferrer'
-    >
+    <StoreLink href={href ?? ctaDetails.googlePlayUrl} soon={soon}>
       <button
         type='button'
         className={clsx(
@@ -97,7 +118,9 @@ const PlayStoreButton = ({
         </div>
         <div>
           <div className={clsx(sizeVariants[size].tagline)}>
-            {t(landingLocalizeStrings.common.google_play_button.get_it_on)}
+            {soon
+              ? site('play')
+              : t(landingLocalizeStrings.common.google_play_button.get_it_on)}
           </div>
           <div
             className={clsx(
@@ -109,7 +132,7 @@ const PlayStoreButton = ({
           </div>
         </div>
       </button>
-    </a>
+    </StoreLink>
   );
 };
 

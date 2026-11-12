@@ -23,7 +23,8 @@
     "preview:cf": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:cf": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "store:shots": "node scripts/export-store-shots.mjs"
   },
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts,css,less,scss,sass}": [
