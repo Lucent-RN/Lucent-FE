@@ -25,9 +25,13 @@ export const metadata: Metadata = {
   title: 'Lucent',
   description: 'Pomodoro Timer App',
   icons: {
-    icon: '/assets/app-icon.png',
-    shortcut: '/assets/app-icon.png',
-    apple: '/assets/app-icon.png'
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/assets/app-icon.png', sizes: '512x512', type: 'image/png' }
+    ],
+    shortcut: '/icon.svg',
+    apple: '/apple-icon.png'
   }
 };
 
