@@ -25,21 +25,18 @@ const Footer: React.FC<{ product?: 'lucent' | 'meet' }> = ({
     telephone: string;
     socials: ISocials;
   } = {
-    subheading: foot(product),
-    quickLinks:
-      product === 'meet'
-        ? [
-            { text: nav('features'), url: '#features' },
-            { text: nav('how'), url: '#how' },
-            { text: nav('lucent'), url: `/${locale}` },
-            { text: nav('privacy'), url: `${siteDetails.siteUrl}/${locale}/policy` }
-          ]
-        : [
-            { text: nav('features'), url: '#features' },
-            { text: nav('screens'), url: '#screens' },
-            { text: nav('meet'), url: `/${locale}/meet` },
-            { text: nav('privacy'), url: `${siteDetails.siteUrl}/${locale}/policy` }
-          ],
+    subheading: t(landingLocalizeStrings.footer.subheading),
+    quickLinks: t
+      .raw(landingLocalizeStrings.footer.quick_links)
+      .map((link: { text: string }, index: number) => ({
+        text: link.text,
+        url:
+          index === 0
+            ? '#features'
+            : index === 1
+              ? '#pricing'
+              : 'https://lucent-fe.netlify.app/en/policy'
+      })),
     email: 'trungkiennguyen0310@gmail.com',
     telephone: '+84 974 102 437',
     socials: {

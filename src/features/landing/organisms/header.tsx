@@ -35,23 +35,20 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
   const router = useRouter();
   const pathname = usePathname();
 
-  const nav = useTranslations('site.nav');
-  const brand = product === 'meet' ? 'LucentMeet' : siteDetails.siteName;
-  const POLICY = `${siteDetails.siteUrl}/${locale}/policy`;
-  const menuItems: IMenuItem[] =
-    product === 'meet'
-      ? [
-          { text: nav('features'), url: '#features' },
-          { text: nav('how'), url: '#how' },
-          { text: nav('lucent'), url: `/${locale}` },
-          { text: nav('privacy'), url: POLICY }
-        ]
-      : [
-          { text: nav('features'), url: '#features' },
-          { text: nav('screens'), url: '#screens' },
-          { text: nav('meet'), url: `/${locale}/meet` },
-          { text: nav('privacy'), url: POLICY }
-        ];
+  const localizedMenuItems =
+    (t.raw(landingLocalizeStrings.header.menu_items) as Array<{
+      text: string;
+    }>) || [];
+
+  const menuItems: IMenuItem[] = localizedMenuItems.map((item, index) => ({
+    text: item.text,
+    url:
+      index === 0
+        ? '#features'
+        : index === 1
+          ? '#pricing'
+          : 'https://lucent-fe.netlify.app/en/policy'
+  }));
 
   useEffect(() => {
     setMounted(true);
