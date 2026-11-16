@@ -72,6 +72,10 @@ export default async function RootLayout({
           }}
         />
         <meta name='apple-itunes-app' content='app-id=6754592413' />
+        <meta
+          name='google-site-verification'
+          content='_cyN7PO2x3mICW_cFV52iikkIS2LO_pZR2zIsq7o1vE'
+        />
       </head>
       <body
         className={cn(
