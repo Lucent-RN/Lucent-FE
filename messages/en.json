@@ -328,7 +328,7 @@
     },
     "accounts": {
       "title": "Connected accounts",
-      "subtitle": "Connect as many calendars as you like. Your sign-in account is never affected.",
+      "subtitle": "Your phone's calendars sync automatically from the LucentMeet mobile app. You can also add iCal feeds here.",
       "connectGoogle": "Connect a Google account",
       "connected": "Connected {email}",
       "none": "No accounts connected yet.",
@@ -337,9 +337,8 @@
       "disconnect": "Disconnect",
       "disconnectTitle": "Disconnect this account?",
       "disconnectBody": "Its events are removed from LucentMeet and access is revoked at the provider.",
-      "appleNote": "Apple Calendar accounts are connected from the iPhone app (device calendars). They appear here automatically once synced.",
       "GOOGLE": "Google",
-      "APPLE": "Apple",
+      "APPLE": "Phone",
       "needsReauth": "Re-connect needed",
       "status": {
         "OK": "Synced",
@@ -356,9 +355,24 @@
         "calendar_scope_missing": "Calendar access was not granted. Allow calendar access and try again.",
         "reauth_required": "Google asked to re-connect this account.",
         "provider_error": "Google could not be reached. Try again later.",
-        "server_misconfigured": "The server is missing a secret (see the Edge Function logs)."
+        "server_misconfigured": "The server is missing a secret (see the Edge Function logs).",
+        "invalid_url": "That link is not valid. Use a public https:// or webcal:// address.",
+        "feed_unreachable": "The calendar link could not be reached.",
+        "not_a_calendar": "That link did not return an iCal calendar.",
+        "feed_too_large": "That calendar is too large (max 5 MB).",
+        "too_many_feeds": "You reached the limit of 10 feeds."
       },
-      "calendarCount": "{count, plural, one {# calendar} other {# calendars}}"
+      "calendarCount": "{count, plural, one {# calendar} other {# calendars}}",
+      "addFeed": "Add iCal feed",
+      "feedTitle": "Add an iCal feed",
+      "feedBody": "Paste a calendar link (https:// or webcal://). In Google Calendar: Settings → your calendar → \"Secret address in iCal format\". iCloud and Outlook public links work too. The feed is read-only and its link is stored encrypted.",
+      "feedUrl": "Calendar link",
+      "feedName": "Name (optional)",
+      "feedAdd": "Add feed",
+      "feedAdding": "Adding…",
+      "feedAdded": "Feed added: {name}",
+      "ICS": "iCal feed",
+      "mobileNote": "Calendars on your phone (Google, iCloud, Outlook…) are connected from the LucentMeet mobile app and appear here automatically after syncing."
     },
     "settings": {
       "title": "Scheduling preferences",

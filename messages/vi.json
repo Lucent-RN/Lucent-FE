@@ -328,7 +328,7 @@
     },
     "accounts": {
       "title": "Tài khoản đã kết nối",
-      "subtitle": "Kết nối bao nhiêu lịch tuỳ thích. Tài khoản đăng nhập của bạn không bị ảnh hưởng.",
+      "subtitle": "Lịch trên điện thoại tự đồng bộ từ app LucentMeet. Bạn cũng có thể thêm nguồn iCal tại đây.",
       "connectGoogle": "Kết nối tài khoản Google",
       "connected": "Đã kết nối {email}",
       "none": "Chưa kết nối tài khoản nào.",
@@ -337,9 +337,8 @@
       "disconnect": "Ngắt kết nối",
       "disconnectTitle": "Ngắt kết nối tài khoản này?",
       "disconnectBody": "Các sự kiện của nó sẽ bị xoá khỏi LucentMeet và quyền truy cập bị thu hồi.",
-      "appleNote": "Tài khoản Apple Calendar được kết nối từ app trên iPhone (lịch trên thiết bị). Chúng sẽ tự xuất hiện ở đây sau khi đồng bộ.",
       "GOOGLE": "Google",
-      "APPLE": "Apple",
+      "APPLE": "Điện thoại",
       "needsReauth": "Cần kết nối lại",
       "status": {
         "OK": "Đã đồng bộ",
@@ -356,9 +355,24 @@
         "calendar_scope_missing": "Chưa được cấp quyền truy cập lịch. Hãy cho phép và thử lại.",
         "reauth_required": "Google yêu cầu kết nối lại tài khoản này.",
         "provider_error": "Không kết nối được tới Google. Thử lại sau.",
-        "server_misconfigured": "Máy chủ đang thiếu một secret (xem log của Edge Function)."
+        "server_misconfigured": "Máy chủ đang thiếu một secret (xem log của Edge Function).",
+        "invalid_url": "Đường dẫn không hợp lệ. Hãy dùng địa chỉ công khai https:// hoặc webcal://.",
+        "feed_unreachable": "Không truy cập được đường dẫn lịch.",
+        "not_a_calendar": "Đường dẫn này không trả về lịch iCal.",
+        "feed_too_large": "Lịch quá lớn (tối đa 5 MB).",
+        "too_many_feeds": "Bạn đã đạt giới hạn 10 nguồn."
       },
-      "calendarCount": "{count} lịch"
+      "calendarCount": "{count} lịch",
+      "addFeed": "Thêm nguồn iCal",
+      "feedTitle": "Thêm nguồn iCal",
+      "feedBody": "Dán đường dẫn lịch (https:// hoặc webcal://). Trên Google Calendar: Cài đặt → lịch của bạn → \"Địa chỉ bí mật ở định dạng iCal\". Liên kết công khai của iCloud và Outlook cũng dùng được. Nguồn chỉ đọc và đường dẫn được lưu mã hoá.",
+      "feedUrl": "Đường dẫn lịch",
+      "feedName": "Tên (không bắt buộc)",
+      "feedAdd": "Thêm nguồn",
+      "feedAdding": "Đang thêm…",
+      "feedAdded": "Đã thêm nguồn: {name}",
+      "ICS": "Nguồn iCal",
+      "mobileNote": "Lịch trên điện thoại (Google, iCloud, Outlook…) được kết nối từ app LucentMeet trên di động và tự xuất hiện ở đây sau khi đồng bộ."
     },
     "settings": {
       "title": "Tuỳ chọn lịch trình",

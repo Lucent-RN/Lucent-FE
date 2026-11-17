@@ -64,6 +64,8 @@ export interface MeetValue {
   resolveConflict(conflictId: string): Promise<void>;
   setCalendarVisible(calendarId: string, visible: boolean): Promise<void>;
   updatePreference(patch: PreferencePatch): Promise<void>;
+  /** Subscribes to an iCal feed (https:// or webcal://); resolves with the feed's display name. */
+  addIcsFeed(url: string, name?: string): Promise<string>;
   disconnectAccount(accountId: string): Promise<void>;
   /** Keeps `?demo=1` when navigating inside the Meet area. */
   href(path: string): string;
@@ -350,6 +352,11 @@ export function MeetProvider({ children }: { children: React.ReactNode }) {
         return;
       }
       setPreference(await meetRepository.updatePreference(patch));
+    },
+    async addIcsFeed(url, name) {
+      if (demo) return name?.trim() || 'Demo feed'; // nothing is saved in demo mode
+      const r = await guard(() => meetApi.addIcsFeed(url, name?.trim() || undefined));
+      return r.name;
     },
     async disconnectAccount(accountId) {
       if (demo) {

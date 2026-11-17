@@ -92,6 +92,9 @@ export const meetApi = {
   async syncNow(): Promise<void> {
     await call('sync-calendars', {});
   },
+  async addIcsFeed(url: string, name?: string): Promise<{ name: string }> {
+    return call<{ name: string }>('add-ics-feed', { url, name });
+  },
   async disconnectAccount(accountId: string): Promise<boolean> {
     const r = await call<{ provider_revoked: boolean }>('disconnect-account', {
       account_id: accountId
