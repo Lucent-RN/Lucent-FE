@@ -37,7 +37,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
 
   const nav = useTranslations('site.nav');
   const brand = product === 'meet' ? 'LucentMeet' : siteDetails.siteName;
-  const POLICY = 'https://lucent-app.info/en/policy';
+  const POLICY = `${siteDetails.siteUrl}/${locale}/policy`;
   const menuItems: IMenuItem[] =
     product === 'meet'
       ? [

@@ -32,13 +32,13 @@ const Footer: React.FC<{ product?: 'lucent' | 'meet' }> = ({
             { text: nav('features'), url: '#features' },
             { text: nav('how'), url: '#how' },
             { text: nav('lucent'), url: `/${locale}` },
-            { text: nav('privacy'), url: 'https://lucent-app.info/en/policy' }
+            { text: nav('privacy'), url: `${siteDetails.siteUrl}/${locale}/policy` }
           ]
         : [
             { text: nav('features'), url: '#features' },
             { text: nav('screens'), url: '#screens' },
             { text: nav('meet'), url: `/${locale}/meet` },
-            { text: nav('privacy'), url: 'https://lucent-app.info/en/policy' }
+            { text: nav('privacy'), url: `${siteDetails.siteUrl}/${locale}/policy` }
           ],
     email: 'trungkiennguyen0310@gmail.com',
     telephone: '+84 974 102 437',

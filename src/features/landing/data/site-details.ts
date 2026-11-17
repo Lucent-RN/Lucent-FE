@@ -1,6 +1,6 @@
 export const siteDetails = {
   siteName: 'Lucent',
-  siteUrl: 'https://lucent-omega.vercel.app/',
+  siteUrl: 'https://lucent-fe.netlify.app',
   metadata: {
     title: 'Lucent | Focus, in orbit.',
     description:
