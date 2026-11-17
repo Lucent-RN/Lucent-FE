@@ -157,7 +157,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                     aria-label='Select language'
                   >
                     <Image
-                      src={`/assets/countries/${locale}.png`}
+                      src={`/assets/countries/${locale}.webp`}
                       alt={`${locale} flag`}
                       width={20}
                       height={20}
@@ -169,7 +169,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                 <DropdownMenuContent align='end'>
                   <DropdownMenuItem onClick={() => switchLocale('en')}>
                     <Image
-                      src='/assets/countries/en.png'
+                      src='/assets/countries/en.webp'
                       alt='English flag'
                       width={18}
                       height={18}
@@ -179,7 +179,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('vi')}>
                     <Image
-                      src='/assets/countries/vi.png'
+                      src='/assets/countries/vi.webp'
                       alt='Vietnam flag'
                       width={18}
                       height={18}
@@ -189,7 +189,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('jp')}>
                     <Image
-                      src='/assets/countries/jp.png'
+                      src='/assets/countries/jp.webp'
                       alt='Japanese flag'
                       width={18}
                       height={18}
@@ -199,7 +199,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => switchLocale('de')}>
                     <Image
-                      src='/assets/countries/de.png'
+                      src='/assets/countries/de.webp'
                       alt='German flag'
                       width={18}
                       height={18}
@@ -311,7 +311,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                       aria-label='Select language'
                     >
                       <Image
-                        src={`/assets/countries/${locale}.png`}
+                        src={`/assets/countries/${locale}.webp`}
                         alt={`${locale} flag`}
                         width={20}
                         height={20}
@@ -328,7 +328,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                       }}
                     >
                       <Image
-                        src='/assets/countries/en.png'
+                        src='/assets/countries/en.webp'
                         alt='English flag'
                         width={18}
                         height={18}
@@ -343,7 +343,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                       }}
                     >
                       <Image
-                        src='/assets/countries/vi.png'
+                        src='/assets/countries/vi.webp'
                         alt='Vietnam flag'
                         width={18}
                         height={18}
@@ -358,7 +358,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                       }}
                     >
                       <Image
-                        src='/assets/countries/jp.png'
+                        src='/assets/countries/jp.webp'
                         alt='Japanese flag'
                         width={18}
                         height={18}
@@ -373,7 +373,7 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
                       }}
                     >
                       <Image
-                        src='/assets/countries/de.png'
+                        src='/assets/countries/de.webp'
                         alt='German flag'
                         width={18}
                         height={18}

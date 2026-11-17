@@ -50,7 +50,7 @@ const DownloadPage = () => {
 
           <div className='flex flex-1 flex-col justify-between rounded-3xl border border-zinc-200 bg-white p-6 text-center shadow-[0_20px_60px_rgba(15,23,42,0.1)] md:max-w-[280px] dark:border-white/10 dark:bg-slate-900/50'>
             <Image
-              src='/assets/qr-code-download.png'
+              src='/assets/qr-code-download.webp'
               alt='QR code to download the app'
               width={180}
               height={180}

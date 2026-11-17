@@ -5,7 +5,7 @@ import {
   IconUsers
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { OrbitLogo } from '@/components/brand/orbit-logo';
+import { OrbitSystem } from '@/components/brand/orbit-system';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { PhoneFrame, Scaled } from '@/features/showcase/phone-frame';
@@ -160,9 +160,9 @@ export default function MeetLanding() {
 
       <section className='mx-auto max-w-6xl px-6 pb-20 lg:pb-28'>
         <SpacePanel className='rounded-3xl px-6 py-16 text-center'>
-          <OrbitLogo
-            size={80}
-            className='mx-auto drop-shadow-[0_0_40px_rgba(34,211,238,0.4)]'
+          <OrbitSystem
+            size={240}
+            className='mx-auto -mb-6 drop-shadow-[0_0_40px_rgba(34,211,238,0.35)]'
           />
           <h2 className='mt-6 text-3xl font-semibold sm:text-4xl'>
             {t('ctaTitle')}

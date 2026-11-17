@@ -11,6 +11,7 @@ import {
   IconPlus,
   IconArrowUp
 } from '@tabler/icons-react';
+import { OrbitTabIcon } from '@/components/brand/orbit-system';
 import { OrbitRing } from '@/components/brand/orbit-ring';
 import { cn } from '@/lib/utils';
 import { SCREEN_H, SCREEN_W } from './phone-frame';
@@ -168,7 +169,7 @@ export function TimerScreen() {
         active={1}
         items={[
           <IconChartBar key='a' className='size-5' />,
-          <OrbitRing key='b' progress={0.0} size={26} />,
+          <OrbitTabIcon key='b' size={30} />,
           <IconSettings key='c' className='size-5' />
         ]}
       />
@@ -241,7 +242,7 @@ export function LockScreen() {
           <div className='flex items-center gap-2'>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src='/assets/app-icon.png'
+              src='/assets/app-icon.webp'
               alt=''
               width={24}
               height={24}

@@ -5,7 +5,7 @@ import {
   IconPlanet
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { OrbitLogo } from '@/components/brand/orbit-logo';
+import { OrbitSystem } from '@/components/brand/orbit-system';
 import { PhoneFrame } from '@/features/showcase/phone-frame';
 import {
   FocusScreen,
@@ -33,7 +33,7 @@ export default function LucentLanding() {
           id='hero'
           className='mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_1fr]'
         >
-          <div className='text-center lg:text-left'>
+          <div className='relative z-10 text-center lg:text-left'>
             <p className='mb-4 text-xs font-semibold tracking-[0.35em] text-[#a5e3f4] uppercase'>
               {t('eyebrow')}
             </p>
@@ -51,6 +51,10 @@ export default function LucentLanding() {
 
           <div className='relative mx-auto flex justify-center'>
             <div className='absolute top-1/2 left-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(34,211,238,0.35),transparent)] blur-2xl' />
+            <OrbitSystem
+              size={900}
+              className='absolute top-[54%] left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2'
+            />
             <PhoneFrame
               dark
               scale='var(--s)'
@@ -118,9 +122,9 @@ export default function LucentLanding() {
 
       <section className='mx-auto max-w-6xl px-6 py-20 lg:py-28'>
         <SpacePanel className='rounded-3xl px-6 py-16 text-center'>
-          <OrbitLogo
-            size={88}
-            className='mx-auto drop-shadow-[0_0_40px_rgba(34,211,238,0.4)]'
+          <OrbitSystem
+            size={260}
+            className='mx-auto -mb-6 drop-shadow-[0_0_40px_rgba(34,211,238,0.35)]'
           />
           <h2 className='mt-6 text-3xl font-semibold sm:text-4xl'>
             {t('ctaTitle')}

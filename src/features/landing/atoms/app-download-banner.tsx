@@ -24,7 +24,7 @@ export default function AppDownloadBanner() {
     <div className='fixed bottom-0 left-0 z-50 flex w-full items-center justify-between border-t border-white/10 bg-[#062c3b] p-3 text-[#e4f7fb] shadow-lg'>
       <div className='flex items-center gap-3'>
         <Image
-          src='/assets/app-icon.png'
+          src='/assets/app-icon.webp'
           alt='Lucent'
           width={48}
           height={48}
