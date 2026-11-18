@@ -5,15 +5,18 @@ import {
   KBarPortal,
   KBarPositioner,
   KBarProvider,
-  KBarSearch
+  KBarSearch,
+  useRegisterActions
 } from 'kbar';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { productFromPath } from '@/lib/product';
 import { useMemo } from 'react';
 import RenderResults from './render-result';
 import useThemeSwitching from './use-theme-switching';
 
 export default function KBar({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const product = productFromPath(usePathname() ?? '');
 
   // These action are for the navigation
   const actions = useMemo(() => {
@@ -22,43 +25,56 @@ export default function KBar({ children }: { children: React.ReactNode }) {
       router.push(url);
     };
 
-    return navItems.flatMap((navItem) => {
-      // Only include base action if the navItem has a real URL and is not just a container
-      const baseAction =
-        navItem.url !== '#'
-          ? {
-              id: `${navItem.title.toLowerCase()}Action`,
-              name: navItem.title,
-              shortcut: navItem.shortcut,
-              keywords: navItem.title.toLowerCase(),
-              section: 'Navigation',
-              subtitle: `Go to ${navItem.title}`,
-              perform: () => navigateTo(navItem.url)
-            }
-          : null;
+    return navItems
+      .filter((navItem) => !navItem.product || navItem.product === product)
+      .flatMap((navItem) => {
+        // Only include base action if the navItem has a real URL and is not just a container
+        const baseAction =
+          navItem.url !== '#'
+            ? {
+                id: `${product}-${navItem.title.toLowerCase()}Action`,
+                name: navItem.title,
+                shortcut: navItem.shortcut,
+                keywords: navItem.title.toLowerCase(),
+                section: 'Navigation',
+                subtitle: `Go to ${navItem.title}`,
+                perform: () => navigateTo(navItem.url)
+              }
+            : null;
 
-      // Map child items into actions
-      const childActions =
-        navItem.items?.map((childItem) => ({
-          id: `${childItem.title.toLowerCase()}Action`,
-          name: childItem.title,
-          shortcut: childItem.shortcut,
-          keywords: childItem.title.toLowerCase(),
-          section: navItem.title,
-          subtitle: `Go to ${childItem.title}`,
-          perform: () => navigateTo(childItem.url)
-        })) ?? [];
+        // Map child items into actions
+        const childActions =
+          navItem.items?.map((childItem) => ({
+            id: `${childItem.title.toLowerCase()}Action`,
+            name: childItem.title,
+            shortcut: childItem.shortcut,
+            keywords: childItem.title.toLowerCase(),
+            section: navItem.title,
+            subtitle: `Go to ${childItem.title}`,
+            perform: () => navigateTo(childItem.url)
+          })) ?? [];
 
-      // Return only valid actions (ignoring null base actions for containers)
-      return baseAction ? [baseAction, ...childActions] : childActions;
-    });
-  }, [router]);
+        // Return only valid actions (ignoring null base actions for containers)
+        return baseAction ? [baseAction, ...childActions] : childActions;
+      });
+  }, [router, product]);
 
   return (
-    <KBarProvider actions={actions}>
+    <KBarProvider>
+      <AreaActions actions={actions} />
       <KBarComponent>{children}</KBarComponent>
     </KBarProvider>
   );
+}
+
+/** Registers the current area's screens; re-registers when the visitor switches area. */
+function AreaActions({
+  actions
+}: {
+  actions: Parameters<typeof useRegisterActions>[0];
+}) {
+  useRegisterActions(actions, [actions]);
+  return null;
 }
 const KBarComponent = ({ children }: { children: React.ReactNode }) => {
   useThemeSwitching();

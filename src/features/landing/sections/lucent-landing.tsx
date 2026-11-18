@@ -6,6 +6,7 @@ import {
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { OrbitSystem } from '@/components/brand/orbit-system';
+import { Link } from '@/i18n/navigation';
 import { PhoneFrame } from '@/features/showcase/phone-frame';
 import {
   FocusScreen,
@@ -22,6 +23,7 @@ const ICONS = [IconPlanet, IconMoonStars, IconDeviceMobile, IconChartBar];
 /** Lucent: a short, calm introduction — hero, four ideas, three screens, download. */
 export default function LucentLanding() {
   const t = useTranslations('site.lucent');
+  const nav = useTranslations('site.nav');
   const features = t.raw('features') as Item[];
   const screens = t.raw('screens') as Item[];
   const phone = '[--s:0.72] sm:[--s:0.85] lg:[--s:1]';
@@ -43,7 +45,13 @@ export default function LucentLanding() {
             <p className='mx-auto mt-5 max-w-lg text-base text-[#a5e3f4] sm:text-lg lg:mx-0'>
               {t('subtitle')}
             </p>
-            <div className='mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start'>
+            <div className='mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start'>
+            <Link
+              href='/dashboard/lucent'
+              className='inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#0891b2] px-7 text-base font-semibold text-[#041e29] shadow-[0_10px_40px_rgba(34,211,238,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_50px_rgba(34,211,238,0.5)]'
+            >
+              {nav('openWeb')}
+            </Link>
               <AppStoreButton dark />
               <PlayStoreButton dark />
             </div>
@@ -130,7 +138,13 @@ export default function LucentLanding() {
             {t('ctaTitle')}
           </h2>
           <p className='mx-auto mt-3 max-w-md text-[#a5e3f4]'>{t('ctaText')}</p>
-          <div className='mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row'>
+          <div className='mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap'>
+          <Link
+            href='/dashboard/lucent'
+            className='inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#0891b2] px-7 text-base font-semibold text-[#041e29] shadow-[0_10px_40px_rgba(34,211,238,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_50px_rgba(34,211,238,0.5)]'
+          >
+            {nav('openWeb')}
+          </Link>
             <AppStoreButton dark />
             <PlayStoreButton dark />
           </div>

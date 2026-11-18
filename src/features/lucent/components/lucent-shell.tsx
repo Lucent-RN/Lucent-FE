@@ -17,7 +17,7 @@ export function LucentShell({ children }: { children: React.ReactNode }) {
   const t = useTranslations('lucent-web');
   const pathname = usePathname();
   return (
-    <div className='flex min-h-[calc(100dvh-4rem)] flex-col gap-4 p-4 md:px-6'>
+    <div className='flex min-h-[calc(100dvh-4rem)] min-w-0 flex-col gap-4 overflow-x-clip p-4 md:px-6'>
       <div className='flex flex-wrap items-center justify-between gap-3'>
         <div className='flex items-center gap-3'>
           <OrbitLogo size={40} />

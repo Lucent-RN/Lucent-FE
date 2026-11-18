@@ -14,22 +14,47 @@ export type Product = {
 //Info: The following data is used for the sidebar navigation and Cmd K bar.
 export const navItems: NavItem[] = [
   {
-    title: 'Lucent',
+    product: 'lucent',
+    title: 'Timer',
     url: '/dashboard/lucent',
     icon: 'timer',
-    isActive: false,
-    shortcut: ['l', 'l'],
+    shortcut: ['t', 't'],
     items: []
   },
   {
-    title: 'LucentMeet',
+    product: 'lucent',
+    title: 'Tasks',
+    url: '/dashboard/lucent/tasks',
+    icon: 'post',
+    shortcut: ['k', 'k'],
+    items: []
+  },
+  {
+    product: 'lucent',
+    title: 'Statistics',
+    url: '/dashboard/lucent/stats',
+    icon: 'dashboard',
+    shortcut: ['s', 's'],
+    items: []
+  },
+  {
+    product: 'lucent',
+    title: 'Settings',
+    url: '/dashboard/lucent/settings',
+    icon: 'settings',
+    shortcut: ['g', 'g'],
+    items: []
+  },
+  {
+    product: 'meet',
+    title: 'Calendar',
     url: '/dashboard/meet',
     icon: 'dashboard',
-    isActive: false,
-    shortcut: ['m', 'm'],
+    shortcut: ['c', 'c'],
     items: []
   },
   {
+    product: 'meet',
     title: 'AI Assistant',
     url: '/dashboard/meet/assistant',
     icon: 'post',
@@ -37,25 +62,19 @@ export const navItems: NavItem[] = [
     items: []
   },
   {
+    product: 'meet',
     title: 'Accounts',
     url: '/dashboard/meet/accounts',
     icon: 'user',
-    shortcut: ['c', 'c'],
+    shortcut: ['u', 'u'],
     items: []
   },
   {
-    title: 'Overview',
-    url: '/dashboard/overview',
-    icon: 'dashboard',
-    isActive: false,
-    shortcut: ['d', 'd'],
-    items: []
-  },
-  {
-    title: 'Kanban',
-    url: '/dashboard/kanban',
-    icon: 'kanban',
-    shortcut: ['k', 'k'],
+    product: 'meet',
+    title: 'Settings',
+    url: '/dashboard/meet/settings',
+    icon: 'settings',
+    shortcut: ['g', 'g'],
     items: []
   }
 ];

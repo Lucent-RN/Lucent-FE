@@ -437,6 +437,7 @@
   "sidebar": {
     "meet": "LucentMeet",
     "lucent": "Lucent",
+    "lucentProduct": "Pomodoro timer",
     "product": "Calendar & scheduling",
     "calendar": "Calendar",
     "assistant": "AI Assistant",
@@ -453,7 +454,7 @@
     "stats": "Statistics"
   },
   "signin": {
-    "title": "Welcome to Lucent",
+    "title": "Welcome to LucentMeet",
     "subtitle": "Sign in to see all your calendars in one place.",
     "google": "Continue with Google",
     "demo": "Explore the demo",
@@ -784,7 +785,9 @@
       "focusDone": "Focus session complete",
       "breakDone": "Break is over",
       "timeFor": "Time for a {mode}",
-      "completedToday": "Completed today"
+      "completedToday": "Completed today",
+      "stayFocused": "Stay focused",
+      "breakTime": "Break time"
     },
     "tasks": {
       "title": "Tasks",

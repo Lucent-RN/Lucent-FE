@@ -347,3 +347,111 @@
     opacity: 0.7;
   }
 }
+
+/* ── Lucent focus mode (features/lucent/components/focus-sky.tsx) ──────────────────────────
+   The web version of the app's CosmicBackground: night-sky gradient, drifting nebulae,
+   twinkling stars and a shooting star. Animations only run while the sky is visible. */
+.focus-sky {
+  opacity: 0;
+  transition: opacity 350ms ease-out;
+}
+.focus-sky[data-active='true'] {
+  opacity: 1;
+  transition-duration: 900ms;
+}
+.focus-sky:not([data-active='true']) * {
+  animation-play-state: paused !important;
+}
+
+@keyframes focus-nebula-drift {
+  from {
+    transform: translate(calc(var(--dx) * -0.5), calc(var(--dy) * -0.5)) scale(1);
+  }
+  to {
+    transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5)) scale(1.12);
+  }
+}
+.focus-nebula {
+  animation: focus-nebula-drift var(--ms) ease-in-out infinite alternate;
+}
+
+@keyframes focus-twinkle {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+.focus-twinkle {
+  animation: focus-twinkle var(--ms) ease-in-out var(--delay, 0ms) infinite alternate;
+}
+
+/* 5.2 s pause, then a 0.95 s streak (≈ 15% of the 6.15 s cycle), fading in and out. */
+@keyframes focus-shooting-star {
+  0%,
+  84.5% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(160deg);
+  }
+  92% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-55vw, 20vh) rotate(160deg);
+  }
+}
+.focus-shooting-star {
+  animation: focus-shooting-star 6.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+/* The planet breathes gently while the timer runs. */
+@keyframes lucent-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+.lucent-breathe {
+  animation: lucent-breathe 4s ease-in-out infinite;
+}
+
+@keyframes lucent-pill-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.lucent-pill-in {
+  animation: lucent-pill-in 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Short colour cross-fade while focus mode switches the page to dark and back. */
+html.lucent-theme-fade,
+html.lucent-theme-fade * {
+  transition:
+    background-color 600ms ease,
+    color 600ms ease,
+    border-color 600ms ease,
+    fill 600ms ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-nebula,
+  .focus-twinkle,
+  .lucent-breathe,
+  .lucent-pill-in {
+    animation: none;
+  }
+  .focus-shooting-star {
+    display: none;
+  }
+}

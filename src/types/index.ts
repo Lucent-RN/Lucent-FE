@@ -1,6 +1,8 @@
 import { Icons } from '@/components/icons';
 
 export interface NavItem {
+  /** which dashboard area the item belongs to (see lib/product.ts) */
+  product?: import('@/lib/product').Product;
   title: string;
   url: string;
   disabled?: boolean;

@@ -24,7 +24,9 @@ export default function Header() {
         </div>
         <UserNav />
         <ModeToggle />
-        <ThemeSelector />
+        <div className='hidden sm:flex'>
+          <ThemeSelector />
+        </div>
       </div>
     </header>
   );

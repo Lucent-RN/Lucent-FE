@@ -1,15 +1,28 @@
 'use client';
 
-import { IconPlayerPause, IconPlayerPlay, IconPlayerSkipForward, IconRotate } from '@tabler/icons-react';
+import {
+  IconPlayerPause,
+  IconPlayerPlay,
+  IconPlayerSkipForward,
+  IconRotate
+} from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { OrbitRing } from '@/components/brand/orbit-ring';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { isLongBreak, formatClock } from '../core/timer';
 import { dayKey } from '../core/stats';
 import { useLucent } from '../state/lucent-provider';
+import { FocusSky } from './focus-sky';
+import { useFocusDarkMode, useSmoothProgress } from './use-focus-effects';
 
 const NONE = 'none';
 
@@ -27,9 +40,32 @@ function useIsDark() {
   return dark;
 }
 
+/** The ring on its own component, so the 60 fps progress only re-renders the SVG. */
+function SmoothOrbit({
+  endAt,
+  total,
+  progress,
+  dark,
+  children
+}: {
+  endAt: number | null;
+  total: number;
+  progress: number;
+  dark: boolean;
+  children: React.ReactNode;
+}) {
+  const smooth = useSmoothProgress({ endAt, total, progress });
+  return (
+    <OrbitRing progress={smooth} size={340} dark={dark}>
+      {children}
+    </OrbitRing>
+  );
+}
+
 export function TimerView() {
   const t = useTranslations('lucent-web');
-  const { data, remaining, running, progress, todo, dispatch, hydrated } = useLucent();
+  const { data, remaining, running, progress, todo, dispatch, hydrated } =
+    useLucent();
   const dark = useIsDark();
   const { mode, currentSession } = data.timer;
   const s = data.settings;
@@ -40,7 +76,13 @@ export function TimerView() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const el = e.target as HTMLElement | null;
-      if (e.code !== 'Space' || el?.closest('input,textarea,select,button,[role="combobox"],[contenteditable]')) return;
+      if (
+        e.code !== 'Space' ||
+        el?.closest(
+          'input,textarea,select,button,[role="combobox"],[contenteditable]'
+        )
+      )
+        return;
       e.preventDefault();
       dispatch({ type: running ? 'pause' : 'start' });
     };
@@ -50,13 +92,25 @@ export function TimerView() {
 
   const open = data.todos.filter((x) => !x.isCompleted);
   const today = dayKey(new Date());
-  const doneToday = data.sessions.filter((x) => x.status === 'focus' && x.isCompleted && dayKey(new Date(x.createdAt)) === today).length;
+  const doneToday = data.sessions.filter(
+    (x) =>
+      x.status === 'focus' &&
+      x.isCompleted &&
+      dayKey(new Date(x.createdAt)) === today
+  ).length;
   const longBreak = mode === 'break' && isLongBreak(currentSession, s);
   const paused = !running && data.timer.sessionId !== null;
+  // Like the app: a running focus session turns the page into deep space.
+  const focusing = running && mode === 'focus';
+  useFocusDarkMode(focusing);
 
   return (
     <div className='mx-auto flex w-full max-w-2xl flex-col items-center gap-6 py-2'>
-      <div className='bg-muted flex rounded-full p-1' role='tablist' aria-label='Mode'>
+      <div
+        className='bg-muted flex rounded-full p-1'
+        role='tablist'
+        aria-label='Mode'
+      >
         {(['focus', 'break'] as const).map((m) => (
           <button
             key={m}
@@ -76,8 +130,14 @@ export function TimerView() {
 
       <div className='w-full max-w-sm'>
         <Select
-          value={data.timer.selectedTodoId === null ? NONE : String(data.timer.selectedTodoId)}
-          onValueChange={(v) => dispatch({ type: 'selectTodo', id: v === NONE ? null : Number(v) })}
+          value={
+            data.timer.selectedTodoId === null
+              ? NONE
+              : String(data.timer.selectedTodoId)
+          }
+          onValueChange={(v) =>
+            dispatch({ type: 'selectTodo', id: v === NONE ? null : Number(v) })
+          }
           disabled={running || paused}
         >
           <SelectTrigger aria-label={t('timer.chooseTask')}>
@@ -94,29 +154,73 @@ export function TimerView() {
         </Select>
         {todo && (
           <p className='text-muted-foreground mt-1.5 text-center text-xs'>
-            {t('timer.sessionsDone', { done: todo.completedSessions, total: todo.totalSessions || '∞' })}
+            {t('timer.sessionsDone', {
+              done: todo.completedSessions,
+              total: todo.totalSessions || '∞'
+            })}
           </p>
         )}
       </div>
 
-      <div className={cn('transition-opacity', !hydrated && 'opacity-0')}>
-        <OrbitRing progress={progress} size={340} dark={dark}>
-          <div className='flex flex-col items-center gap-2'>
-            <span className='text-5xl font-semibold tracking-tight tabular-nums'>{formatClock(remaining)}</span>
-            <span className='text-muted-foreground text-xs font-medium'>
-              {mode === 'focus' ? t('timer.focus') : longBreak ? t('timer.longBreak') : t('timer.shortBreak')}
-            </span>
-            <div className='flex items-center gap-1.5' aria-label={t('timer.sessionLabel', { n: activeDot + 1, total: dots })}>
-              {Array.from({ length: dots }, (_, i) => (
-                <span key={i} className={cn('h-1.5 rounded-full transition-all', i === activeDot ? 'w-5 bg-[#22d3ee]' : 'w-1.5 bg-current opacity-20')} />
-              ))}
+      <FocusSky active={focusing} />
+
+      <div
+        className={cn(
+          'transition-opacity duration-500 max-sm:scale-[0.8]',
+          !hydrated && 'opacity-0'
+        )}
+      >
+        <div className={cn(running && 'lucent-breathe')}>
+          <SmoothOrbit
+            endAt={data.timer.endAt}
+            total={data.timer.total}
+            progress={progress}
+            dark={dark}
+          >
+            <div className='flex flex-col items-center gap-2'>
+              <span className='text-5xl font-semibold tracking-tight tabular-nums'>
+                {formatClock(remaining)}
+              </span>
+              <span className='text-muted-foreground text-xs font-medium'>
+                {mode === 'focus'
+                  ? t('timer.focus')
+                  : longBreak
+                    ? t('timer.longBreak')
+                    : t('timer.shortBreak')}
+              </span>
+              <div
+                className='flex items-center gap-1.5'
+                aria-label={t('timer.sessionLabel', {
+                  n: activeDot + 1,
+                  total: dots
+                })}
+              >
+                {Array.from({ length: dots }, (_, i) => (
+                  <span
+                    key={i}
+                    className={cn(
+                      'h-1.5 rounded-full transition-all',
+                      i === activeDot
+                        ? 'w-5 bg-[#22d3ee]'
+                        : 'w-1.5 bg-current opacity-20'
+                    )}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </OrbitRing>
+          </SmoothOrbit>
+        </div>
       </div>
 
       <div className='flex items-center gap-3'>
-        <Button variant='outline' size='icon' className='size-11 rounded-full' onClick={() => dispatch({ type: 'reset' })} aria-label={t('timer.reset')} title={t('timer.reset')}>
+        <Button
+          variant='outline'
+          size='icon'
+          className='size-11 rounded-full'
+          onClick={() => dispatch({ type: 'reset' })}
+          aria-label={t('timer.reset')}
+          title={t('timer.reset')}
+        >
           <IconRotate />
         </Button>
         <Button
@@ -124,8 +228,16 @@ export function TimerView() {
           className='h-14 min-w-36 rounded-full text-base'
           onClick={() => dispatch({ type: running ? 'pause' : 'start' })}
         >
-          {running ? <IconPlayerPause className='fill-current' /> : <IconPlayerPlay className='fill-current' />}
-          {running ? t('timer.pause') : paused ? t('timer.resume') : t('timer.start')}
+          {running ? (
+            <IconPlayerPause className='fill-current' />
+          ) : (
+            <IconPlayerPlay className='fill-current' />
+          )}
+          {running
+            ? t('timer.pause')
+            : paused
+              ? t('timer.resume')
+              : t('timer.start')}
         </Button>
         <Button
           variant='outline'
@@ -138,6 +250,21 @@ export function TimerView() {
         >
           <IconPlayerSkipForward />
         </Button>
+      </div>
+
+      <div className='flex h-8 items-center' aria-live='polite'>
+        {running && (
+          <span
+            key={mode}
+            className='lucent-pill-in border-border/60 bg-background/60 text-foreground inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium backdrop-blur-md'
+          >
+            <span className='relative flex size-2'>
+              <span className='absolute inline-flex size-full animate-ping rounded-full bg-[#22d3ee] opacity-60 motion-reduce:hidden' />
+              <span className='relative inline-flex size-2 rounded-full bg-[#22d3ee]' />
+            </span>
+            {mode === 'focus' ? t('timer.stayFocused') : t('timer.breakTime')}
+          </span>
+        )}
       </div>
 
       <p className='text-muted-foreground text-xs'>

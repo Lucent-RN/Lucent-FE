@@ -11,7 +11,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Link, useRouter } from '@/i18n/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { productFromPath } from '@/lib/product';
 import { getSupabaseBrowser } from '@/lib/supabase/client';
 import { useSupabaseUser } from '@/lib/supabase/use-user';
 
@@ -19,6 +20,10 @@ export function UserNav() {
   const t = useTranslations('sidebar');
   const router = useRouter();
   const { user } = useSupabaseUser();
+  const product = productFromPath(usePathname());
+
+  // Lucent (Pomodoro) has no accounts on the web: only LucentMeet shows sign-in / the user menu.
+  if (product !== 'meet') return null;
 
   if (!user) {
     return (

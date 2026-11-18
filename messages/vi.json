@@ -437,6 +437,7 @@
   "sidebar": {
     "meet": "LucentMeet",
     "lucent": "Lucent",
+    "lucentProduct": "Hẹn giờ Pomodoro",
     "product": "Lịch & lên lịch",
     "calendar": "Lịch",
     "assistant": "Trợ lý AI",
@@ -453,7 +454,7 @@
     "stats": "Thống kê"
   },
   "signin": {
-    "title": "Chào mừng đến Lucent",
+    "title": "Chào mừng đến LucentMeet",
     "subtitle": "Đăng nhập để xem mọi lịch của bạn trong một nơi.",
     "google": "Tiếp tục với Google",
     "demo": "Xem thử bản demo",
@@ -784,7 +785,9 @@
       "focusDone": "Hoàn thành phiên tập trung",
       "breakDone": "Hết giờ nghỉ",
       "timeFor": "Đến lúc {mode}",
-      "completedToday": "Hoàn thành hôm nay"
+      "completedToday": "Hoàn thành hôm nay",
+      "stayFocused": "Giữ tập trung",
+      "breakTime": "Giờ nghỉ"
     },
     "tasks": {
       "title": "Công việc",

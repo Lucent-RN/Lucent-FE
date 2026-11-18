@@ -1,6 +1,5 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import {
   createContext,
   useCallback,
@@ -35,7 +34,7 @@ export interface MeetUser {
 }
 
 export interface MeetValue {
-  /** `demo` = sample data, nothing is saved (no Supabase configured, or `?demo=1`). */
+  /** `demo` = sample data, nothing is saved (only when Supabase is not configured). */
   mode: 'live' | 'demo';
   status: 'loading' | 'ready' | 'error';
   error: string | null;
@@ -67,7 +66,7 @@ export interface MeetValue {
   /** Subscribes to an iCal feed (https:// or webcal://); resolves with the feed's display name. */
   addIcsFeed(url: string, name?: string): Promise<string>;
   disconnectAccount(accountId: string): Promise<void>;
-  /** Keeps `?demo=1` when navigating inside the Meet area. */
+  /** Builds a link inside the Meet area (kept as an extension point; currently the path itself). */
   href(path: string): string;
 }
 
@@ -85,8 +84,8 @@ const browserZone = () =>
   Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 
 export function MeetProvider({ children }: { children: React.ReactNode }) {
-  const params = useSearchParams();
-  const demo = !isSupabaseConfigured || params.get('demo') === '1';
+  // Sample data only when Supabase is not configured (local dev); otherwise sign-in is required.
+  const demo = !isSupabaseConfigured;
 
   const [engine] = useState(() => new ConflictDetectionEngine());
   const [status, setStatus] = useState<MeetValue['status']>('loading');
@@ -241,10 +240,7 @@ export function MeetProvider({ children }: { children: React.ReactNode }) {
     conflictsOf: (id) => byEvent.get(id) ?? [],
     canWrite: (s) => !!s && s.provider === 'GOOGLE' && s.isWritable,
     refresh,
-    href: (path) =>
-      demo && isSupabaseConfigured
-        ? `${path}${path.includes('?') ? '&' : '?'}demo=1`
-        : path,
+    href: (path) => path,
 
     async syncNow() {
       if (demo) return;
@@ -355,7 +351,9 @@ export function MeetProvider({ children }: { children: React.ReactNode }) {
     },
     async addIcsFeed(url, name) {
       if (demo) return name?.trim() || 'Demo feed'; // nothing is saved in demo mode
-      const r = await guard(() => meetApi.addIcsFeed(url, name?.trim() || undefined));
+      const r = await guard(() =>
+        meetApi.addIcsFeed(url, name?.trim() || undefined)
+      );
       return r.name;
     },
     async disconnectAccount(accountId) {

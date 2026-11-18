@@ -10,12 +10,12 @@ import {
 
 const intl = createMiddleware(routing);
 
-/** LucentMeet web needs a signed-in user (except ?demo=1, which only shows sample data). */
+/** LucentMeet web needs a signed-in user, like the mobile app (Lucent needs no account). */
 const PROTECTED = /^\/(en|vi|jp|de)\/dashboard\/meet(\/|$)/;
 
 export default async function middleware(request: NextRequest) {
   const response = intl(request);
-  const { pathname, searchParams } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const needsSession =
     PROTECTED.test(pathname) || /^\/(en|vi|jp|de)\/auth(\/|$)/.test(pathname);
   if (!isSupabaseConfigured || !needsSession) return response;
@@ -35,7 +35,7 @@ export default async function middleware(request: NextRequest) {
     data: { user }
   } = await supabase.auth.getUser();
 
-  if (!user && PROTECTED.test(pathname) && searchParams.get('demo') !== '1') {
+  if (!user && PROTECTED.test(pathname)) {
     const locale = pathname.split('/')[1];
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}/auth/sign-in`;

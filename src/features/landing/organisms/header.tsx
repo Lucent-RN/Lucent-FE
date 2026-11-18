@@ -106,10 +106,12 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
   const isMobile = useIsMobile();
   const handlePressDownload = () => {
     router.push(
-      product === 'meet' ? `/${locale}/dashboard/meet` : `/${locale}/download`
+      product === 'meet'
+        ? `/${locale}/dashboard/meet`
+        : `/${locale}/dashboard/lucent`
     );
   };
-  const ctaLabel = product === 'meet' ? nav('openWeb') : nav('download');
+  const ctaLabel = nav('openWeb');
 
   return (
     <header className='fixed inset-x-0 top-0 z-50 w-full'>

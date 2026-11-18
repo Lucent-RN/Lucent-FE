@@ -49,7 +49,12 @@ export function TasksView() {
       toast.error(t('tasks.titleRequired'));
       return;
     }
-    const form = { ...editing.form, title: editing.form.title.trim() };
+    const { duration } = editing.form;
+    const form = {
+      ...editing.form,
+      title: editing.form.title.trim(),
+      duration: duration ? Math.max(5 * 60, duration) : null
+    };
     if (editing.id === null) dispatch({ type: 'addTodo', todo: form });
     else dispatch({ type: 'updateTodo', id: editing.id, patch: form });
     setEditing(null);
@@ -180,7 +185,9 @@ export function TasksView() {
                     max={120}
                     placeholder={String(Math.round(data.settings.focusDuration / 60))}
                     value={editing.form.duration ? Math.round(editing.form.duration / 60) : ''}
-                    onChange={(e) => patch({ duration: e.target.value ? Math.min(120, Math.max(5, Number(e.target.value))) * 60 : null })}
+                    // Only cap the maximum while typing ("25" passes through "2"); enforce the minimum on blur.
+                    onChange={(e) => patch({ duration: e.target.value ? Math.min(120, Math.max(1, Number(e.target.value))) * 60 : null })}
+                    onBlur={() => editing.form.duration && editing.form.duration < 5 * 60 && patch({ duration: 5 * 60 })}
                   />
                 </div>
                 <div className='space-y-1.5'>

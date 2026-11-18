@@ -23,7 +23,7 @@ export default async function SignInViewPage({ error }: { error?: string }) {
         <div className='cosmic-stars absolute inset-0 opacity-80' />
         <div className='cosmic-stars cosmic-stars-twinkle absolute inset-0' />
         <div className='relative flex items-center gap-3 text-lg font-semibold'>
-          <OrbitLogo size={36} /> Lucent
+          <OrbitLogo size={36} /> LucentMeet
         </div>
         <div className='relative space-y-6'>
           <OrbitLogo
@@ -51,7 +51,7 @@ export default async function SignInViewPage({ error }: { error?: string }) {
             </li>
           </ul>
         </div>
-        <p className='relative text-xs text-[#a5e3f4]/70'>© Lucent</p>
+        <p className='relative text-xs text-[#a5e3f4]/70'>© LucentMeet</p>
       </div>
 
       <div className='flex items-center justify-center p-6 lg:p-10'>
@@ -82,15 +82,6 @@ export default async function SignInViewPage({ error }: { error?: string }) {
             <Suspense fallback={null}>
               <GoogleSignInButton />
             </Suspense>
-            <Link
-              href='/dashboard/meet?demo=1'
-              className={cn(
-                buttonVariants({ variant: 'outline' }),
-                'h-11 w-full'
-              )}
-            >
-              {t('demo')}
-            </Link>
           </div>
 
           <p className='text-muted-foreground text-center text-xs lg:text-left'>

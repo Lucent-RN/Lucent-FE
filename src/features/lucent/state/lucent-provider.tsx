@@ -97,7 +97,7 @@ export function LucentProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     const base = 'Lucent';
-    document.title = running ? `${formatClock(remaining)} · ${data.timer.mode === 'focus' ? t('timer.focus') : t('timer.break')} · ${base}` : document.title.replace(/^\d\d:\d\d · .* · Lucent$/, base);
+    document.title = running ? `${formatClock(remaining)} · ${data.timer.mode === 'focus' ? t('timer.focus') : t('timer.break')} · ${base}` : document.title.replace(/^\d+:\d\d · .* · Lucent$/, base);
   }, [running, remaining, data.timer.mode, hydrated, t]);
 
   const value = useMemo<LucentValue>(

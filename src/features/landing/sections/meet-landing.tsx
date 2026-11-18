@@ -59,15 +59,6 @@ export default function MeetLanding() {
               >
                 {nav('openWeb')}
               </Link>
-              <Link
-                href='/dashboard/meet?demo=1'
-                className={cn(
-                  buttonVariants({ variant: 'outline', size: 'lg' }),
-                  'h-12 rounded-full px-7 text-base'
-                )}
-              >
-                {t('demo')}
-              </Link>
             </div>
             <div className='mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start'>
               <AppStoreButton soon size='sm' />
@@ -177,15 +168,6 @@ export default function MeetLanding() {
               )}
             >
               {nav('openWeb')}
-            </Link>
-            <Link
-              href='/dashboard/meet?demo=1'
-              className={cn(
-                buttonVariants({ variant: 'outline', size: 'lg' }),
-                'h-12 rounded-full border-white/30 bg-transparent px-7 text-base text-white hover:bg-white/10 hover:text-white'
-              )}
-            >
-              {t('demo')}
             </Link>
           </div>
         </SpacePanel>
