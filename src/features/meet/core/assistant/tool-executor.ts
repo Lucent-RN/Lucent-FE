@@ -330,3 +330,97 @@ export const TOOL_ACTIVITY: Record<string, string> = {
   propose_update_event: 'drafting',
   propose_delete_event: 'drafting',
 };
+
+const shortDate = (iso: unknown): string => {
+  const d = asDate(iso);
+  if (!d) return '';
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+};
+
+/**
+ * Produces a human-readable label and result summary for an agent tool step.
+ */
+export function describeToolStep(
+  name: string,
+  input: Record<string, unknown>,
+  outcome?: ToolOutcome,
+): { label: string; detail?: string } {
+  let parsed: Record<string, any> = {};
+  if (outcome?.content) {
+    try {
+      parsed = JSON.parse(outcome.content);
+    } catch {
+      parsed = {};
+    }
+  }
+
+  switch (name) {
+    case 'list_events': {
+      const fromStr = shortDate(input.from);
+      const toStr = shortDate(input.to);
+      const range =
+        fromStr && toStr && fromStr !== toStr
+          ? ` (${fromStr} – ${toStr})`
+          : fromStr
+            ? ` (${fromStr})`
+            : '';
+      const count = typeof parsed.count === 'number' ? parsed.count : undefined;
+      return {
+        label: `Checked calendar${range}`,
+        detail:
+          count !== undefined
+            ? `${count} ${count === 1 ? 'event' : 'events'}`
+            : undefined,
+      };
+    }
+    case 'find_free_slots': {
+      const mins = Number(input.duration_minutes) || 30;
+      const slotsCount = Array.isArray(parsed.slots)
+        ? parsed.slots.length
+        : undefined;
+      return {
+        label: `Searched for ${mins}m free slots`,
+        detail:
+          slotsCount !== undefined
+            ? `${slotsCount} ${slotsCount === 1 ? 'slot' : 'slots'} found`
+            : undefined,
+      };
+    }
+    case 'check_conflicts': {
+      const conflictsCount = Array.isArray(parsed.conflicts)
+        ? parsed.conflicts.length
+        : undefined;
+      return {
+        label: 'Checked schedule conflicts',
+        detail:
+          conflictsCount !== undefined
+            ? conflictsCount === 0
+              ? 'No conflicts'
+              : `${conflictsCount} conflict(s)`
+            : undefined,
+      };
+    }
+    case 'propose_create_event': {
+      const title = asString(input.title, 40);
+      return {
+        label: title ? `Drafted event "${title}"` : 'Drafted new event',
+        detail: outcome?.isError ? 'Failed' : 'Ready to confirm',
+      };
+    }
+    case 'propose_update_event': {
+      const title = asString(input.title, 40);
+      return {
+        label: title ? `Prepared update for "${title}"` : 'Prepared event update',
+        detail: outcome?.isError ? 'Failed' : 'Ready to confirm',
+      };
+    }
+    case 'propose_delete_event': {
+      return {
+        label: 'Prepared event removal',
+        detail: outcome?.isError ? 'Failed' : 'Ready to confirm',
+      };
+    }
+    default:
+      return { label: name };
+  }
+}

@@ -10,6 +10,7 @@ export class User {
     readonly currentTimezone: string,
     readonly preference: SchedulingPreference,
     readonly calendars: CalendarSource[] = [],
+    readonly avatarUrl?: string,
   ) {}
 
   updateTimezone(newZone: string): User {
@@ -20,6 +21,7 @@ export class User {
       newZone,
       this.preference,
       this.calendars,
+      this.avatarUrl,
     );
   }
 

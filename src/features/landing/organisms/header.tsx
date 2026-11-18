@@ -31,6 +31,8 @@ const Header: React.FC<{ product?: 'lucent' | 'meet' }> = ({
   const [mounted, setMounted] = useState(false);
 
   const t = useTranslations(landingLocalizeStrings.header.getLocal);
+  const nav = useTranslations('site.nav');
+  const brand = product === 'meet' ? nav('meet') : nav('lucent');
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();

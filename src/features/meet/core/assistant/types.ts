@@ -54,11 +54,23 @@ export interface Proposal extends ProposalDraft {
   error?: string;
 }
 
+export type AgentStepStatus = 'running' | 'done' | 'error';
+
+export interface AgentStep {
+  id: string;
+  tool: string;
+  label: string;
+  detail?: string;
+  status: AgentStepStatus;
+}
+
 export interface UiMessage {
   id: string;
   role: 'user' | 'assistant';
   text: string;
   proposals?: Proposal[];
+  steps?: AgentStep[];
+  isStreaming?: boolean;
   isError?: boolean;
   /** Reveal with the typewriter effect (only the freshly received reply). */
   animate?: boolean;
