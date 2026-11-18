@@ -1,5 +1,12 @@
 import { useId } from 'react';
 
+/** Extra moons for focus mode — the same idea as the landing page's OrbitSystem. */
+const MOONS = [
+  { rx: 44, tilt: 24, dur: 10, r: 2.3, reverse: true, opacity: 0.85 },
+  { rx: 37, tilt: -46, dur: 6.5, r: 1.8, reverse: false, opacity: 0.7 }
+] as const;
+const FLAT = 0.33;
+
 /**
  * The Lucent timer, drawn as SVG: a shaded planet, a tilted orbit whose bright arc is the time that
  * is set/left, and a glossy sphere at its end ("now"). The far half of the orbit passes behind the
@@ -9,12 +16,20 @@ export function OrbitRing({
   progress,
   size = 240,
   dark = false,
+  orbiting,
   children
 }: {
   /** 0..1 — how far the arc has travelled from the orbit's right tip, clockwise. */
   progress: number;
   size?: number;
   dark?: boolean;
+  /**
+   * Focus mode: two extra tilted orbits fade in, each with a glowing moon circling the planet
+   * (like the landing page's OrbitSystem). `undefined` = never rendered (static mockups);
+   * `false` = rendered but faded out, so switching it on/off cross-fades. The caller passes
+   * `false` when the visitor prefers reduced motion.
+   */
+  orbiting?: boolean;
   /** Content centred on the planet (usually the time). */
   children?: React.ReactNode;
 }) {
@@ -45,6 +60,68 @@ export function OrbitRing({
   const band = dark ? '#22d3ee' : '#06b6d4';
   const track = dark ? 'rgba(19,94,122,0.65)' : 'rgba(165,227,244,0.85)';
 
+  const moonPath = (o: (typeof MOONS)[number]) => {
+    const ry = o.rx * FLAT;
+    const sweep = o.reverse ? 0 : 1;
+    return `M${C + o.rx} ${C} A${o.rx} ${ry} 0 1 ${sweep} ${C - o.rx} ${C} A${o.rx} ${ry} 0 1 ${sweep} ${C + o.rx} ${C}`;
+  };
+  /** Far (back) or near (front) half of each moon orbit, with the moon clipped to that half. */
+  const moons = (side: 'back' | 'front') =>
+    orbiting === undefined ? null : (
+      <g
+        style={{
+          opacity: orbiting ? 1 : 0,
+          transition: `opacity ${orbiting ? 900 : 350}ms ease`
+        }}
+      >
+        {MOONS.map((o) => {
+          const ry = o.rx * FLAT;
+          const d =
+            side === 'back'
+              ? `M${C - o.rx} ${C} A${o.rx} ${ry} 0 0 1 ${C + o.rx} ${C}`
+              : `M${C + o.rx} ${C} A${o.rx} ${ry} 0 0 1 ${C - o.rx} ${C}`;
+          return (
+            <g key={o.rx} transform={`rotate(${o.tilt} ${C} ${C})`}>
+              <path
+                d={d}
+                fill='none'
+                stroke={side === 'back' ? band : '#a5f3fc'}
+                strokeOpacity={(side === 'back' ? 0.3 : 0.6) * o.opacity}
+                strokeWidth={side === 'back' ? 0.6 : 0.9}
+                strokeLinecap='round'
+              />
+              {orbiting && (
+                <g clipPath={`url(#${uid}-${side})`}>
+                  <circle
+                    r={o.r * 2.6}
+                    fill={`url(#${uid}-halo)`}
+                    opacity={o.opacity * 0.6}
+                  >
+                    <animateMotion
+                      dur={`${o.dur}s`}
+                      repeatCount='indefinite'
+                      path={moonPath(o)}
+                    />
+                  </circle>
+                  <circle
+                    r={o.r}
+                    fill={`url(#${uid}-knob)`}
+                    opacity={o.opacity}
+                  >
+                    <animateMotion
+                      dur={`${o.dur}s`}
+                      repeatCount='indefinite'
+                      path={moonPath(o)}
+                    />
+                  </circle>
+                </g>
+              )}
+            </g>
+          );
+        })}
+      </g>
+    );
+
   const knob = (
     <g>
       <circle cx={kx} cy={ky} r={kr * 2.6} fill={`url(#${uid}-halo)`} />
@@ -61,7 +138,13 @@ export function OrbitRing({
 
   return (
     <div className='relative' style={{ width: size, height: size }}>
-      <svg viewBox='0 0 100 100' width={size} height={size} overflow='visible' aria-hidden>
+      <svg
+        viewBox='0 0 100 100'
+        width={size}
+        height={size}
+        overflow='visible'
+        aria-hidden
+      >
         <defs>
           <radialGradient id={`${uid}-planet`} cx='34%' cy='28%' r='88%'>
             <stop offset='0' stopColor={planet[0]} />
@@ -107,7 +190,16 @@ export function OrbitRing({
           <clipPath id={`${uid}-clip`}>
             <circle cx={C} cy={C} r='27' />
           </clipPath>
+          {/* moon halves, in each orbit's own (rotated) frame */}
+          <clipPath id={`${uid}-back`}>
+            <rect x='-50' y='-50' width='200' height={C + 50} />
+          </clipPath>
+          <clipPath id={`${uid}-front`}>
+            <rect x='-50' y={C} width='200' height={C + 50} />
+          </clipPath>
         </defs>
+
+        {moons('back')}
 
         {/* far half: behind the planet */}
         <g transform={`rotate(${TILT} ${C} ${C})`}>
@@ -182,6 +274,8 @@ export function OrbitRing({
           )}
         </g>
         {onFront && knob}
+
+        {moons('front')}
       </svg>
       {children && (
         <div className='absolute inset-0 flex items-center justify-center'>

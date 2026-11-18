@@ -6,6 +6,7 @@ import {
   IconPlayerSkipForward,
   IconRotate
 } from '@tabler/icons-react';
+import { useReducedMotion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { OrbitRing } from '@/components/brand/orbit-ring';
@@ -46,17 +47,19 @@ function SmoothOrbit({
   total,
   progress,
   dark,
+  orbiting,
   children
 }: {
   endAt: number | null;
   total: number;
   progress: number;
   dark: boolean;
+  orbiting: boolean;
   children: React.ReactNode;
 }) {
   const smooth = useSmoothProgress({ endAt, total, progress });
   return (
-    <OrbitRing progress={smooth} size={340} dark={dark}>
+    <OrbitRing progress={smooth} size={340} dark={dark} orbiting={orbiting}>
       {children}
     </OrbitRing>
   );
@@ -103,11 +106,23 @@ export function TimerView() {
   // Like the app: a running focus session turns the page into deep space.
   const focusing = running && mode === 'focus';
   useFocusDarkMode(focusing);
+  const reduceMotion = useReducedMotion();
+  // Focus mode keeps only the timer, the pause button and the "stay focused" pill. Everything
+  // else fades out in place (so the ring never jumps) and becomes inert (no tab stops).
+  const away = {
+    inert: focusing,
+    'aria-hidden': focusing,
+    className: cn(
+      'transition-all duration-500',
+      focusing && 'pointer-events-none opacity-0'
+    )
+  } as const;
 
   return (
     <div className='mx-auto flex w-full max-w-2xl flex-col items-center gap-6 py-2'>
       <div
-        className='bg-muted flex rounded-full p-1'
+        {...away}
+        className={cn('bg-muted flex rounded-full p-1', away.className)}
         role='tablist'
         aria-label='Mode'
       >
@@ -128,7 +143,7 @@ export function TimerView() {
         ))}
       </div>
 
-      <div className='w-full max-w-sm'>
+      <div {...away} className={cn('w-full max-w-sm', away.className)}>
         <Select
           value={
             data.timer.selectedTodoId === null
@@ -176,6 +191,7 @@ export function TimerView() {
             total={data.timer.total}
             progress={progress}
             dark={dark}
+            orbiting={focusing && !reduceMotion}
           >
             <div className='flex flex-col items-center gap-2'>
               <span className='text-5xl font-semibold tracking-tight tabular-nums'>
@@ -213,16 +229,19 @@ export function TimerView() {
       </div>
 
       <div className='flex items-center gap-3'>
-        <Button
-          variant='outline'
-          size='icon'
-          className='size-11 rounded-full'
-          onClick={() => dispatch({ type: 'reset' })}
-          aria-label={t('timer.reset')}
-          title={t('timer.reset')}
-        >
-          <IconRotate />
-        </Button>
+        {/* faded via a wrapper: Button's `disabled:opacity-50` would beat `opacity-0` */}
+        <span {...away} className={cn('inline-flex', away.className)}>
+          <Button
+            variant='outline'
+            size='icon'
+            className='size-11 rounded-full'
+            onClick={() => dispatch({ type: 'reset' })}
+            aria-label={t('timer.reset')}
+            title={t('timer.reset')}
+          >
+            <IconRotate />
+          </Button>
+        </span>
         <Button
           size='lg'
           className='h-14 min-w-36 rounded-full text-base'
@@ -239,17 +258,19 @@ export function TimerView() {
               ? t('timer.resume')
               : t('timer.start')}
         </Button>
-        <Button
-          variant='outline'
-          size='icon'
-          className='size-11 rounded-full'
-          disabled={mode !== 'break'}
-          onClick={() => dispatch({ type: 'skip' })}
-          aria-label={t('timer.skip')}
-          title={t('timer.skip')}
-        >
-          <IconPlayerSkipForward />
-        </Button>
+        <span {...away} className={cn('inline-flex', away.className)}>
+          <Button
+            variant='outline'
+            size='icon'
+            className='size-11 rounded-full'
+            disabled={mode !== 'break'}
+            onClick={() => dispatch({ type: 'skip' })}
+            aria-label={t('timer.skip')}
+            title={t('timer.skip')}
+          >
+            <IconPlayerSkipForward />
+          </Button>
+        </span>
       </div>
 
       <div className='flex h-8 items-center' aria-live='polite'>
@@ -263,11 +284,20 @@ export function TimerView() {
               <span className='relative inline-flex size-2 rounded-full bg-[#22d3ee]' />
             </span>
             {mode === 'focus' ? t('timer.stayFocused') : t('timer.breakTime')}
+            {/* the task select is hidden while focusing: keep its name here */}
+            {focusing && todo && (
+              <span className='text-muted-foreground max-w-48 truncate'>
+                · {todo.title}
+              </span>
+            )}
           </span>
         )}
       </div>
 
-      <p className='text-muted-foreground text-xs'>
+      <p
+        {...away}
+        className={cn('text-muted-foreground text-xs', away.className)}
+      >
         {t('timer.hint')} · {t('timer.completedToday')}: {doneToday}
       </p>
     </div>

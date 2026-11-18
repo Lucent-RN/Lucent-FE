@@ -1,8 +1,5 @@
-import { CosmicSky } from '@/components/brand/cosmic-sky';
 import KBar from '@/components/kbar';
-import AppSidebar from '@/components/layout/app-sidebar';
-import Header from '@/components/layout/header';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { DashboardFrame } from '@/components/layout/dashboard-frame';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
@@ -22,16 +19,7 @@ export default async function DashboardLayout({
   const defaultOpen = cookieStore.get('sidebar_state')?.value !== 'false';
   return (
     <KBar>
-      <SidebarProvider defaultOpen={defaultOpen}>
-        <CosmicSky />
-        <AppSidebar />
-        <SidebarInset className='bg-transparent'>
-          <Header />
-          {/* page main content */}
-          {children}
-          {/* page main content ends */}
-        </SidebarInset>
-      </SidebarProvider>
+      <DashboardFrame defaultOpen={defaultOpen}>{children}</DashboardFrame>
     </KBar>
   );
 }
