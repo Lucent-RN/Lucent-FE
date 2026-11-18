@@ -709,6 +709,52 @@
     "contactEmail": "trungkiennguyen0310@gmail.com",
     "backToLegal": "Lucent privacy policy, terms and imprint"
   },
+  "meet-delete-account": {
+    "eyebrow": "LucentMeet · Account",
+    "title": "Delete your LucentMeet account",
+    "intro": "You can permanently delete your LucentMeet account and all of its data at any time. Choose whichever option suits you below. Deletion is immediate and cannot be undone.",
+    "app": {
+      "title": "Option 1: In the app",
+      "steps": [
+        "Open LucentMeet on your iPhone, iPad or Android device and sign in.",
+        "Tap the Settings tab.",
+        "Scroll to the Privacy section and tap Delete account.",
+        "Confirm with Delete everything. Your account is deleted straight away and you are signed out."
+      ]
+    },
+    "web": {
+      "title": "Option 2: On the web",
+      "signedOut": "If you signed in to LucentMeet with Google, sign in here with the same Google account to delete your account from your browser.",
+      "signIn": "Sign in with Google",
+      "checking": "Checking your session…",
+      "unavailable": "Web deletion is temporarily unavailable. Please use the app or email us.",
+      "signedInAs": "Signed in as <b>{email}</b>.",
+      "button": "Delete my account",
+      "confirmTitle": "Delete your account?",
+      "confirmBody": "All synced events, preferences and stored access tokens will be permanently erased and access will be revoked at Google. This cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Delete everything",
+      "error": "We couldn't delete your account. Please try again or email us.",
+      "success": "Your LucentMeet account and all of its data have been deleted. You have been signed out."
+    },
+    "email": {
+      "title": "Option 3: By email",
+      "body": "Signed in with Apple, or no longer have access to the app? Email us from the address linked to your LucentMeet account and ask us to delete it. We will confirm and delete your account and data within 7 days.",
+      "address": "trungkiennguyen0310@gmail.com",
+      "subject": "LucentMeet account deletion request"
+    },
+    "data": {
+      "title": "What gets deleted",
+      "deleted": [
+        "Your profile (name, email address and avatar).",
+        "Your preferences and settings.",
+        "Connected calendar accounts and their encrypted access tokens; access is also revoked at Google.",
+        "Synced calendars, events, reminders and detected conflicts."
+      ],
+      "retention": "Everything above is erased from our servers as soon as the deletion completes. We do not keep any of it afterwards, except where the law requires us to. The offline copy on your device is cleared when you are signed out, or when you uninstall the app."
+    },
+    "backToPrivacy": "LucentMeet privacy policy"
+  },
   "lucent-web": {
     "title": "Lucent",
     "subtitle": "Focus, in orbit. Your Pomodoro timer on the web",

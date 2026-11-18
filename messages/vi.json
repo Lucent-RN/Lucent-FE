@@ -709,6 +709,52 @@
     "contactEmail": "trungkiennguyen0310@gmail.com",
     "backToLegal": "Chính sách quyền riêng tư, điều khoản và thông tin pháp lý của Lucent"
   },
+  "meet-delete-account": {
+    "eyebrow": "LucentMeet · Tài khoản",
+    "title": "Xoá tài khoản LucentMeet",
+    "intro": "Bạn có thể xoá vĩnh viễn tài khoản LucentMeet cùng toàn bộ dữ liệu bất cứ lúc nào, bằng một trong các cách dưới đây. Việc xoá diễn ra ngay lập tức và không thể hoàn tác.",
+    "app": {
+      "title": "Cách 1: Trong ứng dụng",
+      "steps": [
+        "Mở LucentMeet trên iPhone, iPad hoặc điện thoại Android và đăng nhập.",
+        "Chọn tab Cài đặt.",
+        "Kéo xuống mục Quyền riêng tư và chọn Xoá tài khoản.",
+        "Xác nhận bằng Xoá tất cả. Tài khoản bị xoá ngay và bạn sẽ được đăng xuất."
+      ]
+    },
+    "web": {
+      "title": "Cách 2: Trên web",
+      "signedOut": "Nếu bạn đăng nhập LucentMeet bằng Google, hãy đăng nhập tại đây bằng đúng tài khoản Google đó để xoá tài khoản ngay trên trình duyệt.",
+      "signIn": "Đăng nhập bằng Google",
+      "checking": "Đang kiểm tra phiên đăng nhập…",
+      "unavailable": "Tạm thời chưa xoá được trên web. Vui lòng dùng ứng dụng hoặc gửi email cho chúng tôi.",
+      "signedInAs": "Đang đăng nhập với <b>{email}</b>.",
+      "button": "Xoá tài khoản của tôi",
+      "confirmTitle": "Xoá tài khoản?",
+      "confirmBody": "Toàn bộ sự kiện đã đồng bộ, tuỳ chọn và token truy cập sẽ bị xoá vĩnh viễn, quyền truy cập Google cũng bị thu hồi. Không thể hoàn tác.",
+      "cancel": "Huỷ",
+      "confirm": "Xoá tất cả",
+      "error": "Không xoá được tài khoản. Vui lòng thử lại hoặc gửi email cho chúng tôi.",
+      "success": "Tài khoản LucentMeet và toàn bộ dữ liệu đã được xoá. Bạn đã được đăng xuất."
+    },
+    "email": {
+      "title": "Cách 3: Qua email",
+      "body": "Bạn đăng nhập bằng Apple, hoặc không còn truy cập được ứng dụng? Hãy gửi email từ địa chỉ gắn với tài khoản LucentMeet và yêu cầu xoá tài khoản. Chúng tôi sẽ xác nhận và xoá tài khoản cùng dữ liệu trong vòng 7 ngày.",
+      "address": "trungkiennguyen0310@gmail.com",
+      "subject": "Yêu cầu xoá tài khoản LucentMeet"
+    },
+    "data": {
+      "title": "Dữ liệu bị xoá",
+      "deleted": [
+        "Hồ sơ của bạn (tên, email và ảnh đại diện).",
+        "Tuỳ chọn và cài đặt.",
+        "Các tài khoản lịch đã kết nối cùng token truy cập đã mã hoá; quyền truy cập Google cũng bị thu hồi.",
+        "Lịch, sự kiện, lời nhắc và xung đột đã đồng bộ."
+      ],
+      "retention": "Mọi dữ liệu trên bị xoá khỏi máy chủ ngay khi quá trình xoá hoàn tất. Chúng tôi không giữ lại bất kỳ dữ liệu nào sau đó, trừ khi pháp luật yêu cầu. Bản lưu offline trên thiết bị sẽ bị xoá khi bạn đăng xuất hoặc gỡ ứng dụng."
+    },
+    "backToPrivacy": "Chính sách quyền riêng tư của LucentMeet"
+  },
   "lucent-web": {
     "title": "Lucent",
     "subtitle": "Tập trung theo quỹ đạo. Bộ hẹn giờ Pomodoro trên web",
