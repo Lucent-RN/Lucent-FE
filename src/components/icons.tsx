@@ -1,5 +1,6 @@
 import {
   IconAlertTriangle,
+  IconClockHour4,
   IconArrowRight,
   IconCheck,
   IconChevronLeft,
@@ -37,6 +38,7 @@ export type Icon = React.ComponentType<IconProps>;
 
 export const Icons = {
   dashboard: IconLayoutDashboard,
+  timer: IconClockHour4,
   logo: IconCommand,
   login: IconLogin,
   close: IconX,

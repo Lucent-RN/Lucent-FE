@@ -61,7 +61,7 @@ export function OrbitRing({
 
   return (
     <div className='relative' style={{ width: size, height: size }}>
-      <svg viewBox='0 0 100 100' width={size} height={size} aria-hidden>
+      <svg viewBox='0 0 100 100' width={size} height={size} overflow='visible' aria-hidden>
         <defs>
           <radialGradient id={`${uid}-planet`} cx='34%' cy='28%' r='88%'>
             <stop offset='0' stopColor={planet[0]} />

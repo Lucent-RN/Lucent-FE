@@ -7,6 +7,9 @@ import {
   IconLayoutKanban,
   IconLogin,
   IconLogout,
+  IconChartBar,
+  IconChecklist,
+  IconClockHour4,
   IconSettings,
   IconSparkles,
   IconUsers
@@ -42,6 +45,13 @@ const MEET = [
   { key: 'assistant', url: '/dashboard/meet/assistant', icon: IconSparkles },
   { key: 'accounts', url: '/dashboard/meet/accounts', icon: IconUsers },
   { key: 'settings', url: '/dashboard/meet/settings', icon: IconSettings }
+] as const;
+
+const LUCENT_APP = [
+  { key: 'timer', url: '/dashboard/lucent', icon: IconClockHour4 },
+  { key: 'tasks', url: '/dashboard/lucent/tasks', icon: IconChecklist },
+  { key: 'stats', url: '/dashboard/lucent/stats', icon: IconChartBar },
+  { key: 'settings', url: '/dashboard/lucent/settings', icon: IconSettings }
 ] as const;
 
 const LUCENT = [
@@ -110,8 +120,9 @@ export default function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className='overflow-x-hidden'>
+        {group(t('lucent'), LUCENT_APP)}
         {group(t('meet'), MEET)}
-        {group(`${t('lucent')} · ${t('preview')}`, LUCENT)}
+        {group(t('preview'), LUCENT)}
       </SidebarContent>
 
       <SidebarFooter>
