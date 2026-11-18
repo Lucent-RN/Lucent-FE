@@ -35,7 +35,9 @@ const Footer: React.FC<{ product?: 'lucent' | 'meet' }> = ({
             ? '#features'
             : index === 1
               ? '#pricing'
-              : 'https://lucent-fe.netlify.app/en/policy'
+              : product === 'meet'
+                ? 'https://lucent-fe.netlify.app/en/meet/privacy'
+                : 'https://lucent-fe.netlify.app/en/policy'
       })),
     email: 'trungkiennguyen0310@gmail.com',
     telephone: '+84 974 102 437',

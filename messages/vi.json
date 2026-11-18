@@ -585,5 +585,125 @@
       "lucent": "Lucent là đồng hồ Pomodoro yên tĩnh cho iPhone và Android.",
       "meet": "LucentMeet gộp mọi lịch của bạn thành một dòng thời gian yên tĩnh."
     }
+  },
+  "meet-privacy": {
+    "title": "Chính sách quyền riêng tư của LucentMeet",
+    "eyebrow": "LucentMeet · Quyền riêng tư",
+    "updated": "Cập nhật lần cuối: Tháng 11/2026",
+    "intro": "LucentMeet hiển thị tất cả lịch của bạn trên một dòng thời gian, cảnh báo xung đột và có trợ lý AI giúp bạn lên kế hoạch. Chính sách này giải thích ứng dụng và website LucentMeet xử lý dữ liệu nào, vì sao, và bạn có những lựa chọn gì. Chính sách chỉ áp dụng cho LucentMeet; ứng dụng Pomodoro Lucent có chính sách riêng.",
+    "highlightsTitle": "Tóm tắt nhanh",
+    "highlights": [
+      "Chúng tôi không bán dữ liệu của bạn và ứng dụng không có quảng cáo hay SDK phân tích.",
+      "Đăng nhập chỉ đọc hồ sơ cơ bản. LucentMeet không yêu cầu quyền truy cập Google Calendar của bạn.",
+      "Lịch lấy từ điện thoại của bạn (khi bạn cho phép) hoặc từ liên kết iCal bạn thêm, và chỉ đọc trừ khi chính bạn tạo hay sửa sự kiện.",
+      "Trợ lý AI chỉ đề xuất thay đổi; không có gì được ghi cho đến khi bạn xác nhận.",
+      "Bạn có thể xóa tài khoản và toàn bộ dữ liệu đã đồng bộ bất cứ lúc nào trong Cài đặt."
+    ],
+    "sections": [
+      {
+        "title": "Chúng tôi là ai",
+        "paragraphs": [
+          "LucentMeet do nhóm Lucent phát hành. Với mọi nội dung trong chính sách này, hãy liên hệ qua địa chỉ ở cuối trang."
+        ]
+      },
+      {
+        "title": "Dữ liệu chúng tôi thu thập",
+        "paragraphs": [
+          "Chúng tôi chỉ thu thập những gì ứng dụng cần để hoạt động:"
+        ],
+        "bullets": [
+          "Tài khoản: tên, địa chỉ email và ảnh đại diện từ Đăng nhập bằng Google hoặc Apple (chỉ hồ sơ cơ bản).",
+          "Dữ liệu lịch: tên lịch và các sự kiện trong đó (tiêu đề, mô tả, địa điểm, giờ bắt đầu và kết thúc, người tham dự, liên kết họp, trạng thái bận/rảnh). Dữ liệu đến từ các lịch trên thiết bị của bạn, nếu bạn cho phép truy cập lịch, và từ các nguồn iCal bạn thêm.",
+          "Liên kết nguồn iCal: địa chỉ bí mật bạn dán được lưu dạng mã hóa và không bao giờ hiển thị lại cho bạn hay người khác.",
+          "Tùy chọn: ngày và giờ làm việc, khoảng đệm giữa các cuộc họp, nhắc nhở mặc định và múi giờ.",
+          "Trợ lý AI: tin nhắn bạn nhập và các chi tiết lịch cần thiết để trả lời.",
+          "Dữ liệu kỹ thuật: mã phiên đăng nhập. Chúng tôi không thu thập mã định danh quảng cáo và không dùng SDK phân tích hay theo dõi."
+        ]
+      },
+      {
+        "title": "Dữ liệu chỉ nằm trên thiết bị",
+        "paragraphs": [
+          "Lựa chọn sáng/tối và ngôn ngữ, kiểu xem lịch, khung giờ tập trung và bản sao lịch ngoại tuyến được lưu trên thiết bị của bạn. Nhắc nhở được lên lịch ngay trên điện thoại; chúng tôi không gửi thông báo quảng cáo."
+        ]
+      },
+      {
+        "title": "Cách chúng tôi sử dụng dữ liệu",
+        "bullets": [
+          "Hiển thị các lịch của bạn trên một dòng thời gian, trên điện thoại và trên web.",
+          "Phát hiện trùng giờ, khoảng cách quá sát và sự kiện ngoài giờ làm việc, và gợi ý giờ phù hợp hơn.",
+          "Lên lịch nhắc nhở và hiển thị widget trên màn hình chính.",
+          "Trả lời câu hỏi của bạn trong trợ lý AI.",
+          "Giữ dịch vụ an toàn, ngăn chặn lạm dụng và khắc phục sự cố."
+        ]
+      },
+      {
+        "title": "Quyền truy cập lịch và dữ liệu người dùng Google",
+        "paragraphs": [
+          "Đăng nhập bằng Google chỉ yêu cầu hồ sơ cơ bản (tên, email, ảnh). LucentMeet không yêu cầu quyền Google Calendar API khi đăng nhập; trên điện thoại, ứng dụng đọc các lịch đã có trên thiết bị, kể cả lịch Google bạn đã thêm vào máy.",
+          "Nếu bạn đã liên kết Google Calendar bằng phiên bản cũ, dữ liệu từ kết nối đó chỉ được dùng để cung cấp các tính năng bạn thấy trong LucentMeet. Dữ liệu không bị bán, không dùng cho quảng cáo, không dùng để huấn luyện các mô hình AI tổng quát, và mã truy cập được mã hóa. Bạn có thể ngắt kết nối tài khoản trong Cài đặt hoặc thu hồi quyền trong Tài khoản Google bất cứ lúc nào.",
+          "Việc LucentMeet sử dụng và chuyển giao thông tin nhận từ các API của Google tuân thủ Chính sách dữ liệu người dùng của Dịch vụ API Google, bao gồm các yêu cầu Sử dụng Hạn chế."
+        ]
+      },
+      {
+        "title": "Trợ lý AI",
+        "paragraphs": [
+          "Khi dùng trợ lý, tin nhắn của bạn và các chi tiết lịch nó cần (ví dụ các sự kiện trong khoảng thời gian bạn hỏi) được gửi qua máy chủ của chúng tôi tới Gemini API của Google để tạo câu trả lời. Máy chủ của chúng tôi không lưu cuộc trò chuyện và không ghi lại nội dung. Trợ lý chỉ có thể đề xuất tạo, sửa hoặc xóa sự kiện; không có gì thay đổi cho đến khi bạn xác nhận. Đừng nhập thông tin mà bạn không muốn được xử lý theo cách này."
+        ]
+      },
+      {
+        "title": "Chúng tôi chia sẻ dữ liệu với ai",
+        "paragraphs": [
+          "Chúng tôi không bán hay cho thuê dữ liệu của bạn và không chia sẻ cho mục đích quảng cáo. Chúng tôi dùng một số nhà cung cấp dịch vụ xử lý dữ liệu thay mặt chúng tôi:"
+        ],
+        "bullets": [
+          "Supabase: lưu trữ, cơ sở dữ liệu và xác thực cho tài khoản và lịch đã đồng bộ của bạn.",
+          "Google: Đăng nhập bằng Google và Gemini API cho trợ lý.",
+          "Apple: Đăng nhập bằng Apple.",
+          "Chúng tôi có thể tiết lộ thông tin nếu pháp luật yêu cầu."
+        ]
+      },
+      {
+        "title": "Bảo mật",
+        "paragraphs": [
+          "Dữ liệu được truyền qua TLS. Dữ liệu tài khoản và lịch được bảo vệ bằng bảo mật cấp hàng nên bạn chỉ đọc được dữ liệu của chính mình. Mã truy cập và liên kết iCal được mã hóa AES-256-GCM trên máy chủ và ứng dụng không đọc được. Không hệ thống nào an toàn tuyệt đối, nhưng chúng tôi nỗ lực bảo vệ dữ liệu của bạn."
+        ]
+      },
+      {
+        "title": "Lưu giữ và xóa dữ liệu",
+        "paragraphs": [
+          "Chúng tôi giữ dữ liệu khi tài khoản của bạn còn tồn tại. Ngắt kết nối một tài khoản lịch sẽ xóa các sự kiện của nó khỏi LucentMeet. Chọn Xóa tài khoản trong Cài đặt sẽ xóa vĩnh viễn hồ sơ, lịch đã đồng bộ, sự kiện, nhắc nhở và mã truy cập đã lưu, đồng thời thu hồi quyền truy cập nếu có. Đăng xuất sẽ xóa bản sao ngoại tuyến trên thiết bị."
+        ]
+      },
+      {
+        "title": "Quyền của bạn",
+        "paragraphs": [
+          "Tùy nơi bạn sinh sống (ví dụ theo GDPR hoặc CCPA), bạn có thể có quyền truy cập, chỉnh sửa, xuất hoặc xóa dữ liệu, phản đối hoặc hạn chế xử lý và rút lại sự đồng ý. Phần lớn có thể làm ngay trong ứng dụng; với các yêu cầu khác, hãy liên hệ và chúng tôi sẽ phản hồi trong thời gian hợp lý."
+        ]
+      },
+      {
+        "title": "Các quyền ứng dụng có thể xin",
+        "bullets": [
+          "Lịch: để đọc (và ghi khi bạn tạo hay sửa sự kiện) các lịch trên thiết bị.",
+          "Thông báo: để nhắc bạn trước khi sự kiện bắt đầu.",
+          "Đăng nhập bằng Google / Apple: để xác định tài khoản của bạn."
+        ]
+      },
+      {
+        "title": "Trẻ em",
+        "paragraphs": [
+          "LucentMeet không hướng tới trẻ em dưới 13 tuổi (hoặc dưới 16 tuổi tại Khu vực Kinh tế Châu Âu) và chúng tôi không cố ý thu thập dữ liệu của trẻ. Nếu bạn cho rằng một trẻ đã cung cấp dữ liệu cho chúng tôi, hãy liên hệ để chúng tôi xóa."
+        ]
+      },
+      {
+        "title": "Thay đổi chính sách",
+        "paragraphs": [
+          "Chúng tôi có thể cập nhật chính sách này. Khi có thay đổi quan trọng, chúng tôi sẽ cập nhật ngày ở trên và, khi phù hợp, thông báo trong ứng dụng."
+        ]
+      }
+    ],
+    "contactTitle": "Liên hệ",
+    "contactText": "Câu hỏi về quyền riêng tư, hoặc yêu cầu truy cập hay xóa dữ liệu của bạn:",
+    "contactEmail": "trungkiennguyen0310@gmail.com",
+    "backToLegal": "Chính sách quyền riêng tư, điều khoản và thông tin pháp lý của Lucent"
   }
 }

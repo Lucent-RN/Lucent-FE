@@ -20,7 +20,7 @@ import { SCREEN_H, SCREEN_W } from './phone-frame';
  * App screens drawn in HTML/SVG at SCREEN_W × SCREEN_H, mirroring the latest Lucent / LucentMeet UI
  * (cosmic palette, orbit timer). Text inside is the app's own English UI, like a store screenshot.
  */
-const Screen = ({
+export const Screen = ({
   className,
   children
 }: {
@@ -35,7 +35,7 @@ const Screen = ({
   </div>
 );
 
-const Pill = ({
+export const Pill = ({
   children,
   className
 }: {
@@ -53,7 +53,7 @@ const Pill = ({
 );
 
 /** Bottom floating tab bar (planet = the timer tab). */
-const TabBar = ({
+export const TabBar = ({
   items,
   active,
   dark = false
@@ -82,7 +82,7 @@ const TabBar = ({
   </div>
 );
 
-const Dots = ({
+export const Dots = ({
   n = 4,
   active = 0,
   dark = false
@@ -106,7 +106,7 @@ const Dots = ({
   </div>
 );
 
-const PlayButton = ({ pause = false }: { pause?: boolean }) => (
+export const PlayButton = ({ pause = false }: { pause?: boolean }) => (
   <span className='relative flex h-[72px] w-[72px] items-center justify-center'>
     <span className='absolute inset-0 rounded-full border border-[#22d3ee]/30 bg-[#22d3ee]/15' />
     <span className='relative flex h-[56px] w-[56px] items-center justify-center rounded-full bg-gradient-to-br from-[#67e8f9] via-[#06b6d4] to-[#0891b2] shadow-[0_8px_22px_rgba(6,182,212,0.45)]'>
@@ -177,7 +177,7 @@ export function TimerScreen() {
   );
 }
 
-const Cosmos = () => (
+export const Cosmos = () => (
   <>
     <div className='absolute inset-0 bg-[linear-gradient(165deg,#0a0524_0%,#0b1740_55%,#05283a_100%)]' />
     <div className='absolute -top-16 -left-20 size-[300px] rounded-full bg-[radial-gradient(closest-side,rgba(139,92,246,0.5),transparent)]' />

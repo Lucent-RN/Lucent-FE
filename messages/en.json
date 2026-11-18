@@ -585,5 +585,125 @@
       "lucent": "Lucent is a calm Pomodoro timer for iPhone and Android.",
       "meet": "LucentMeet merges all your calendars into one calm timeline."
     }
+  },
+  "meet-privacy": {
+    "title": "LucentMeet Privacy Policy",
+    "eyebrow": "LucentMeet · Privacy",
+    "updated": "Last updated: November 2026",
+    "intro": "LucentMeet shows all your calendars in one timeline, warns you about conflicts and lets an AI assistant help you plan. This policy explains what data the LucentMeet app and website handle, why, and the choices you have. It applies only to LucentMeet; our Pomodoro app Lucent has its own policy.",
+    "highlightsTitle": "The short version",
+    "highlights": [
+      "We never sell your data and there are no ads or analytics SDKs in the app.",
+      "Sign-in only reads your basic profile. LucentMeet does not ask for access to your Google Calendar.",
+      "Calendars come from your phone (with your permission) or from iCal links you add, and are read-only unless you create or edit an event yourself.",
+      "The AI assistant proposes changes; nothing is written until you confirm.",
+      "You can delete your account and all synced data at any time from Settings."
+    ],
+    "sections": [
+      {
+        "title": "Who we are",
+        "paragraphs": [
+          "LucentMeet is published by the Lucent team. For anything in this policy, contact us at the address at the end of this page."
+        ]
+      },
+      {
+        "title": "Data we collect",
+        "paragraphs": [
+          "We collect only what the app needs to work:"
+        ],
+        "bullets": [
+          "Account: your name, email address and profile picture, from Sign in with Google or Sign in with Apple (basic profile only).",
+          "Calendar data: calendar names and the events in them (title, description, location, start and end time, attendees, meeting link, availability). They come from the calendars on your device, if you allow calendar access, and from iCal feeds you add.",
+          "iCal feed links: the secret address you paste is stored encrypted and is never shown back to you or to anyone else.",
+          "Preferences: working days and hours, buffer between meetings, default reminder and time zone.",
+          "AI assistant: the messages you type and the calendar details needed to answer them.",
+          "Technical data: a sign-in session token. We do not collect advertising identifiers and we do not use analytics or tracking SDKs."
+        ]
+      },
+      {
+        "title": "What stays on your device",
+        "paragraphs": [
+          "Your light/dark and language choice, the calendar view you picked, your focus-time window and the offline copy of your schedule are stored on your device. Reminders are scheduled locally on your phone; we do not send push marketing."
+        ]
+      },
+      {
+        "title": "How we use your data",
+        "bullets": [
+          "To show your calendars in one timeline on the phone and on the web.",
+          "To detect overlaps, tight gaps and events outside your working hours, and to suggest better times.",
+          "To schedule reminders and show the home-screen widget.",
+          "To answer your questions in the AI assistant.",
+          "To keep the service secure, prevent abuse and fix problems."
+        ]
+      },
+      {
+        "title": "Calendar access and Google user data",
+        "paragraphs": [
+          "Signing in with Google requests your basic profile only (name, email, picture). LucentMeet does not request the Google Calendar API scope when you sign in; on a phone it reads the calendars already stored on the device, including Google calendars you added to it.",
+          "If you linked a Google Calendar with an earlier version of the app, the data from that connection is used only to provide the features you see in LucentMeet. It is not sold, not used for advertising and not used to train generalised AI models, and any access tokens are encrypted. You can disconnect the account in Settings, or revoke access in your Google Account at any time.",
+          "LucentMeet's use and transfer of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements."
+        ]
+      },
+      {
+        "title": "The AI assistant",
+        "paragraphs": [
+          "When you use the assistant, your message and the calendar details it needs (for example events in the time range you asked about) are sent through our server to Google's Gemini API to produce a reply. Our server does not store conversations and does not log their content. The assistant can only propose creating, changing or deleting an event; nothing changes until you confirm. Do not enter information you do not want processed this way."
+        ]
+      },
+      {
+        "title": "Who we share data with",
+        "paragraphs": [
+          "We do not sell or rent your data and we do not share it for advertising. We use a small number of service providers who process data on our behalf:"
+        ],
+        "bullets": [
+          "Supabase: hosting, database and authentication for your account and synced calendars.",
+          "Google: Sign in with Google and the Gemini API for the assistant.",
+          "Apple: Sign in with Apple.",
+          "We may disclose information if the law requires it."
+        ]
+      },
+      {
+        "title": "Security",
+        "paragraphs": [
+          "Data is sent over TLS. Calendar and account data is protected by row-level security so you can only read your own rows. Access tokens and iCal feed links are encrypted with AES-256-GCM on the server and are not readable by the app. No system is perfectly secure, but we work to protect your data."
+        ]
+      },
+      {
+        "title": "Retention and deletion",
+        "paragraphs": [
+          "We keep your data while your account exists. Disconnecting a calendar account removes its events from LucentMeet. Delete account in Settings permanently erases your profile, synced calendars, events, reminders and stored tokens, and revokes access where applicable. Signing out clears the offline copy on your device."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "Depending on where you live (for example under the GDPR or the CCPA) you may have the right to access, correct, export or delete your data, to object to or restrict processing and to withdraw consent. Most of this you can do in the app; for anything else, contact us and we will respond within a reasonable time."
+        ]
+      },
+      {
+        "title": "Permissions the app may ask for",
+        "bullets": [
+          "Calendars: to read (and, when you create or edit an event, write) the calendars on your device.",
+          "Notifications: to remind you before events start.",
+          "Sign in with Google / Apple: to identify your account."
+        ]
+      },
+      {
+        "title": "Children",
+        "paragraphs": [
+          "LucentMeet is not directed to children under 13 (or under 16 in the European Economic Area) and we do not knowingly collect their data. If you believe a child has given us data, contact us and we will delete it."
+        ]
+      },
+      {
+        "title": "Changes to this policy",
+        "paragraphs": [
+          "We may update this policy. When we make material changes we will update the date above and, where appropriate, tell you in the app."
+        ]
+      }
+    ],
+    "contactTitle": "Contact us",
+    "contactText": "Questions about privacy, or a request to access or delete your data:",
+    "contactEmail": "trungkiennguyen0310@gmail.com",
+    "backToLegal": "Lucent privacy policy, terms and imprint"
   }
 }
