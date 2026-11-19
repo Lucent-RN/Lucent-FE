@@ -15,6 +15,7 @@ import { emptyData } from '../core/defaults';
 import { playSound } from '../core/sound';
 import { load, save } from '../core/storage';
 import { formatClock } from '../core/timer';
+import { useWebSync, type SyncStatus } from '../sync/use-web-sync';
 import type { LucentData, Todo } from '../core/types';
 
 interface LucentValue {
@@ -27,6 +28,7 @@ interface LucentValue {
   progress: number;
   todo: Todo | null;
   dispatch: (a: Action) => void;
+  sync: { status: SyncStatus; lastSyncedAt: number | null; syncNow: () => void; signedIn: boolean; configured: boolean };
 }
 
 const Ctx = createContext<LucentValue | null>(null);
@@ -80,6 +82,16 @@ export function LucentProvider({ children }: { children: React.ReactNode }) {
     [notify]
   );
 
+  // Sync pulls rows into the document outside the timer's action flow; this keeps ref and state in step.
+  const mutate = useCallback((fn: (d: LucentData) => LucentData) => {
+    const next = fn(ref.current);
+    if (next === ref.current) return;
+    ref.current = next;
+    setData(next);
+  }, []);
+  const getData = useCallback(() => ref.current, []);
+  const sync = useWebSync({ hydrated, data, getData, mutate });
+
   const running = isRunning(data);
   useEffect(() => {
     if (!running) return;
@@ -108,9 +120,10 @@ export function LucentProvider({ children }: { children: React.ReactNode }) {
       running,
       progress: data.timer.total > 0 ? 1 - remaining / data.timer.total : 0,
       todo,
-      dispatch
+      dispatch,
+      sync
     }),
-    [data, hydrated, remaining, running, todo, dispatch]
+    [data, hydrated, remaining, running, todo, dispatch, sync]
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

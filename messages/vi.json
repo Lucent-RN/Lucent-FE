@@ -217,7 +217,7 @@
     },
     "privacy-policy-content": {
       "title": "Chính sách bảo mật",
-      "last-updated": "Cập nhật lần cuối: Tháng 1 năm 2025",
+      "last-updated": "Cập nhật lần cuối: tháng 11/2026",
       "introduction": "Giới thiệu",
       "introduction-description": "Chào mừng bạn đến với Lucent. Chúng tôi tôn trọng quyền riêng tư của bạn và cam kết bảo vệ dữ liệu cá nhân của bạn. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn khi bạn sử dụng dịch vụ của chúng tôi.",
       "information-we-collect": "Thông tin chúng tôi thu thập",
@@ -251,7 +251,14 @@
       "contact-us-description": "Đối với các câu hỏi liên quan đến quyền riêng tư, vui lòng liên hệ:",
       "contact-us-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Điện thoại: +84 (84) 974 102 437",
-      "contact-us-item-3": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam"
+      "contact-us-item-3": "Địa chỉ: Thành phố Hồ Chí Minh, Việt Nam",
+      "sync": "Đồng bộ giữa các thiết bị (tùy chọn)",
+      "sync-description": "Lucent hoạt động đầy đủ trên thiết bị của bạn mà không cần tài khoản. Nếu bạn chọn đăng nhập, Lucent có thể đồng bộ dữ liệu giữa điện thoại và bản web để bạn tiếp tục trên thiết bị khác. Đồng bộ chỉ hoạt động sau khi bạn đăng nhập.",
+      "sync-item-1": "Dữ liệu được đồng bộ: công việc (tiêu đề, ghi chú, mức ưu tiên, nhãn, thời gian dự kiến, số phiên, trạng thái hoàn thành), các phiên tập trung và nghỉ cùng các lần gián đoạn, nhãn tự tạo, và cài đặt đồng hồ (thời lượng, tự động bắt đầu, âm thanh, âm lượng).",
+      "sync-item-2": "Dữ liệu không đồng bộ: đồng hồ đang chạy, giao diện, ngôn ngữ, khóa sinh trắc học, dữ liệu Apple Health và lịch trên thiết bị của bạn.",
+      "sync-item-3": "Nơi lưu trữ: cơ sở dữ liệu của chúng tôi do Supabase lưu trữ. Quyền truy cập được giới hạn theo tài khoản của bạn bằng row-level security, và dữ liệu được mã hóa khi truyền đi.",
+      "sync-item-4": "Chúng tôi chỉ dùng dữ liệu này để hiển thị trên các thiết bị của bạn. Chúng tôi không bán, không dùng cho quảng cáo và không dùng để huấn luyện mô hình AI.",
+      "sync-item-5": "Xóa dữ liệu: đăng xuất sẽ dừng đồng bộ nhưng bản trên máy chủ vẫn được giữ. Xóa tài khoản trong app sẽ xóa vĩnh viễn. Mục bạn xóa được giữ dưới dạng dấu xóa tối đa 90 ngày để các thiết bị khác xóa theo, sau đó bị xóa hẳn."
     }
   },
   "meet": {
@@ -878,7 +885,20 @@
       "imported": "Đã nhập bản sao lưu",
       "importFailed": "Tệp này không phải bản sao lưu của Lucent",
       "unavailable": "Không có trên web",
-      "unavailableBody": "Widget màn hình chính, Live Activity, chặn ứng dụng (Focus Guard), Apple Health và Face ID cần ứng dụng trên điện thoại."
+      "unavailableBody": "Widget màn hình chính, Live Activity, chặn ứng dụng (Focus Guard), Apple Health và Face ID cần ứng dụng trên điện thoại.",
+      "sync": {
+        "title": "Đồng bộ giữa các thiết bị",
+        "signedOut": "Đăng nhập để đồng bộ công việc, phiên tập trung và cài đặt với app Lucent trên điện thoại. Nếu không đăng nhập, mọi thứ chỉ nằm trong trình duyệt này.",
+        "signIn": "Đăng nhập",
+        "unavailable": "Trang này chưa được cấu hình đồng bộ.",
+        "syncing": "Đang đồng bộ…",
+        "synced": "Đã cập nhật",
+        "error": "Không đồng bộ được. Thay đổi vẫn được lưu ở đây và sẽ tải lên khi có mạng lại.",
+        "idle": "Đang chờ đồng bộ",
+        "last": "Lần cuối {time}",
+        "now": "Đồng bộ ngay",
+        "scope": "Đồng bộ công việc, phiên tập trung và cài đặt đồng hồ. Đồng hồ đang chạy, giao diện và ngôn ngữ giữ riêng trên từng thiết bị."
+      }
     }
   }
 }

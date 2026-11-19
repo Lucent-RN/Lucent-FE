@@ -167,14 +167,43 @@ const PrivacyPolicyContent = () => {
         </ul>
       </section>
 
-      {/* 7. Google API Services User Data Policy Compliance Card */}
+      {/* 7. Cross-device sync */}
+      <section className='rounded-2xl border border-[#a5e3f4]/15 bg-[#041e29]/60 p-6 sm:p-7 backdrop-blur-md transition-all hover:border-[#22d3ee]/30'>
+        <div className='flex items-center gap-3.5'>
+          <span className='flex size-8 items-center justify-center rounded-xl border border-[#22d3ee]/40 bg-[#22d3ee]/15 text-xs font-bold text-[#67e8f9] shadow-[0_0_12px_rgba(34,211,238,0.25)]'>
+            7
+          </span>
+          <h3 className='font-sans text-lg sm:text-xl font-semibold text-white'>
+            {t(policyLocalizeStrings.privacyPolicyContent.sync)}
+          </h3>
+        </div>
+        <p className='mt-3.5 pl-0 sm:pl-11 text-sm sm:text-base leading-relaxed text-[#cffafe]/90'>
+          {t(policyLocalizeStrings.privacyPolicyContent.syncDescription)}
+        </p>
+        <ul className='mt-4 space-y-2.5 pl-0 sm:pl-11'>
+          {[
+            t(policyLocalizeStrings.privacyPolicyContent.syncItem1),
+            t(policyLocalizeStrings.privacyPolicyContent.syncItem2),
+            t(policyLocalizeStrings.privacyPolicyContent.syncItem3),
+            t(policyLocalizeStrings.privacyPolicyContent.syncItem4),
+            t(policyLocalizeStrings.privacyPolicyContent.syncItem5)
+          ].map((item, idx) => (
+            <li key={idx} className='flex items-start gap-3 text-sm sm:text-base text-[#cffafe]/85 leading-relaxed'>
+              <span className='mt-2 size-1.5 shrink-0 rounded-full bg-[#22d3ee] shadow-[0_0_8px_#22d3ee]' />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 8. Google API Services User Data Policy Compliance Card */}
       <section className='relative overflow-hidden rounded-2xl border border-[#22d3ee]/40 bg-gradient-to-br from-[#062c3b] via-[#083a4d] to-[#041e29] p-6 sm:p-8 shadow-[0_12px_40px_rgba(6,182,212,0.25)]'>
         <div className='pointer-events-none absolute top-0 right-0 size-64 rounded-full bg-[radial-gradient(closest-side,rgba(34,211,238,0.2),transparent)] blur-2xl' />
 
         <div className='relative flex items-center justify-between gap-4'>
           <div className='flex items-center gap-3.5'>
             <span className='flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-[#67e8f9] to-[#0891b2] text-xs font-bold text-[#041e29] shadow-[0_0_15px_rgba(34,211,238,0.4)]'>
-              7
+              8
             </span>
             <h3 className='font-sans text-lg sm:text-xl font-semibold text-white'>
               Google API Services User Data Policy
@@ -266,11 +295,11 @@ const PrivacyPolicyContent = () => {
         </div>
       </section>
 
-      {/* 8. Contact Us */}
+      {/* 9. Contact Us */}
       <section className='rounded-2xl border border-[#a5e3f4]/15 bg-[#041e29]/60 p-6 sm:p-7 backdrop-blur-md transition-all hover:border-[#22d3ee]/30'>
         <div className='flex items-center gap-3.5'>
           <span className='flex size-8 items-center justify-center rounded-xl border border-[#22d3ee]/40 bg-[#22d3ee]/15 text-xs font-bold text-[#67e8f9] shadow-[0_0_12px_rgba(34,211,238,0.25)]'>
-            8
+            9
           </span>
           <h3 className='font-sans text-lg sm:text-xl font-semibold text-white'>
             {t(policyLocalizeStrings.privacyPolicyContent.contactUs)}

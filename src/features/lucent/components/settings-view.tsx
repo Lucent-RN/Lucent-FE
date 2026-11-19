@@ -16,6 +16,7 @@ import {
   AlertDialogTitle
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
@@ -53,6 +54,41 @@ function Minutes({ label, value, min, max, step = 1, onChange }: { label: string
       </Row>
       <Slider min={min / 60} max={max / 60} step={step} value={[Math.round(value / 60)]} onValueChange={([m]) => onChange(m * 60)} aria-label={label} />
     </div>
+  );
+}
+
+function SyncSection() {
+  const t = useTranslations('lucent-web');
+  const { sync } = useLucent();
+  const status = !sync.configured
+    ? t('settings.sync.unavailable')
+    : !sync.signedIn
+      ? t('settings.sync.signedOut')
+      : sync.status === 'syncing'
+        ? t('settings.sync.syncing')
+        : sync.status === 'error'
+          ? t('settings.sync.error')
+          : sync.status === 'synced'
+            ? t('settings.sync.synced')
+            : t('settings.sync.idle');
+  return (
+    <Section title={t('settings.sync.title')}>
+      <p role='status' className='text-muted-foreground text-sm'>
+        {status}
+        {sync.signedIn && sync.lastSyncedAt ? ` · ${t('settings.sync.last', { time: new Date(sync.lastSyncedAt).toLocaleTimeString() })}` : ''}
+      </p>
+      {sync.configured && !sync.signedIn && (
+        <Button asChild size='sm'>
+          <Link href='/auth/sign-in'>{t('settings.sync.signIn')}</Link>
+        </Button>
+      )}
+      {sync.signedIn && (
+        <Button size='sm' variant='outline' disabled={sync.status === 'syncing'} onClick={sync.syncNow}>
+          {t('settings.sync.now')}
+        </Button>
+      )}
+      <p className='text-muted-foreground text-xs'>{t('settings.sync.scope')}</p>
+    </Section>
   );
 }
 
@@ -117,6 +153,8 @@ export function SettingsView() {
 
   return (
     <div className='mx-auto w-full max-w-2xl space-y-4'>
+      <SyncSection />
+
       <Section title={t('settings.timer')}>
         <Minutes label={t('settings.focusDuration')} value={s.focusDuration} min={MIN_FOCUS} max={MAX_FOCUS} step={5} onChange={(v) => set({ focusDuration: v })} />
         <Minutes label={t('settings.shortBreak')} value={s.shortBreakDuration} min={MIN_BREAK} max={MAX_BREAK} onChange={(v) => set({ shortBreakDuration: v })} />

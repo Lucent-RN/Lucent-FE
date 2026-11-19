@@ -217,7 +217,7 @@
     },
     "privacy-policy-content": {
       "title": "Privacy Policy",
-      "last-updated": "Last updated: January 2025",
+      "last-updated": "Last updated: November 2026",
       "introduction": "Introduction",
       "introduction-description": "Welcome to Lucent. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you use our service.",
       "information-we-collect": "Information We Collect",
@@ -251,7 +251,14 @@
       "contact-us-description": "For privacy-related inquiries, please contact:",
       "contact-us-item-1": "Email: trungkiennguyen0310@gmail.com",
       "contact-us-item-2": "Phone: +84 (84) 974 102 437",
-      "contact-us-item-3": "Address: Ho Chi Minh City, Vietnam"
+      "contact-us-item-3": "Address: Ho Chi Minh City, Vietnam",
+      "sync": "Cross-device sync (optional)",
+      "sync-description": "Lucent works fully on your device without an account. If you choose to sign in, Lucent can sync your data between your phone and the web app so you can continue on another device. Sync is off until you sign in.",
+      "sync-item-1": "What is synced: your tasks (title, note, priority, tag, planned time, session counts, completion), your focus and break sessions with their interruptions, your custom tags, and your timer settings (durations, auto-start, sounds, volume).",
+      "sync-item-2": "What is not synced: a timer that is currently running, theme, language, biometric lock, Apple Health data and the calendars on your device.",
+      "sync-item-3": "Where it is stored: in our database hosted by Supabase. Access is restricted to your own account by row-level security, and data is encrypted in transit.",
+      "sync-item-4": "We use it only to show your data on your devices. We do not sell it, use it for advertising, or use it to train AI models.",
+      "sync-item-5": "Deleting: signing out stops syncing but keeps the copy on the server. Deleting your account in the app permanently erases it. Items you delete are kept as a deletion marker for up to 90 days so your other devices can remove them, then purged."
     }
   },
   "meet": {
@@ -878,7 +885,20 @@
       "imported": "Backup imported",
       "importFailed": "That file is not a Lucent backup",
       "unavailable": "Not on the web",
-      "unavailableBody": "Home-screen widgets, Live Activities, app blocking (Focus Guard), Apple Health and Face ID need the phone app."
+      "unavailableBody": "Home-screen widgets, Live Activities, app blocking (Focus Guard), Apple Health and Face ID need the phone app.",
+      "sync": {
+        "title": "Sync across devices",
+        "signedOut": "Sign in to sync your tasks, sessions and settings with the Lucent apps on your phone. Without an account everything stays in this browser.",
+        "signIn": "Sign in",
+        "unavailable": "Sync is not configured for this site.",
+        "syncing": "Syncing…",
+        "synced": "Up to date",
+        "error": "Could not sync. Your changes are safe here and will upload when you are back online.",
+        "idle": "Waiting to sync",
+        "last": "Last synced {time}",
+        "now": "Sync now",
+        "scope": "Syncs tasks, focus sessions and timer settings. The running timer, theme and language stay on each device."
+      }
     }
   }
 }
