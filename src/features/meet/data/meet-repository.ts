@@ -140,6 +140,11 @@ export const meetRepository = {
   },
 
   async fetchOpenConflicts(): Promise<ScheduleConflict[]> {
+    // Re-run the server engine first so clashes that are already over get dropped (it only
+    // considers events that have not ended). Best effort: on failure we still read what is stored.
+    await getSupabaseBrowser()
+      .rpc('detect_my_conflicts')
+      .then(undefined, () => undefined);
     const { data, error } = await getSupabaseBrowser()
       .from('schedule_conflicts')
       .select(CONFLICT_COLUMNS)
